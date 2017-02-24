@@ -1,0 +1,213 @@
+/*
+* {
+    box-sizing: border-box;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+/* For mobile phones: */
+/*[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+ /*   .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+/*    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}*/
+
+body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+
+  
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    10% {background-color: firebrick;}
+    20% {background-color: #4cafff;}
+    30% {background-color: goldenrod;}
+    40% {background-color: tomato;}
+    50% {background-color: darkmagenta;}
+    60% {background-color: green;}
+    70% {background-color: darkorchid;}
+    80% {background-color: #474e5d;}
+    90% {background-color: darkorange;}
+    100% {background-color: #1abc9c;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    10% {background-color: firebrick;}
+    20% {background-color: #4cafff;}
+    30% {background-color: goldenrod;}
+    40% {background-color: tomato;}
+    50% {background-color: darkmagenta;}
+    60% {background-color: green;}
+    70% {background-color: darkorchid;}
+    80% {background-color: #474e5d;}
+    90% {background-color: darkorange;}
+    100% {background-color: #1abc9c;}
+}
+  .bg-1 { 
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+      -webkit-animation: mymove 200s infinite; /* Chrome, Safari, Opera */
+      animation: mymove 200s infinite;
+  }
+  .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+  }
+  .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #444444;
+  }
+  .bg-4 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .bg-5{
+      background-color: brown;
+      color: #fff;
+  }
+  .bg-6{
+      background-color: darkslateblue;
+      color: #fff;
+  }
+
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+
+  .navbar-nav  li a {
+      color: darkblue !important;
+  }
+
+  .navbar-nav  li a:hover {
+      background-color: #e7e7e7 !important;
+      color: #1abc9c !important;
+  }
+  .navbar-default{
+      background-color: #1abc9c;
+  }
+
+.navbar-toggle .icon-bar {
+    background-color: white !important;}
+
+/*.navbar-toggle:hover {
+    background-color: #888 !important;}*/
+
+    /* Formato geral das tabelas */
+    table{
+        align-content: center;
+        border-collapse: collapse;
+    }
+    table thead tr{
+         background-color:darkcyan;
+         align-content: center;
+         border: 10px;
+    }
+    td{
+        text-align:center;
+        background-color:darkslategray;
+        /**/
+    }
+    caption{
+        margin-bottom: 5px;
+    }
+    td.head{
+        background-color:darkgray;
+        text-align: center;
+    }
+    td.tipo{
+        background-color:darkolivegreen;
+        align-content: center;
+        white-space: pre-wrap;
+        vertical-align: 50%;
+    }
+    td.primeira-coluna-licenciatura {
+        background-color:darkgray;
+        text-align: center;
+    }
+    div#plano-secundario td{
+white-space: nowrap;
+    }
+
+/*    @media screen and (max-width: 810px) {
+    #inicio, #familia, #formacao, #curriculum, #hobbies, #trabalhos  {
+        margin-left: 150px;
+    }
+  }*/
+  
+
+/*.affix {
+      top: 0;
+      width: 100%;
+      -webkit-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+  }
+  .affix-top {
+      position: static;
+      top: -35px;
+  }
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }*/
+
+  .affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+
+  .affix ~ .container-fluid {
+     position: relative;
+  }
+
+  nav.ativo {background-color: #4cafff;
+        color: white;}
