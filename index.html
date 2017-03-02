@@ -45,7 +45,7 @@
 </nav>-->
     <!--<div class="container-fluid col-sm-12">-->
     <!-- Navbar -->
-    <nav id="myScrollspy" class="navbar navbar-default" data-spy="affix" style="background-color: transparent">
+    <nav class="navbar navbar-default" data-spy="affix" style="background-color: transparent">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -56,7 +56,7 @@
       </button>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav text-center" style="font-weight: bold; align-content: center;">
+                <ul id="myScrollspy" class="nav navbar-nav text-center" style="font-weight: bold; align-content: center;">
                     <li class="active"><a href="#inicio">Inicio</a></li>
                     <li><a href="#familia">Família</a></li>
                     <li><a href="#formacao">Formação</a></li>
@@ -70,8 +70,8 @@
 
     <div id="inicio" class="container-fluid bg-1 text-center">
         <h3 class="margin">Quem sou eu!?</h3>
-        <img src="/images/dario.png" alt="Dario Botas" class="img-responsive img-circle margin" style="display:inline; box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);" width="230"
-            height="230">
+        <img src="/images/dario.png" alt="Dario Botas" class="img-responsive img-circle margin" style="display:inline; box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);"
+            width="230" height="230">
             <h3>O meu nome é Dário Botas, tenho <span id="ano"></span> anos e sou estudante de Engenharia Informática. </h3>
     </div>
 
@@ -146,6 +146,7 @@
         </ul>
 
         <div class="tab-content">
+            <hr/>
             <!-- informação do secundário -->
             <div id="secundario" class="tab-pane fade in active">
                 <!-- Menus em tabulações -->
@@ -155,12 +156,13 @@
                 </ul>
                 <div class="tab-content">
                     <div id="sobre-secundario" class="tab-pane fade in active">
-                        <br/>                        <br />
-                        <img src="/images/secundaria.jpg" alt="Dario Botas" class="img-responsive margin" style="float: left" /><!--
-                        -->A minha formação secundário foi um curso profissional nível 3.
-                        Este curso profissional era o de Técnico de Informática de Gestão, que foi feita na Escola Secundária da Moita.
-                        Com duração de 3 anos sendo o equivalente ao ensino secundário - com 10º, 11º e 12º anos.
-                        
+                        <br/> <br />
+                        <img src="/images/secundaria.jpg" alt="Dario Botas" class="img-responsive margin" style="float: left" />
+                        <!--
+                        -->A minha formação secundário foi um curso profissional nível 3. Este curso profissional era o de Técnico
+                        de Informática de Gestão, que foi feita na Escola Secundária da Moita. Com duração de 3 anos sendo
+                        o equivalente ao ensino secundário - com 10º, 11º e 12º anos.
+
                     </div>
                     <div id="plano-secundario" class="tab-pane fade table-responsive">
                         <table align="center" border="0" class="table">
@@ -197,7 +199,8 @@
                             </tfoot>
                             <tbody>
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->Componente de Formação Sociocultural</td>
                                 </tr>
                                 <tr>
@@ -220,26 +223,28 @@
                                     <td>Educação Física</td>
                                     <td>14</td>
                                 </tr>
-                                
+
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->Componente de Formação Científica</td>
                                 </tr>
                                 <tr>
-                                    <td >Economia</td>
+                                    <td>Economia</td>
                                     <td>14</td>
                                 </tr>
                                 <tr>
-                                    <td >Matemática</td>
+                                    <td>Matemática</td>
                                     <td>15</td>
                                 </tr>
 
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->Componente Técnica</td>
                                 </tr>
                                 <tr>
-                                    <td >Linguagens de Programação</td>
+                                    <td>Linguagens de Programação</td>
                                     <td>15</td>
                                 </tr>
 
@@ -257,11 +262,12 @@
                                     <td>13</td>
                                 </tr>
                                 <tr>
-                                    <td >Formação em Contexto de Trabalho (420 horas)</td>
+                                    <td>Formação em Contexto de Trabalho (420 horas)</td>
                                     <td>16</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->Realizou a Prova de Aptidão Profissional (PAP)</td>
                                 </tr>
                                 <tr>
@@ -285,7 +291,8 @@
                 <div class="tab-content">
                     <div id="sobre-cet" class="tab-pane fade in active">
                         <br />
-                        <img src="/images/atec.jpg" alt="Dario Botas" class="img-responsive margin" style="float: left" /><!--
+                        <img src="/images/atec.jpg" alt="Dario Botas" class="img-responsive margin" style="float: left" />
+                        <!--
                         -->Além do Ensino Secundário, fiz ainda um Curso de Especialização Tecnológica na ATEC - Academia de
                         Formação. O curso de especialização tecnológica foi o de Gestão de Redes e Sistemas de Informação.
 
@@ -344,7 +351,9 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr><td colspan="3" class="tipo">Formação Geral e Científica</td></tr>
+                                <tr>
+                                    <td colspan="3" class="tipo">Formação Geral e Científica</td>
+                                </tr>
                                 <tr class="celula">
                                     <td>5062</td>
                                     <td>Língua Portuguesa</td>
@@ -375,7 +384,9 @@
                                     <td>Legislação Laboral</td>
                                     <td>25</td>
                                 </tr>
-                                <tr><td class="tipo" colspan="4">Formação Tecnológica</td></tr>
+                                <tr>
+                                    <td class="tipo" colspan="4">Formação Tecnológica</td>
+                                </tr>
                                 <tr class="celula">
                                     <td>5097</td>
                                     <td>História Informática</td>
@@ -547,7 +558,8 @@
                 </ul>
                 <div class="tab-content">
                     <div id="sobre-licenciatura" class="tab-pane fade in active"><br />
-                        <img src="/images/ips-logotipo-site.gif" alt="Dario Botas" class="img-responsive margin" style="float: left" />                        A minha formação no ensino superior foi feita no Instituto Politécnico de Setúbal. O curso de especialização
+                        <img src="/images/ips-logotipo-site.gif" alt="Dario Botas" class="img-responsive margin" style="float: left" />
+                        <!--                        -->A minha formação no ensino superior foi feita no Instituto Politécnico de Setúbal. O curso de especialização
                         é o de Engenharia Informática no Ramo de Gestão realizado na Escola Superior de Tecnologia.
 
 
@@ -608,7 +620,8 @@
                             </tfoot>-->
                             <tbody>
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->1º Ano</td>
                                 </tr>
                                 <tr>
@@ -652,7 +665,8 @@
                                     <td>Sociologia das Organizações e Inovação</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->2º Ano</td>
                                 </tr>
                                 <tr>
@@ -697,7 +711,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;"><!--
+                                    <td colspan="2" class="tipo text-center" style="align-content: center; vertical-align: 50%; text-align: center;">
+                                        <!--
                                          style="background-color:#b7dcff; padding-top: 4px; padding-bottom: 4px;">-->3º Ano</td>
                                 </tr>
                                 <tr>
@@ -764,13 +779,14 @@
         <!-- Menus em tabulações -->
         <ul class="nav nav-tabs nav-justified">
             <li class="active"><a data-toggle="tab" href="#domotico">Casa Domótica</a></li>
-            <li><a data-toggle="tab" href="#">CET</a></li>
-            <li><a data-toggle="tab" href="#">Licenciatura</a></li>
+            <li><a data-toggle="tab" href="#snake">Snake</a></li>
+            <!--<li><a data-toggle="tab" href="#">Licenciatura</a></li>-->
         </ul>
 
         <div class="tab-content">
+            <hr/>
             <!-- Casa Domótica -->
-            <div id="#domotico" class="tab-pane fade in active">
+            <div id="domotico" class="tab-pane fade in active">
                 <!-- Menus em tabulações -->
                 <ul class="nav nav-pills nav-justified">
                     <li class="active"><a data-toggle="tab" href="#sobre-domotico">Sobre a casa domótica</a></li>
@@ -795,6 +811,53 @@
                 </div>
             </div>
 
+            <!-- Snake -->
+            <div id="snake" class="tab-pane fade">
+                <!-- Menus em tabulações -->
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#sobre-snake">Sobre o snake</a></li>
+                    <li><a data-toggle="tab" href="#snake-game">Snake</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="sobre-licenciatura" class="tab-pane fade in active"><br />
+                        <img src="/images/ips-logotipo-site.gif" alt="Dario Botas" class="img-responsive margin" style="float: left" />
+                        <!--                        -->A minha formação no ensino superior foi feita no Instituto Politécnico de Setúbal. O curso de especialização
+                        é o de Engenharia Informática no Ramo de Gestão realizado na Escola Superior de Tecnologia.
+
+
+                        <h1 style="color: white">Objetivos</h1>
+                        A Licenciatura em Engenharia Informática (LEI), procura formar especialistas que conjugam um bom nível de conhecimento com
+                        uma boa componente prática visando a rápida integração no mercado de trabalho. As saídas profissionais
+                        abrangem organizações dos vários setores de actividade. A área de trabalho são os sistemas de informação,
+                        manutenção e desenvolvimento de software, apoio informático, produção multimédia, gestão, configuração
+                        e operação de redes de computadores e de bases de dados.
+
+                        <h1>As competências no Ramo Informática de Gestão</h1>
+                        Saber analisar e resolver problemas relacionados com sistemas de informação para apoio à gestão de organizações | Saber empregar
+                        técnicas oferecidas pelos sistemas informáticos no âmbito da gestão, aos vários níveis de decisão
+                        das organizações | Saber enquadrar económica e organizacionalmente as soluções técnicas propostas.
+
+                        <h1>Saídas profissionais</h1>
+                        Análise de sistemas de informação, formação, suporte técnico, programação, gestão de equipas de software, administração de
+                        redes de dados, manutenção e operação de computadores, engenharia de sistemas, gestão de bases de
+                        dados.
+
+                        <p>Pode encontrar esta informação e mais em: <a href="http://www.si.ips.pt/ests_si/CURSOS_GERAL.FORMVIEW?P_CUR_SIGLA=INF">IPS</a></p>
+
+                    </div>
+
+
+                    <div id="snake-game" onload="setup()" class="tab-pane fade">
+                        <!--<script src="scripts/p5.js" type="text/javascript"></script>
+                        <script src="scripts/p5.dom.js" type="text/javascript"></script>
+                        <script src="scripts/snake/sketch.js" type="text/javascript"></script>
+                        <script src="scripts/snake/snake.js" type="text/javascript"></script>
+                        <div id="game"></div>-->
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -812,8 +875,6 @@
         <p>Ou contactar-me por email: <a href="mailto:dario.botas@gmail.com" target="_top"><i class="fa fa-envelope-o" style="color:white"></i></a></p>
 
     </footer>
-
-    <script></script>
 </body>
 
 </html>
