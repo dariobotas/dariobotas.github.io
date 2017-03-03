@@ -8,8 +8,8 @@
     <title>Página pessoal</title>
     <link rel="icon" type="image/png" href="/images/dario.png">
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link href="/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link href="/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,7 +21,7 @@
     <link href="/styles/estilos.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body style="position: relative;" data-spy="scroll" data-target="#myScrollspy" data-offset="50">
+<body style="position: relative;" data-spy="scroll" data-target=".navbar" data-offset="50">
 
     <!-- Navbar -->
     <!--<nav class="navbar navbar-default sidenav">
@@ -58,7 +58,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul id="myScrollspy" class="nav navbar-nav text-center" style="font-weight: bold; align-content: center;">
                     <li class="active"><a href="#inicio">Inicio</a></li>
-                    <li><a href="#familia">Família</a></li>
+                    <li><a href="#sobre-mim">Sobre mim</a></li>
                     <li><a href="#formacao">Formação</a></li>
                     <li><a href="#curriculum">Curriculum</a></li>
                     <li><a href="#hobbies">Hobbies</a></li>
@@ -129,14 +129,14 @@
   </div>-->
 
     <!-- Segundo contentor -->
-    <div id="familia" class="container-fluid bg-2 text-center">
+    <div id="sobre-mim" class="container-fluid bg-2 text-center">
         <!--style="background-image: url('/images/circuit-vector2.png');"-->
     </div>
 
     <!-- Terceiro contentor, formação -->
     <div id="formacao" class="container-fluid bg-6 text-center">
 
-        <h2 class=""><i class="fa fa-certificate fa-fw"></i>Formação</h2>
+        <h2 class=""><i class="fa fa-certificate fa-fw"></i>Formação académica e profissional</h2>
 
         <!-- Menus em tabulações -->
         <ul class="nav nav-tabs nav-justified">
@@ -163,9 +163,11 @@
                         de Informática de Gestão, que foi feita na Escola Secundária da Moita. Com duração de 3 anos sendo
                         o equivalente ao ensino secundário - com 10º, 11º e 12º anos.
 
+                        Datas da frequência do curso: De Setembro de 2007 a Julho de 2010.
+                        
                     </div>
                     <div id="plano-secundario" class="tab-pane fade table-responsive">
-                        <table align="center" border="0" class="table">
+                        <table align="center" border="0" class="table table-hover">
 
                             <caption>
                                 <br/>
@@ -320,11 +322,13 @@
                             <li>Reconhecer a necessidade de melhorias e adequação a evolução tecnológica;</li>
                             <li>Fazer testes e ensaios.</li>
                         </ul>
+
+                        Datas da frequência do curso: Desde 3 de Janeiro de 2007 a 31 de Outubro de 2011.
                     </div>
 
 
                     <div id="plano-cet" class="tab-pane fade table-responsive">
-                        <table align="center" border="0" class="table">
+                        <table align="center" border="0" class="table table-hover">
 
                             <caption>
                                 <br/>
@@ -389,7 +393,7 @@
                                 </tr>
                                 <tr class="celula">
                                     <td>5097</td>
-                                    <td>História Informática</td>
+                                    <td>História da Informática</td>
                                     <td>25</td>
                                 </tr>
                                 <tr class="celula">
@@ -580,13 +584,15 @@
                         redes de dados, manutenção e operação de computadores, engenharia de sistemas, gestão de bases de
                         dados.
 
+                        Datas da frequência do curso: De Setembro de 2012 até atualmente.
+
                         <p>Pode encontrar esta informação e mais em: <a href="http://www.si.ips.pt/ests_si/CURSOS_GERAL.FORMVIEW?P_CUR_SIGLA=INF">IPS</a></p>
 
                     </div>
 
 
                     <div id="plano-licenciatura" class="tab-pane fade table-responsive">
-                        <table class="table" align="center" border="0">
+                        <table class="table table-hover" align="center" border="0">
 
                             <caption>
                                 <br/>
@@ -764,7 +770,40 @@
 
     <!-- Quarto contentor, Curriculum -->
     <div id="curriculum" class="container-fluid bg-4 text-center">
+        <h2 class=""><i class="material-icons">work</i>Experiência profissional</h2>
 
+<div class="table-responsive">
+        <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">Data</th>
+        <th class="text-center">Função ou cargo ocupado</th>
+        <th class="text-center">Principais atividades e responsabilidades</th>
+        <th class="text-center">Nome e morada do empregador</th>
+        <th class="text-center">Tipo de empresa ou setor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Desde 1 de Junho de 2009 até 14 de Julho de 2009</td>
+        <td>Estagiário</td>
+        <td>Manutenção de Hardware e Software de computadores, criação de base de dados.</td>
+        <td>Junta de Freguesia da Moita, Rua Machado Santos 18-B, 1º, 286 – 478 Moita</td>
+        <td>Estado</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     </div>
 
     <!-- Quinto contentor, hobbies -->
@@ -774,12 +813,12 @@
 
     <!-- Sexto contentor, Alguns trabalhos -->
     <div id="trabalhos" class="container-fluid bg-3 text-center">
-        <h2 class=""><i class="material-icons">work</i>Alguns trabalhos</h2>
+        <h2 class=""><i class="fa fa-code"></i>Alguns trabalhos<i class="fa fa-code"></i></h2>
 
         <!-- Menus em tabulações -->
         <ul class="nav nav-tabs nav-justified">
             <li class="active"><a data-toggle="tab" href="#domotico">Casa Domótica</a></li>
-            <li><a data-toggle="tab" href="#snake">Snake</a></li>
+            <!--<li><a data-toggle="tab" href="#snake">Snake</a></li>-->
             <!--<li><a data-toggle="tab" href="#">Licenciatura</a></li>-->
         </ul>
 
@@ -819,31 +858,9 @@
                     <li><a data-toggle="tab" href="#snake-game">Snake</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="sobre-licenciatura" class="tab-pane fade in active"><br />
-                        <img src="/images/ips-logotipo-site.gif" alt="Dario Botas" class="img-responsive margin" style="float: left" />
-                        <!--                        -->A minha formação no ensino superior foi feita no Instituto Politécnico de Setúbal. O curso de especialização
-                        é o de Engenharia Informática no Ramo de Gestão realizado na Escola Superior de Tecnologia.
-
-
-                        <h1 style="color: white">Objetivos</h1>
-                        A Licenciatura em Engenharia Informática (LEI), procura formar especialistas que conjugam um bom nível de conhecimento com
-                        uma boa componente prática visando a rápida integração no mercado de trabalho. As saídas profissionais
-                        abrangem organizações dos vários setores de actividade. A área de trabalho são os sistemas de informação,
-                        manutenção e desenvolvimento de software, apoio informático, produção multimédia, gestão, configuração
-                        e operação de redes de computadores e de bases de dados.
-
-                        <h1>As competências no Ramo Informática de Gestão</h1>
-                        Saber analisar e resolver problemas relacionados com sistemas de informação para apoio à gestão de organizações | Saber empregar
-                        técnicas oferecidas pelos sistemas informáticos no âmbito da gestão, aos vários níveis de decisão
-                        das organizações | Saber enquadrar económica e organizacionalmente as soluções técnicas propostas.
-
-                        <h1>Saídas profissionais</h1>
-                        Análise de sistemas de informação, formação, suporte técnico, programação, gestão de equipas de software, administração de
-                        redes de dados, manutenção e operação de computadores, engenharia de sistemas, gestão de bases de
-                        dados.
-
-                        <p>Pode encontrar esta informação e mais em: <a href="http://www.si.ips.pt/ests_si/CURSOS_GERAL.FORMVIEW?P_CUR_SIGLA=INF">IPS</a></p>
-
+                    <div id="sobre-snake" class="tab-pane fade in active"><br />
+                        <img src="http://www.coolmath-games.com/sites/cmatgame/files/snake.png" alt="Snake" class="img-responsive margin" style="float: left" />
+                        <div>coisas</div>
                     </div>
 
 
@@ -864,15 +881,15 @@
     <footer class="bg-1 container-fluid text-center">
         Pode encontrar-me nas redes sociais.
         <br />
-        <a href="https://www.facebook.com/dario.botas"><i class="fa fa-facebook-square w3-hover-text-indigo w3-large" style="color: white;"></i></a>
-        <a href="https://www.instagram.com/dariobotas/"> <i class="fa fa-instagram w3-hover-text-purple w3-large" style="color: white;"></i></a>
+        <a href="https://www.facebook.com/dario.botas"><i class="fa fa-facebook-square w3-hover-text-indigo w3-large" style="color: white; font-size:24px"></i></a>
+        <a href="https://www.instagram.com/dariobotas/"> <i class="fa fa-instagram w3-hover-text-purple w3-large" style="color: white; font-size:24px"></i></a>
         <!--  <i class="fa fa-snapchat w3-hover-text-yellow w3-large"></i>
   <i class="fa fa-pinterest-p w3-hover-text-red w3-large"></i>
   <i class="fa fa-twitter w3-hover-text-light-blue w3-large"></i>-->
-        <a href="https://plus.google.com/u/0/+DarioBotas91"><i class="fa fa-google-plus" style="color: white;"></i></a>
-        <a href="https://www.linkedin.com/in/dário-botas-1014a2b4/"><i class="fa fa-linkedin w3-hover-text-indigo w3-large" style="color: white;"></i></a>
+        <a href="https://plus.google.com/u/0/+DarioBotas91"><i class="fa fa-google-plus" style="color: white;font-size:24px"></i></a>
+        <a href="https://www.linkedin.com/in/dário-botas-1014a2b4/"><i class="fa fa-linkedin w3-hover-text-indigo w3-large" style="color: white;font-size:24px"></i></a>
 
-        <p>Ou contactar-me por email: <a href="mailto:dario.botas@gmail.com" target="_top"><i class="fa fa-envelope-o" style="color:white"></i></a></p>
+        <p>Ou contactar-me por email:<a href="mailto:dario.botas@gmail.com" target="_top"><i class="fa fa-envelope-o" style="color:white;font-size:24px"></i></a></p>
 
     </footer>
 </body>
