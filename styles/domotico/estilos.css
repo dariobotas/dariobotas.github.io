@@ -37,7 +37,7 @@ a:link{text-decoration: none;}
 
 #sistema{
     margin: 0 auto;
-    border: 2px solid green;
+    border: 2px solid blue;
     width: calc(90% - 4px);
     height: calc(100% - 4px);
     align-content: center;
