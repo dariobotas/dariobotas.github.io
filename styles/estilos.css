@@ -91,7 +91,7 @@ body {
       color: #ffffff;
   }
   .bg-3 { 
-      background-color: yellow; /* White */
+      background-color: yellow; /* Yellow */
       color: #333333;
   }
   .bg-4 { 
@@ -213,6 +213,6 @@ white-space: nowrap;
   nav.ativo {background-color: #4cafff;
         color: white;}
 
-     @media (max-width:768px){
+     @media (min-width:768px){
          .navbar-default .navbar-collapse{border-color:#e7e7e7; background-color: white;}
      }
