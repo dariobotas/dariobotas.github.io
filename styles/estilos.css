@@ -213,6 +213,6 @@ white-space: nowrap;
   nav.ativo {background-color: #4cafff;
         color: white;}
 
-     @media (min-width:768px){
+ /*    @media (min-width:768px){
          .navbar-default .navbar-collapse{border-color:#e7e7e7; background-color: white;}
-     }
+     }*/
