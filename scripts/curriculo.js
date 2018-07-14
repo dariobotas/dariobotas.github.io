@@ -1,4 +1,5 @@
-var dataNascimento = new Date("june 12, 1991 9:15:0");
+{
+const dataNascimento = new Date("june 12, 1991 9:15:0");
 var anos, meses, dias;
 
 setInterval(function () {
@@ -19,7 +20,7 @@ setInterval(function () {
     var ano = document.createTextNode(anos);
     span.appendChild(ano);
 }, 1000); 
-
+}
 
 $(document).ready(function(){
   // Add scrollspy to <body>
