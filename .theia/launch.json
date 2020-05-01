@@ -7,7 +7,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch",
-            "program": "${workspaceRoot}/app.js",
+            "program": "${workspaceRoot}/Curriculo/app.js",
             "stopOnEntry":false,
             "args": [],
 			"cwd": "${workspaceRoot}",
