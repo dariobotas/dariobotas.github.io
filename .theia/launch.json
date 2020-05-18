@@ -10,7 +10,7 @@
             "program": "${workspaceRoot}/Curriculo/app.js",
             "stopOnEntry":false,
             "args": [],
-			"cwd": "${workspaceRoot}",
+			"cwd": "${workspaceRoot}/Curriculo",
 			"runtimeExecutable": "node",
 			"runtimeArgs": [
 				"--nolazy"
@@ -30,7 +30,7 @@
 			"port": 8080,
 			"sourceMaps": false,
 			"outFiles": [],
-			"localRoot": "${workspaceRoot}/Curriculo/",
+			"localRoot": "${workspaceRoot}",
 			"remoteRoot": null
 		}
   ]
