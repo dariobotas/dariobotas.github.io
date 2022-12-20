@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 15px 20px;
+    min-height: 99%;
+    width: 100%;
+    min-width: 550px;
+    color: #3F8D83;
+    background: #101935;
+    font-family: cursor, monospace;
+    overflow-x: hidden;
+}
+::selection {
+    color: #1b2b5c;
+    background-color: #3F8D83;
+}
+::-moz-selection{
+    color: #1b2b5c;
+    background-color: #3F8D83;
+}
+textarea {
+    left: -1000px;
+    position: absolute;
+}
+b {
+    font-weight: bold;
+    text-decoration: underline;
+}
+/* Cursor Start */
+.cursor {
+  font-size: 12px;
+  color: #9AD4D6;
+  background-color: #9AD4D6;
+  position: relative;
+  opacity: 1;
+  height: 1.5em;
+  width: 10px;
+  max-width: 10px;
+  transform: translateY(4px);
+  overflow: hidden;
+  text-indent: -5px;
+  display: inline-block;
+  text-decoration: blink;
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+#command {
+    cursor: text;
+    height: 50px;
+    color: #F2FDFF;
+}
