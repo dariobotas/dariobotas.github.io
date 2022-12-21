@@ -17,6 +17,7 @@ ajuda = [
     '<span class="command">historia</span>   Ver todos os commands inseridos antes',
     '<span class="command">lingua</span>     Escolher a língua',
     '<span class="command">setup</span>      Mudança do formato/cores do terminal',
+    '<span class="command">banner</span>     Ecrã inicial',
     "<br>"
 ];
 
@@ -32,12 +33,18 @@ help = [
     '<span class="command">history</span>    Display previous commands',
     '<span class="command">language</span>   Choose Language',
     '<span class="command">setup</span>      Setup color/font terminal',
+    '<span class="command">banner</span>     Display the header',
     "<br>"
 ];
 
 languages = [
     '<span class="command">en</span>        English Language',
     '<span class="command">pt</span>        Portuguese Language'
+];
+
+linguas = [
+    '<span class="command">en</span>        Língua Inglesa',
+    '<span class="command">pt</span>        Língua Portuguesa'
 ];
 
 whois = [
