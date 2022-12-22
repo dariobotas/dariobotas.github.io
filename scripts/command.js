@@ -5,6 +5,10 @@ const github = "https://github.com/dariobotas";
 const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 
+startTerminal = [
+    '<span class="color2">Starting terminal...</span>'
+];
+
 ajuda = [
     "<br>",
     '<span class="command">queme</span>      Quem é o DBotas?',
@@ -96,7 +100,8 @@ setupEn = [
     "<br>"
 ];
 
-banner = [
+banner0 = [
+    "<br>",
     '<span class="index">DBotas (DB) Not A Corporation. </span>',
         "<br>",                                                                                         
 "8 888888888o.      8 888888888o       ,o888888o. 8888888 8888888888   .8.            d888888o.   ",
@@ -109,9 +114,27 @@ banner = [
 "8 8888        ,88' 8 8888      88 `8 8888       ,8P    8 8888  .8'   `8. `88888.  8b   `8.`8888. ",
 "8 8888    ,o88P'   8 8888    ,88'  ` 8888     ,88'     8 8888 .888888888. `88888. `8b.  ;8.`8888 ",
 "8 888888888P'      8 888888888P       `8888888P'       8 8888.8'       `8. `88888. `Y8888P ,88P' ",
+"                                                                                          © 2022 ",
 "<br>",
 '<span class="color2">Welcome to my interactive web terminal.</span>',
   "<span class=\"color2\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color2\">.</span>",
+  "<br>"
 ];
 
-
+banner1 = [
+    "<br>",
+    '<span class="index">DBotas (DB) Not A Corporation. </span>',
+        "<br>",
+"&nbsp;_______ _______ _______ _______ _______ _______ ",
+"|\      /|\\     /|\\     /|\\     /|\\     /|\\     /|",
+"| +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |",
+"| |   | | |   | | |   | | |   | | |   | | |   | |",
+"| |D  | | |B  | | |o  | | |t  | | |a  | | |s  | |",
+"| +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |",
+"|/_____\\|/_____\\|/_____\\|/_____\\|/_____\\|/_____\\|",
+"                                          © 2022       ",
+"<br>",
+'<span class="color3">Welcome to my interactive web terminal.</span>',
+  "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
+  "<br>"
+];

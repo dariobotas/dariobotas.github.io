@@ -11,17 +11,39 @@ var git = 0;
 var pw = false;
 let pwd = false;
 var commands = [];
+const start = Date.now();
+//loopLinhas(startTerminal, "", 0);
 
-setTimeout(function(){
-    loopLinhas(banner, "", 80);
-    textarea.focus();
-}, 100);
+/*(function loop() {
+    setTimeout(() => {
+       // Your logic here
+        begin();
+       loop();
+   }, 2000);
+ })();*/
+setTimeout(()=> {
+    loopLinhas(startTerminal, "", 0);
+    setTimeout(()=>{clearEverything();begin(); init},2000);
+    /*let intervalID = setInterval(()=>{
+        let now = Date.now();
+        
+        if(start-now == 1000){
+            clearInterval(intervalID);
+            clearEverything();
+            begin();
+        } else {
+            loopLinhas(startTerminal, "", 1000);
+        }
+        
+    },1000);*/
+    }, 500);
+
 
 window.addEventListener("keyup", enterKey);
 
 //init
-//textarea.setAttribute("value", "");
-textarea.value = "";
+textarea.setAttribute("value", "");
+//textarea.value = "";
 //typer.appendChild("value", "");
 typer.innerHTML = textarea.value;
 
@@ -101,6 +123,23 @@ function enterKey(e){
 
 function comandos(cmd){
     switch (cmd.toLowerCase()){
+        case "banner0":
+            loopLinhas(banner0, "", 80);
+            break;
+        case "banner1":
+            loopLinhas(banner1, "", 80);
+            break;
+        case "clear":
+            setTimeout(function() {
+                clearEverything();
+            }, 1);
+            break;
+        case "clear -b":
+            setTimeout(function(){
+                clearEverything();
+                begin();
+            }, 100);
+            break;
         case "help":
             loopLinhas(help, "color2 margin", 80);
             break;
@@ -166,4 +205,23 @@ function limpaElemento(elementoHTML) {
     while (elementoHTML.firstChild != undefined) {
         elementoHTML.removeChild(elementoHTML.firstChild);
     }
+}
+
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+function clearEverything (){
+    terminal.innerHTML = '<a id="before"></a>';
+    before = document.getElementById("before");
+}
+
+function begin(){
+    const rndInt = randomIntFromInterval(0, 1);
+    if (rndInt == 0){
+        loopLinhas(banner0, "", 80);
+    } else {
+        loopLinhas(banner1, "", 80);
+    }
+    textarea.focus();
 }

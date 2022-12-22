@@ -6,8 +6,10 @@ var cursor;
 window.onload = init;
 
 function init() {
+    //setTimeout(()=>{
     cursor = $("cursor");
     cursor.style.left = "0px";
+    //},2000);
 }
 
 function nl2br(text) {
