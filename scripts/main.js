@@ -1,14 +1,14 @@
 /**
  * Variables declared
  */
-const before = document.getElementById("before");
-const liner = document.getElementById("liner");
-const command = document.getElementById("command");
-const textarea = document.getElementById("terminal_input");
-const terminal = document.getElementById("terminal");
+var before = document.getElementById("before");
+var liner = document.getElementById("liner");
+var typer = document.getElementById("typer");
+var textarea = document.getElementById("terminal_input");
+var terminal = document.getElementById("terminal");
 
-let git = 0;
-let pw = false;
+var git = 0;
+var pw = false;
 let pwd = false;
 var commands = [];
 
@@ -20,21 +20,24 @@ setTimeout(function(){
 window.addEventListener("keyup", enterKey);
 
 //init
-textarea.setAttribute("value", "");
-command.setAttribute("value", "");
+//textarea.setAttribute("value", "");
+textarea.value = "";
+//typer.appendChild("value", "");
+typer.innerHTML = textarea.value;
 
-function entradaDoTeclado(tecla){
+function enterKey(e){
     //validar se o F5 foi premido para fazer reload
-    if(tecla.keyCode == 181){
+    if(e.keyCode == 181){
         document.location.reload(true);
     }
 
     //Validar a senha introduzida ao escolher a opção "secret"
     if (pw) {
         let sec = "*";
-        let w = textarea.ariaValueMax.length;
+        let w = textarea.value.length;
 
-        command.appendChild(sec.repeat(w));
+        //typer.appendChild(sec.repeat(w));
+        typer.innerHTML = sec.repeat(w);
 
         //Validar se o texto corresponde à senha
         if(textarea.value === password){
@@ -42,75 +45,123 @@ function entradaDoTeclado(tecla){
         }
 
         //Validar se a senha é correta e se foi clicado enter
-        if(pwd && entradaDoTeclado.keyCode == 13){
+        if(pwd && e.keyCode == 13){
             loopLinhas(secret, "color2 margin", 120);
-            limpaElemento(command);
-            textarea.setAttribute("value","");
+            //limpaElemento(typer);
+            typer.innerHTML = "";
+            //textarea.setAttribute("value","");
+            textarea.value = "";
             pwd = false;
             pw = false;
             liner.classList.remove("password");
-        } else if (entradaDoTeclado.keyCode == 13) {
+        } else if (e.keyCode == 13) {
             addLinha("Wrong password", "error", 0);
-            limpaElemento(command);
-            textarea.setAttribute("value","");
+            //limpaElemento(typer);
+            typer.innerHTML = "";
+            //textarea.setAttribute("value","");
+            textarea.value = "";
             pw = false;
             liner.classList.remove("password");
         }
     } else {
-        if(tecla.keyCode == 13){
-            commands.push(command);
+        if(e.keyCode == 13){
+            commands.push(typer.innerHTML);
             git = commands.length;
-            addLinha("visitor@dbotas.com:~$ " + command, "no-animation", 0);
-            comandos(command.toLowerCase());
-            limpaElemento(command);
-            textarea.setAttribute("value", "");
+            addLinha("visitor@dbotas.com:~$ " + typer.innerHTML, "no-animation", 0);
+            comandos(typer.innerHTML.toLowerCase());
+            //limpaElemento(typer);
+            typer.innerHTML = "";
+            //textarea.setAttribute("value", "");
+            textarea.value = "";
         }
-        if(tecla.keyCode == 38 && git != 0) {
+        
+        if(e.keyCode == 38 && git != 0) {
             git -= 1;
+            //textarea.setAttribute("value", commands[git]);
+            textarea.value = commands[git];
+            //typer.appendChild(textarea.value);
+            typer.innerHTML = textarea.value;
+        }
+        
+        if (e.keyCode == 40 && git != commands.length){
+            git += 1;
             if(commands[git] === undefined) {
-                textarea.setAttribute("value", "");
+                //textarea.setAttribute("value", "");
+                textarea.value = "";
             } else {
-                textarea.setAttribute("value", commands[git]);
+                //textarea.setAttribute("value", commands[git]);
+                textarea.value = commands[git];
             }
-            command.appendChild(textarea.value);
+            //typer.appendChild(textarea.value);
+            //typer.append(textarea.value);
+            typer.innerHTML = textarea.value;
         }
     }
 }
 
 function comandos(cmd){
-    
+    switch (cmd.toLowerCase()){
+        case "help":
+            loopLinhas(help, "color2 margin", 80);
+            break;
+        case "languages":
+            loopLinhas(languages, "color2 margin", 80);
+            break;
+        case "whois":
+            loopLinhas(whois, "color2 margin", 80);
+            break;
+        case "whoami":
+            loopLinhas(whoami, "color2 margin", 80);
+            break;
+        case "projects":
+            loopLinhas(projects, "color2 margin", 80);
+            break;
+        default:
+            addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+            break;
+    }
 }
 
-function loopLinhas(nome, estilo, tempo){
-    nome.forEach(
-        function (item, index) {
-            addLinha(item, estilo, index * tempo);
-        }
-    );
+function newTab(link){
+    setTimeout(function(){
+        window.open(link, "_blank");
+    }, 500);
 }
 
 function addLinha(texto, estilo, tempo){
     var t = "";
 
     for(let i=0; i<texto.length; i++) {
-        if (texto.charAt(i) == " " && texto.charAt(i+1) == " "){
+        if (texto.charAt(i) == " " && texto.charAt(i + 1) == " "){
             t += "&nbsp;&nbsp;";
             i++;
         }else {
             t += texto.charAt(i);
         }
     }
-    setTimeout(function(){
-        let next = document.createElement("p");
 
-        next.appendChild(t);
-        next.setAttribute("class",estilo);
+    setTimeout(function(){
+        var next = document.createElement("p");
+
+        //next.appendChild(t);
+        next.innerHTML = t;
+        //next.setAttribute("class",estilo);
+        next.className = estilo
 
         before.parentNode.insertBefore(next, before);
 
         window.scrollTo(0, document.body.offsetHeight);
     }, tempo);
 }
+
+
+function loopLinhas(nome, estilo, tempo){
+    nome.forEach(function(item, index) {
+            addLinha(item, estilo, index * tempo);
+        }
+    );
+}
+
 function limpaElemento(elementoHTML) {
     while (elementoHTML.firstChild != undefined) {
         elementoHTML.removeChild(elementoHTML.firstChild);

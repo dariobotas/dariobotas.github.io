@@ -2,7 +2,7 @@ function $(elid){
     return document.getElementById(elid);
 }
 
-let cursor;
+var cursor;
 window.onload = init;
 
 function init() {
@@ -16,17 +16,22 @@ function nl2br(text) {
 
 function typeIt(from, e){
     e = e || window.event;
-    let typer = $("typer");
-    let typerWrite = from.value;
+    var typer = $("typer");
+    var typerWrite = from.value;
     
-    if (!typerWrite){
-        typer.setAttribute("value", nl2br(typerWrite));
+
+    if (!pw){
+        //typer.setAttribute("value", nl2br(typerWrite));
+        typer.innerHTML = nl2br(typerWrite);
+        //typer.style.display=nl2br(typerWrite);
+        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));
+        
     }
 }
 
-function moveIt (count, e){
+function moveIt(count, e){
     e = e || window.event;
-    let keycode = e.keycode || e.which;
+    var keycode = e.keycode || e.which;
     if(keycode == 37 && parseInt(cursor.style.left) >= (0 - ((count - 1) * 10))) {
         cursor.style.left = parseInt(cursor.style.left) - 10 +"px";
     }
@@ -35,6 +40,6 @@ function moveIt (count, e){
     }
 }
 
-function alert (text) {
+function alert(text) {
     console.log(text);
 }
