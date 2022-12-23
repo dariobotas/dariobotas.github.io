@@ -141,8 +141,8 @@ function comandos(cmd){
             loopLinhas(projects, "color2 margin", 80);
             break;
         case "reload":
-            beginTerminal(reload, 0);
             commands = [];
+            beginTerminal(reload, 0);
             break;
         case "secret":
             liner.classList.add("password");
