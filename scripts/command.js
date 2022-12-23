@@ -144,3 +144,21 @@ banner1 = [
   "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
   "<br>"
 ];
+
+banner2 = [
+"<br>",
+'<span class="index">DBotas (DB) Not A Corporation. </span>',
+'________ __________        __                 ',
+'\\______ \\\\______   \\ _____/  |______    ______',
+'&nbsp;|    |  \\|    |  _//  _ \\   __\\__  \\  /  ___/',
+'&nbsp;|    `   \\    |   (  <_> )  |  / __ \\_\\___ \\ ',
+'/_______  /______  /\\____/|__| (____  /____  >',
+'        \\/       \\/                 \\/     \\/ ',
+'                                        © <span id="yearb2">2022</span>',
+"<br>",
+'<span class="color3">Welcome to my interactive web terminal.</span>',
+  "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
+  "<br>"
+];
+//<span id="year"></span>
+//'<script>const year = new Date().getFullYear();document.getElementById("year").innerHTML = year;</script>'

@@ -26,8 +26,7 @@ function typeIt(from, e){
         //typer.setAttribute("value", nl2br(typerWrite));
         typer.innerHTML = nl2br(typerWrite);
         //typer.style.display=nl2br(typerWrite);
-        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));
-        
+        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));        
     }
 }
 

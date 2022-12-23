@@ -104,9 +104,15 @@ function comandos(cmd){
     switch (cmd.toLowerCase()){
         case "banner0":
             loopLinhas(banner0, "", 80);
+            //displayFullYear();
             break;
         case "banner1":
             loopLinhas(banner1, "", 80);
+            //displayFullYear();
+            break;
+        case "banner2":
+            loopLinhas(banner2, "", 80);
+            //displayFullYear();
             break;
         case "clear":
             setTimeout(function() {
@@ -224,12 +230,21 @@ function clearEverything (){
     before = document.getElementById("before");
 }
 
+function displayFullYear(){
+    const year = new Date().getFullYear();
+    let spanYear = document.getElementsByClassName("yearb2");
+    spanYear.appendChild(document.createTextNode(year));
+}
+
 function begin(){
-    const rndInt = randomIntFromInterval(0, 1);
+    const rndInt = randomIntFromInterval(0, 2);
     if (rndInt == 0){
         loopLinhas(banner0, "", 80);
-    } else {
+    } else if (rndInt ==1){
         loopLinhas(banner1, "", 80);
+    } else {
+        loopLinhas(banner2, "", 80);
+        //displayFullYear();
     }
     textarea.focus();
 }
