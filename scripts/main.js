@@ -18,8 +18,8 @@ window.addEventListener("keyup", enterKey);
 
 //init
 textarea.setAttribute("value", "");
-typer.appendChild("value", "");
-//typer.innerHTML = textarea.value;
+//typer.appendChild("value", "");
+typer.innerHTML = textarea.value;
 
 function enterKey(e){
     //validar se o F5 foi premido para fazer reload
@@ -73,24 +73,24 @@ function enterKey(e){
         
         if(e.keyCode == 38 && git != 0) {
             git -= 1;
-            textarea.setAttribute("value", commands[git]);
-            //textarea.value = commands[git];
-            typer.appendChild(textarea.value);
-            //typer.innerHTML = textarea.value;
+            //textarea.setAttribute("value", commands[git]);
+            textarea.value = commands[git];
+            //typer.appendChild(textarea.value);
+            typer.innerHTML = textarea.value;
         }
         
         if (e.keyCode == 40 && git != commands.length){
             git += 1;
             if(commands[git] === undefined) {
-                textarea.setAttribute("value", "");
-                //textarea.value = "";
+                //textarea.setAttribute("value", "");
+                textarea.value = "";
             } else {
-                textarea.setAttribute("value", commands[git]);
-                //textarea.value = commands[git];
+                //textarea.setAttribute("value", commands[git]);
+                textarea.value = commands[git];
             }
-            typer.appendChild(textarea.value);
+            //typer.appendChild(textarea.value);
             //typer.append(textarea.value);
-            //typer.innerHTML = textarea.value;
+            typer.innerHTML = textarea.value;
         }
     }
 }
@@ -113,9 +113,15 @@ function comandos(cmd){
                 clearEverything();
                 begin();
             }, 100);
+            //beginTerminal("begin", 100);
             break;
         case "help":
             loopLinhas(help, "color2 margin", 80);
+            break;
+        case "history":
+            addLinha("<br>", "", 0);
+            loopLinhas(commands, "color3", 80);
+            addLinha("<br>", "command", 80 * commands.length + 50);
             break;
         case "languages":
             loopLinhas(languages, "color2 margin", 80);
@@ -131,6 +137,11 @@ function comandos(cmd){
             break;
         case "reload":
             beginTerminal(reload, 0);
+            commands = [];
+            break;
+        case "secret":
+            liner.classList.add("password");
+            pw = true;
             break;
         default:
             addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);

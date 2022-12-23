@@ -4,6 +4,7 @@ const linkedin = "www.linkedin.com/in/dbotas";
 const github = "https://github.com/dariobotas";
 const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
+const password = "dbotas";
 
 startTerminal = [
     '<span class="color2">Starting terminal...</span>'
@@ -86,6 +87,7 @@ social = [
 
 secret = [
     "<br>",
+    '<span class="command">sudo</span>           Only use if you\'re admin',
     "<br>"
 ];
 
