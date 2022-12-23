@@ -71,7 +71,7 @@ function enterKey(e){
             textarea.value = "";
         }
         
-        if(e.keyCode == 38 && git != 0) {
+        if(e.keyCode == 38 && (git != 0 || git != commands.length)) {
             git -= 1;
             if(commands[git] === undefined) {
                 //textarea.setAttribute("value", "");
