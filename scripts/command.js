@@ -9,6 +9,10 @@ startTerminal = [
     '<span class="color2">Starting terminal...</span>'
 ];
 
+reload = [
+    '<span class="color2">Restarting terminal...</span>'
+];
+
 ajuda = [
     "<br>",
     '<span class="command">queme</span>      Quem é o DBotas?',
@@ -116,8 +120,8 @@ banner0 = [
 "8 888888888P'      8 888888888P       `8888888P'       8 8888.8'       `8. `88888. `Y8888P ,88P' ",
 "                                                                                          © 2022 ",
 "<br>",
-'<span class="color2">Welcome to my interactive web terminal.</span>',
-  "<span class=\"color2\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color2\">.</span>",
+'<span class="color3">Welcome to my interactive web terminal.</span>',
+  "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
   "<br>"
 ];
 

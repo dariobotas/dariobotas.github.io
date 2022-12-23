@@ -11,41 +11,15 @@ var git = 0;
 var pw = false;
 let pwd = false;
 var commands = [];
-const start = Date.now();
-//loopLinhas(startTerminal, "", 0);
 
-/*(function loop() {
-    setTimeout(() => {
-       // Your logic here
-        begin();
-       loop();
-   }, 2000);
- })();*/
-setTimeout(()=> {
-    loopLinhas(startTerminal, "", 0);
-    setTimeout(()=>{clearEverything();begin(); init},2000);
-    /*let intervalID = setInterval(()=>{
-        let now = Date.now();
-        
-        if(start-now == 1000){
-            clearInterval(intervalID);
-            clearEverything();
-            begin();
-        } else {
-            loopLinhas(startTerminal, "", 1000);
-        }
-        
-    },1000);*/
-    }, 500);
-
+beginTerminal("begin",500);
 
 window.addEventListener("keyup", enterKey);
 
 //init
 textarea.setAttribute("value", "");
-//textarea.value = "";
-//typer.appendChild("value", "");
-typer.innerHTML = textarea.value;
+typer.appendChild("value", "");
+//typer.innerHTML = textarea.value;
 
 function enterKey(e){
     //validar se o F5 foi premido para fazer reload
@@ -78,8 +52,8 @@ function enterKey(e){
             liner.classList.remove("password");
         } else if (e.keyCode == 13) {
             addLinha("Wrong password", "error", 0);
-            //limpaElemento(typer);
-            typer.innerHTML = "";
+            limpaElemento(typer);
+            //typer.innerHTML = "";
             //textarea.setAttribute("value","");
             textarea.value = "";
             pw = false;
@@ -89,34 +63,34 @@ function enterKey(e){
         if(e.keyCode == 13){
             commands.push(typer.innerHTML);
             git = commands.length;
-            addLinha("visitor@dbotas.com:~$ " + typer.innerHTML, "no-animation", 0);
+            addLinha("visitor@dbotas.github.io:~$ " + typer.innerHTML, "no-animation", 0);
             comandos(typer.innerHTML.toLowerCase());
-            //limpaElemento(typer);
-            typer.innerHTML = "";
+            limpaElemento(typer);
+            //typer.innerHTML = "";
             //textarea.setAttribute("value", "");
             textarea.value = "";
         }
         
         if(e.keyCode == 38 && git != 0) {
             git -= 1;
-            //textarea.setAttribute("value", commands[git]);
-            textarea.value = commands[git];
-            //typer.appendChild(textarea.value);
-            typer.innerHTML = textarea.value;
+            textarea.setAttribute("value", commands[git]);
+            //textarea.value = commands[git];
+            typer.appendChild(textarea.value);
+            //typer.innerHTML = textarea.value;
         }
         
         if (e.keyCode == 40 && git != commands.length){
             git += 1;
             if(commands[git] === undefined) {
-                //textarea.setAttribute("value", "");
-                textarea.value = "";
+                textarea.setAttribute("value", "");
+                //textarea.value = "";
             } else {
-                //textarea.setAttribute("value", commands[git]);
-                textarea.value = commands[git];
+                textarea.setAttribute("value", commands[git]);
+                //textarea.value = commands[git];
             }
-            //typer.appendChild(textarea.value);
+            typer.appendChild(textarea.value);
             //typer.append(textarea.value);
-            typer.innerHTML = textarea.value;
+            //typer.innerHTML = textarea.value;
         }
     }
 }
@@ -154,6 +128,9 @@ function comandos(cmd){
             break;
         case "projects":
             loopLinhas(projects, "color2 margin", 80);
+            break;
+        case "reload":
+            beginTerminal(reload, 0);
             break;
         default:
             addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
@@ -210,6 +187,21 @@ function limpaElemento(elementoHTML) {
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+
+function beginTerminal(br, tempo){
+    setTimeout(()=> {
+        if(br == "begin"){
+            loopLinhas(startTerminal, "", 0);
+        } else {
+            loopLinhas(reload, "", 0);
+        }
+        setTimeout(()=>{
+            clearEverything();
+            begin();
+            init(); 
+        },2500);
+    }, tempo);
+}
 
 function clearEverything (){
     terminal.innerHTML = '<a id="before"></a>';

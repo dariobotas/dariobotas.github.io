@@ -57,12 +57,12 @@ b {
     line-height: 1.3em;
     margin-top: -2px;
     animation: show 0.5s ease forwards;
-    animation-delay: 4s;
+    animation-delay: 4.3s;
     opacity: 0;
 }
 #liner::before {
     color: #c9c980;
-    content: "visitor@dbotas.com:~$";
+    content: "visitor@dbotas.github.io:~$";
 }
 #liner.password::before {
     content: "Password:";
