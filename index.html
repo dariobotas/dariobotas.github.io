@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DBotas Terminal</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/styles/style.css"
+    />
+    <link rel="icon" href="/images/fav-icon.png" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  </head>
+  <body>
+    <div id="terminal">
+      <a id="before"></a>
+    </div>
+    <div id="command" onclick="$('terminal_input').focus();">
+      <textarea
+        type="text"
+        id="terminal_input"
+        onkeyup="typeIt(this, event)"
+        onkeydown="typeIt(this, event); 
+                    moveIt(this.value.lenght, event)"
+        onkeypress="typeIt(this, event);"
+        autofocus
+      ></textarea>
+      <div id="liner">
+        <span id="typer"></span><b class="cursor" id="cursor"></b>
+      </div>
+    </div>
+
+    <script src="/scripts/caret.js"></script>
+    <script src="/scripts/command.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>
