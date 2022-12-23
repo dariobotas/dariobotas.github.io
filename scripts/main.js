@@ -73,8 +73,13 @@ function enterKey(e){
         
         if(e.keyCode == 38 && git != 0) {
             git -= 1;
-            //textarea.setAttribute("value", commands[git]);
-            textarea.value = commands[git];
+            if(commands[git] === undefined) {
+                //textarea.setAttribute("value", "");
+                textarea.value = "";
+            } else {
+                //textarea.setAttribute("value", commands[git]);
+                textarea.value = commands[git];
+            }
             //typer.appendChild(textarea.value);
             typer.innerHTML = textarea.value;
         }
