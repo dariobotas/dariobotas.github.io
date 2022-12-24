@@ -137,12 +137,6 @@ function comandos(cmd){
         case "languages":
             loopLinhas(languages, "color2 margin", 80);
             break;
-        case "whois":
-            loopLinhas(whois, "color2 margin", 80);
-            break;
-        case "whoami":
-            loopLinhas(whoami, "color2 margin", 80);
-            break;
         case "projects":
             loopLinhas(projects, "color2 margin", 80);
             break;
@@ -153,6 +147,12 @@ function comandos(cmd){
         case "secret":
             liner.classList.add("password");
             pw = true;
+            break;
+        case "whois":
+            loopLinhas(whois, "color2 margin", 80);
+            break;
+        case "whoami":
+            loopLinhas(whoami, "color2 margin", 80);
             break;
         default:
             addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
@@ -226,7 +226,11 @@ function beginTerminal(br, tempo){
 }
 
 function clearEverything (){
-    terminal.innerHTML = '<a id="before"></a>';
+    //terminal.innerHTML = '<a id="before"></a>';
+    limpaElemento(terminal);
+    a = document.createElement("a");
+    a.id = "before";
+    terminal.appendChild(a);
     before = document.getElementById("before");
 }
 
