@@ -78,7 +78,7 @@ whois = [
 
 whoami = [
     "<br>",
-    "I don't know about you, but i'm za new creature (in Christ):", 
+    "I don't know about you, but i'm a new creature (in Christ):", 
     'old things are passed away; behold, all things are become new.',
     '2 Corinthians 5:17',
     "<br>"
