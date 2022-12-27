@@ -1,25 +1,17 @@
 /**
  * Variables declared
  */
-var before = document.getElementById("before");
-var liner = document.getElementById("liner");
-var typer = document.getElementById("typer");
-var textarea = document.getElementById("terminal_input");
-var terminal = document.getElementById("terminal");
+var before = $("before");
+var cursor;
+var liner = $("liner");
+var typer = $("typer");
+var textarea = $("terminal_input");
+var terminal = $("terminal");
 
 var git = 0;
 var pw = false;
 let pwd = false;
 var commands = [];
-
-beginTerminal("begin",500);
-
-window.addEventListener("keyup", enterKey);
-
-//init
-textarea.setAttribute("value", "");
-//typer.appendChild("value", "");
-typer.innerHTML = textarea.value;
 
 function enterKey(e){
     //validar se o F5 foi premido para fazer reload
@@ -231,7 +223,7 @@ function clearEverything (){
     a = document.createElement("a");
     a.id = "before";
     terminal.appendChild(a);
-    before = document.getElementById("before");
+    before = $("before");
 }
 
 function displayFullYear(){
@@ -251,4 +243,55 @@ function begin(){
         //displayFullYear();
     }
     textarea.focus();
+}
+
+function $(elid){
+    return document.getElementById(elid);
+}
+
+function nl2br(text) {
+    return text.replace(/\n/g, '');
+}
+
+function typeIt(from, e){
+    e = e || window.event;
+    var typer = $("typer");
+    var typerWrite = from.value;
+    
+
+    if (!pw){
+        //typer.setAttribute("value", nl2br(typerWrite));
+        typer.innerHTML = nl2br(typerWrite);
+        //typer.style.display=nl2br(typerWrite);
+        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));        
+    }
+}
+
+function moveIt(count, e){
+    e = e || window.event;
+    var keycode = e.keycode || e.which;
+    if(keycode == 37 && parseInt(cursor.style.left) >= (0 - ((count - 1) * 10))) {
+        cursor.style.left = parseInt(cursor.style.left) - 10 +"px";
+    }
+    else if (keycode == 39 && (parseInt(cursor.style.left) + 10) <= 0) {
+        cursor.style.left = parseInt(cursor.style.left) + 10 +"px";
+    }
+}
+
+function alert(text) {
+    console.log(text);
+}
+
+window.onload = function () {
+    cursor = $("cursor");
+    cursor.style.left = "0px";
+
+    beginTerminal("begin",500);
+
+    window.addEventListener("keyup", enterKey);
+
+    //init
+    textarea.setAttribute("value", "");
+    //typer.appendChild("value", "");
+    typer.innerHTML = textarea.value;
 }
