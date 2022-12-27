@@ -288,10 +288,10 @@ window.onload = function () {
 
     beginTerminal("begin",500);
 
-window.addEventListener("keyup", enterKey);
+    window.addEventListener("keyup", enterKey);
 
-//init
-textarea.setAttribute("value", "");
-//typer.appendChild("value", "");
-typer.innerHTML = textarea.value;
+    //init
+    textarea.setAttribute("value", "");
+    //typer.appendChild("value", "");
+    typer.innerHTML = textarea.value;
 }
