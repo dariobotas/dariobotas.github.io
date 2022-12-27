@@ -1,12 +1,12 @@
 /**
  * Variables declared
  */
-var before = document.getElementById("before");
+var before = $("before");
 var cursor;
-var liner = document.getElementById("liner");
-var typer = document.getElementById("typer");
-var textarea = document.getElementById("terminal_input");
-var terminal = document.getElementById("terminal");
+var liner = $("liner");
+var typer = $("typer");
+var textarea = $("terminal_input");
+var terminal = $("terminal");
 
 var git = 0;
 var pw = false;
@@ -223,7 +223,7 @@ function clearEverything (){
     a = document.createElement("a");
     a.id = "before";
     terminal.appendChild(a);
-    before = document.getElementById("before");
+    before = $("before");
 }
 
 function displayFullYear(){
