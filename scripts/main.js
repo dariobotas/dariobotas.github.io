@@ -1,25 +1,17 @@
 /**
  * Variables declared
  */
-var before = document.getElementById("before");
-var liner = document.getElementById("liner");
-var typer = document.getElementById("typer");
-var textarea = document.getElementById("terminal_input");
-var terminal = document.getElementById("terminal");
+var before = $("before");
+var cursor;
+var liner = $("liner");
+var typer = $("typer");
+var textarea = $("terminal_input");
+var terminal = $("terminal");
 
 var git = 0;
 var pw = false;
 let pwd = false;
 var commands = [];
-
-beginTerminal("begin",500);
-
-window.addEventListener("keyup", enterKey);
-
-//init
-textarea.setAttribute("value", "");
-//typer.appendChild("value", "");
-typer.innerHTML = textarea.value;
 
 function enterKey(e){
     //validar se o F5 foi premido para fazer reload
@@ -71,10 +63,15 @@ function enterKey(e){
             textarea.value = "";
         }
         
-        if(e.keyCode == 38 && git != 0) {
+        if(e.keyCode == 38 && (git != 0 || git != commands.length)) {
             git -= 1;
-            //textarea.setAttribute("value", commands[git]);
-            textarea.value = commands[git];
+            if(commands[git] === undefined) {
+                //textarea.setAttribute("value", "");
+                textarea.value = "";
+            } else {
+                //textarea.setAttribute("value", commands[git]);
+                textarea.value = commands[git];
+            }
             //typer.appendChild(textarea.value);
             typer.innerHTML = textarea.value;
         }
@@ -99,9 +96,15 @@ function comandos(cmd){
     switch (cmd.toLowerCase()){
         case "banner0":
             loopLinhas(banner0, "", 80);
+            //displayFullYear();
             break;
         case "banner1":
             loopLinhas(banner1, "", 80);
+            //displayFullYear();
+            break;
+        case "banner2":
+            loopLinhas(banner2, "", 80);
+            //displayFullYear();
             break;
         case "clear":
             setTimeout(function() {
@@ -126,22 +129,22 @@ function comandos(cmd){
         case "languages":
             loopLinhas(languages, "color2 margin", 80);
             break;
+        case "projects":
+            loopLinhas(projects, "color2 margin", 80);
+            break;
+        case "reload":
+            commands = [];
+            beginTerminal(reload, 0);
+            break;
+        case "secret":
+            liner.classList.add("password");
+            pw = true;
+            break;
         case "whois":
             loopLinhas(whois, "color2 margin", 80);
             break;
         case "whoami":
             loopLinhas(whoami, "color2 margin", 80);
-            break;
-        case "projects":
-            loopLinhas(projects, "color2 margin", 80);
-            break;
-        case "reload":
-            beginTerminal(reload, 0);
-            commands = [];
-            break;
-        case "secret":
-            liner.classList.add("password");
-            pw = true;
             break;
         default:
             addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
@@ -215,16 +218,80 @@ function beginTerminal(br, tempo){
 }
 
 function clearEverything (){
-    terminal.innerHTML = '<a id="before"></a>';
-    before = document.getElementById("before");
+    //terminal.innerHTML = '<a id="before"></a>';
+    limpaElemento(terminal);
+    a = document.createElement("a");
+    a.id = "before";
+    terminal.appendChild(a);
+    before = $("before");
+}
+
+function displayFullYear(){
+    const year = new Date().getFullYear();
+    let spanYear = document.getElementsByClassName("yearb2");
+    spanYear.appendChild(document.createTextNode(year));
 }
 
 function begin(){
-    const rndInt = randomIntFromInterval(0, 1);
+    const rndInt = randomIntFromInterval(0, 2);
     if (rndInt == 0){
         loopLinhas(banner0, "", 80);
-    } else {
+    } else if (rndInt ==1){
         loopLinhas(banner1, "", 80);
+    } else {
+        loopLinhas(banner2, "", 80);
+        //displayFullYear();
     }
     textarea.focus();
+}
+
+function $(elid){
+    return document.getElementById(elid);
+}
+
+function nl2br(text) {
+    return text.replace(/\n/g, '');
+}
+
+function typeIt(from, e){
+    e = e || window.event;
+    var typer = $("typer");
+    var typerWrite = from.value;
+    
+
+    if (!pw){
+        //typer.setAttribute("value", nl2br(typerWrite));
+        typer.innerHTML = nl2br(typerWrite);
+        //typer.style.display=nl2br(typerWrite);
+        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));        
+    }
+}
+
+function moveIt(count, e){
+    e = e || window.event;
+    var keycode = e.keycode || e.which;
+    if(keycode == 37 && parseInt(cursor.style.left) >= (0 - ((count - 1) * 10))) {
+        cursor.style.left = parseInt(cursor.style.left) - 10 +"px";
+    }
+    else if (keycode == 39 && (parseInt(cursor.style.left) + 10) <= 0) {
+        cursor.style.left = parseInt(cursor.style.left) + 10 +"px";
+    }
+}
+
+function alert(text) {
+    console.log(text);
+}
+
+window.onload = function () {
+    cursor = $("cursor");
+    cursor.style.left = "0px";
+
+    beginTerminal("begin",500);
+
+    window.addEventListener("keyup", enterKey);
+
+    //init
+    textarea.setAttribute("value", "");
+    //typer.appendChild("value", "");
+    typer.innerHTML = textarea.value;
 }
