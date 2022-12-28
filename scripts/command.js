@@ -1,3 +1,30 @@
+//"use strict";
+/*var commands = (function (){
+    help = [
+    "<br>",
+    '<span class="command">whois</span>      Who is DBotas?',
+    '<span class="command">whoami</span>     Who are you?',
+    '<span class="command">videos</span>     View youtube videos',
+    '<span class="command">projects</span>   View coding projects',
+    '<span class="command">social</span>     Display social networks',
+    '<span class="command">secret</span>     Find my password',
+    '<span class="command">clear</span>      Clear everything written before',
+    '<span class="command">history</span>    Display previous commands',
+    '<span class="command">language</span>   Choose Language',
+    '<span class="command">setup</span>      Setup color/font terminal',
+    '<span class="command">banner</span>     Display the header',
+    "<br>"
+];
+    function Command (name, description, parameter){
+        this.name = name ? name.toString() : "help";
+        this.description = description ? description : help;
+        this.parameter = function (parameterDescription) {
+            this.id = parameter ? parameter.toString() : "";
+            this.description = parameterDescription ? parameterDescription : "";
+        }//(name !== "help") ? parameter : `<span class="inherit">Parameter not found For a list of parameters, type <span class="command">''${name}'' -h</span>`;
+    };
+    let startTerminal = () => '<span class="color2">Starting terminal...</span>';
+}());*/
 const youtube = "https://";
 const facebook = "https://www.facebook.com/dario.botas/";
 const linkedin = "www.linkedin.com/in/dbotas";
@@ -27,22 +54,6 @@ ajuda = [
     '<span class="command">lingua</span>     Escolher a língua',
     '<span class="command">setup</span>      Mudança do formato/cores do terminal',
     '<span class="command">banner</span>     Ecrã inicial',
-    "<br>"
-];
-
-help = [
-    "<br>",
-    '<span class="command">whois</span>      Who is DBotas?',
-    '<span class="command">whoami</span>     Who are you?',
-    '<span class="command">videos</span>     View youtube videos',
-    '<span class="command">projects</span>   View coding projects',
-    '<span class="command">social</span>     Display social networks',
-    '<span class="command">secret</span>     Find my password',
-    '<span class="command">clear</span>      Clear everything written before',
-    '<span class="command">history</span>    Display previous commands',
-    '<span class="command">language</span>   Choose Language',
-    '<span class="command">setup</span>      Setup color/font terminal',
-    '<span class="command">banner</span>     Display the header',
     "<br>"
 ];
 
@@ -180,3 +191,20 @@ banner2 = [
 ];
 //<span id="year"></span>
 //'<script>const year = new Date().getFullYear();document.getElementById("year").innerHTML = year;</script>'
+
+banner3 = [
+    "<br>",
+'<span class="index">DBotas (DB) Not A Corporation. </span>',
+'    ',
+'██████╗░██████╗░░█████╗░████████╗░█████╗░░██████╗',
+'██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔════╝',
+'██║░░██║██████╦╝██║░░██║░░░██║░░░███████║╚█████╗░',
+'██║░░██║██╔══██╗██║░░██║░░░██║░░░██╔══██║░╚═══██╗',
+'██████╔╝██████╦╝╚█████╔╝░░░██║░░░██║░░██║██████╔╝',
+'╚═════╝░╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═════╝░',
+'                                           © <span id="yearb2">2022</span>',
+"<br>",
+'<span class="color3">Welcome to my interactive web terminal.</span>',
+  "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
+  "<br>"
+]

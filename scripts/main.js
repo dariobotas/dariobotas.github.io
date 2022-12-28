@@ -1,3 +1,4 @@
+//"use strict";
 /**
  * Variables declared
  */
@@ -106,6 +107,10 @@ function comandos(cmd){
             loopLinhas(banner2, "", 80);
             //displayFullYear();
             break;
+        case "banner3":
+            loopLinhas(banner3, "", 80);
+            //displayFullYear();
+            break;
         case "clear":
             setTimeout(function() {
                 clearEverything();
@@ -175,8 +180,8 @@ function addLinha(texto, estilo, tempo){
 
         //next.appendChild(t);
         next.innerHTML = t;
-        //next.setAttribute("class",estilo);
-        next.className = estilo
+        next.setAttribute("class",estilo);
+        //next.className = estilo
 
         before.parentNode.insertBefore(next, before);
 
@@ -205,7 +210,7 @@ function randomIntFromInterval(min, max) { // min and max included
 function beginTerminal(br, tempo){
     setTimeout(()=> {
         if(br == "begin"){
-            loopLinhas(startTerminal, "", 0);
+            loopLinhas(startTerminal1()/*startTerminal*/, "", 0);
         } else {
             loopLinhas(reload, "", 0);
         }
@@ -233,14 +238,16 @@ function displayFullYear(){
 }
 
 function begin(){
-    const rndInt = randomIntFromInterval(0, 2);
+    const rndInt = randomIntFromInterval(0, 3);
     if (rndInt == 0){
         loopLinhas(banner0, "", 80);
-    } else if (rndInt ==1){
+    } else if (rndInt == 1){
         loopLinhas(banner1, "", 80);
-    } else {
+    } else if (rndInt == 2){
         loopLinhas(banner2, "", 80);
         //displayFullYear();
+    } else {
+        loopLinhas(banner2, "", 80);
     }
     textarea.focus();
 }
@@ -282,7 +289,7 @@ function alert(text) {
     console.log(text);
 }
 
-window.onload = function () {
+window.onload = (function () {
     cursor = $("cursor");
     cursor.style.left = "0px";
 
@@ -294,4 +301,4 @@ window.onload = function () {
     textarea.setAttribute("value", "");
     //typer.appendChild("value", "");
     typer.innerHTML = textarea.value;
-}
+} ());
