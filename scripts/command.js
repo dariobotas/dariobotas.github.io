@@ -19,13 +19,19 @@
         this.name = name ? name.toString() : "help";
         this.description = description ? description : help;
 };*/
+
+    function Parameter (name, description){
+        this.name = name ? name.toString() : "";
+        this.description = description ? description.toString() : "";
+    }
     function Command (name, description, parameter){
-        this.name = name ? name.toString() : "help";
-        this.description = description ? description : help;
-        this.parameter = function (parameterDescription) {
-            this.id = parameter ? parameter.toString() : "";
-            this.description = parameterDescription ? parameterDescription : "";
-        }//(name !== "help") ? parameter : `<span class="inherit">Parameter not found For a list of parameters, type <span class="command">''${name}'' -h</span>`;
+        this.name = name ? name.toString() : "";
+        this.description = description ? description : "";
+        this.parameter = [];
+        //function (parameterDescription) {
+          //  this.id = parameter ? parameter : [];
+          //  this.description = parameterDescription ? parameterDescription : [];
+        //}//(name !== "help") ? parameter : `<span class="inherit">Parameter not found For a list of parameters, type <span class="command">''${name}'' -h</span>`;
     };
 
     /*Command.prototype.toString = () => {
@@ -37,6 +43,19 @@
         }
     };*/
 
+    Command.prototype.addParameter = function(parameter) {
+        this.parameter.push(parameter);
+        return this;
+    }
+
+    Command.prototype.addParameters = function (parameters) {
+        parameters = Array.prototype.slice.call(arguments);
+        parameters.forEach(function (currentValue, index, arrau){
+            this.addParameter(currentValue);
+            },
+        this);
+        return this;
+    }
     function Help(){
         this.commands = [];
     }
@@ -45,23 +64,36 @@
         if(this.commands.lenght === 0){
             return "<span class=\"inherit\">No commands available. This is a useless terminal...";
         } else {
-            var resultado = "<span class=\"command\">";
+            var resultado = "";
             this.commands.forEach(function (element, index, array) {
-                resultado += element.name+"     "+element.description;
+                resultado += "<span class=\"command\">"+element.name+"</span>     "+element.description;
             });
             return resultado;
         }
     };
 
-    Help.prototype.addCommands = function (command) {
+    Help.prototype.addCommand = function (command) {
         this.commands.push(command);
         return this;
     };
 
-    let startTerminal; //= () => '<span class="color2">Starting terminal...</span>';
+    Help.prototype.addCommands = function (commands) {
+        commands = Array.prototype.slice.call(arguments); //Transformar o "arguments" num array para poder usar o forEach
+        commands.forEach(function (currentValue, index, array) {
+        this.addCommand(currentValue);
+    },
+        this); //Indicar que o comando 'Help' atual será o this dentro de cada chamada à função anterior
+    return this;
+    }
+
+    let startTerminal = () => '<span class="color2">Starting terminal...</span>';
 
     Help.omissao = (new Help()).addCommands(
-        new Command("Start Terminal",'<span class="color2">Starting terminal...</span>')
+        new Command("Start Terminal",'<span class="color2">Starting terminal...</span>'),
+        (new Command("projects","Currently i've the following projects:")).addParameters(
+            new Parameter("-p", "Personal projects"),
+            new Parameter("-s","School projects")
+            )
         );
 //}());
 const youtube = "https://";
@@ -72,9 +104,9 @@ const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
 
-startTerminal = [
+/*startTerminal = [
     '<span class="color2">Starting terminal...</span>'
-];
+];*/
 
 reload = [
     '<span class="color2">Restarting terminal...</span>'

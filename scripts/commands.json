@@ -1,12 +1,13 @@
 {
-    // Use IntelliSense to learn about possible Node.js debug attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "1.0.0",
+"version": "1.0.0",
     "commands": [
         {
-            "name":"help"
-
+            "name":"projects",
+            "description":"Currently i've the following projects:",
+            "parameters":{
+                "name":["-p","-s"], 
+                "descriptions":["Personal projects","School projects"]
+            }
         }
     ]
 }

@@ -210,7 +210,7 @@ function randomIntFromInterval(min, max) { // min and max included
 function beginTerminal(br, tempo){
     setTimeout(()=> {
         if(br == "begin"){
-            loopLinhas(startTerminal1()/*startTerminal*/, "", 0);
+            loopLinhas(startTerminal(), "", 0);
         } else {
             loopLinhas(reload, "", 0);
         }
