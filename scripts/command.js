@@ -96,21 +96,24 @@ const password = "dbotas";
     return this;
     }
 
-    Help.omissao = (new Help()).addCommands(
-        new Command("whois","Who is DBotas?"),
-        new Command("whoami","Who are you?"),
-        /*new Command("banner", "Display the header"),
-        new Command("clear","Clear everything written before"),
-        new Command("history", "Display previous commands"),
-        new Command("videos","View youtube videos"),
+    Help.defaultEn = (new Help()).addCommands(
+        new Command("whois","   Who is DBotas?"),
+        new Command("whoami","  Who are you?"),
+        new Command("banner", "  Display the header"),
+        new Command("clear","   Clear everything written before"),
+        new Command("history", " Display previous commands"),
+        new Command("videos","  View youtube videos"),
         new Command("projects","View coding projects").addParameters(
             new Parameter("-p", "Personal projects"),
             new Parameter("-s","School projects")
             ),
-        new Command("social","Display social networks"),
-        new Command("secret","Find my password"),
+        new Command("social","  Display social networks"),
+        new Command("secret","  Find my password"),
         new Command("language", "Choose a different language for the terminal"),
-        new Command("setup", "Setup different color/font terminal")*/
+        new Command("setup", "   Setup different color/font terminal"),
+        new Command("date", "    Display date in different formats"),
+        new Command("game","    Play a game"),
+        new Command("tools","   Check these tools")
         );
 //}());
 

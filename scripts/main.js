@@ -124,7 +124,7 @@ function comandos(cmd){
             //beginTerminal("begin", 100);
             break;
         case "help":
-            loopLinhas(Help.omissao.listCommands()/*help*/, "color2 margin", 80);
+            loopLinhas(Help.defaultEn.listCommands()/*help*/, "color2 margin", 80);
             break;
         case "history":
             addLinha("<br>", "", 0);
