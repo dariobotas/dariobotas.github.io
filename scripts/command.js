@@ -1,20 +1,24 @@
 //"use strict";
-/*var commands = (function (){
+//var commands = (function (){
     help = [
     "<br>",
-    '<span class="command">whois</span>      Who is DBotas?',
-    '<span class="command">whoami</span>     Who are you?',
-    '<span class="command">videos</span>     View youtube videos',
-    '<span class="command">projects</span>   View coding projects',
-    '<span class="command">social</span>     Display social networks',
-    '<span class="command">secret</span>     Find my password',
-    '<span class="command">clear</span>      Clear everything written before',
-    '<span class="command">history</span>    Display previous commands',
-    '<span class="command">language</span>   Choose Language',
-    '<span class="command">setup</span>      Setup color/font terminal',
-    '<span class="command">banner</span>     Display the header',
+    '<span class="command">whois</span>     Who is DBotas?',
+    '<span class="command">whoami</span>    Who are you?',
+    '<span class="command">videos</span>    View youtube videos',
+    '<span class="command">projects</span>  View coding projects',
+    '<span class="command">social</span>    Display social networks',
+    '<span class="command">secret</span>    Find my password',
+    '<span class="command">clear</span>     Clear everything written before',
+    '<span class="command">history</span>   Display previous commands',
+    '<span class="command">language</span>  Choose Language',
+    '<span class="command">setup</span>     Setup color/font terminal',
+    '<span class="command">banner</span>    Display the header',
     "<br>"
 ];
+    /*function Command (name, description){
+        this.name = name ? name.toString() : "help";
+        this.description = description ? description : help;
+};*/
     function Command (name, description, parameter){
         this.name = name ? name.toString() : "help";
         this.description = description ? description : help;
@@ -23,8 +27,43 @@
             this.description = parameterDescription ? parameterDescription : "";
         }//(name !== "help") ? parameter : `<span class="inherit">Parameter not found For a list of parameters, type <span class="command">''${name}'' -h</span>`;
     };
-    let startTerminal = () => '<span class="color2">Starting terminal...</span>';
-}());*/
+
+    /*Command.prototype.toString = () => {
+        var resultado = "";
+        for (var propriedade in this){
+            if(!(this[propriedade] instanceof Function)){
+                resultado += `<span class="command">${this[propriedade]}`
+            }
+        }
+    };*/
+
+    function Help(){
+        this.commands = [];
+    }
+
+    Help.prototype.listCommands = function () {
+        if(this.commands.lenght === 0){
+            return "<span class=\"inherit\">No commands available. This is a useless terminal...";
+        } else {
+            var resultado = "<span class=\"command\">";
+            this.commands.forEach(function (element, index, array) {
+                resultado += element.name+"     "+element.description;
+            });
+            return resultado;
+        }
+    };
+
+    Help.prototype.addCommands = function (command) {
+        this.commands.push(command);
+        return this;
+    };
+
+    let startTerminal; //= () => '<span class="color2">Starting terminal...</span>';
+
+    Help.omissao = (new Help()).addCommands(
+        new Command("Start Terminal",'<span class="color2">Starting terminal...</span>')
+        );
+//}());
 const youtube = "https://";
 const facebook = "https://www.facebook.com/dario.botas/";
 const linkedin = "www.linkedin.com/in/dbotas";
