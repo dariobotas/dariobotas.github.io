@@ -216,8 +216,7 @@ function beginTerminal(br, tempo){
         }
         setTimeout(()=>{
             clearEverything();
-            begin();
-            init(); 
+            begin(); 
         },2500);
     }, tempo);
 }
