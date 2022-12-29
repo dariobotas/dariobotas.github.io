@@ -1,0 +1,13 @@
+{
+"version": "1.0.0",
+    "commands": [
+        {
+            "name":"projects",
+            "description":"Currently i've the following projects:",
+            "parameters":{
+                "name":["-p","-s"], 
+                "descriptions":["Personal projects","School projects"]
+            }
+        }
+    ]
+}

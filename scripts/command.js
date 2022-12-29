@@ -1,3 +1,4 @@
+//"use strict";
 const youtube = "https://";
 const facebook = "https://www.facebook.com/dario.botas/";
 const linkedin = "www.linkedin.com/in/dbotas";
@@ -5,6 +6,116 @@ const github = "https://github.com/dariobotas";
 const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
+//var commands = (function (){
+    help = [
+    "<br>",
+    '<span class="command">whois</span>     Who is DBotas?',
+    '<span class="command">whoami</span>    Who are you?',
+    '<span class="command">videos</span>    View youtube videos',
+    '<span class="command">projects</span>  View coding projects',
+    '<span class="command">social</span>    Display social networks',
+    '<span class="command">secret</span>    Find my password',
+    '<span class="command">clear</span>     Clear everything written before',
+    '<span class="command">history</span>   Display previous commands',
+    '<span class="command">language</span>  Choose Language',
+    '<span class="command">setup</span>     Setup color/font terminal',
+    '<span class="command">banner</span>    Display the header',
+    "<br>"
+];
+    /*function Command (name, description){
+        this.name = name ? name.toString() : "help";
+        this.description = description ? description : help;
+};*/
+
+    function Parameter (name, description){
+        this.name = name ? name.toString() : "";
+        this.description = description ? description.toString() : "";
+    }
+    function Command (name, description, parameter){
+        this.name = name ? name.toString() : "";
+        this.description = description ? description : "";
+        this.parameter = [];
+        //function (parameterDescription) {
+          //  this.id = parameter ? parameter : [];
+          //  this.description = parameterDescription ? parameterDescription : [];
+        //}//(name !== "help") ? parameter : `<span class="inherit">Parameter not found For a list of parameters, type <span class="command">''${name}'' -h</span>`;
+    };
+
+    /*Command.prototype.toString = () => {
+        var resultado = "";
+        for (var propriedade in this){
+            if(!(this[propriedade] instanceof Function)){
+                resultado += `<span class="command">${this[propriedade]}`
+            }
+        }
+    };*/
+
+    Command.prototype.addParameter = function(parameter) {
+        this.parameter.push(parameter);
+        return this;
+    }
+
+    Command.prototype.addParameters = function (parameters) {
+        parameters = Array.prototype.slice.call(arguments);
+        parameters.forEach(function (currentValue, index, arrau){
+            this.addParameter(currentValue);
+        },
+        this);
+        return this;
+    }
+    function Help(){
+        this.commands = [];
+    }
+
+    Help.prototype.listCommands = function () {
+        if(this.commands.lenght === 0){
+            return "<span class=\"inherit\">No commands available. This is a useless terminal...";
+        } else {
+            var resultado = "";
+            var arrayList = ["<br>"];
+            this.commands.forEach(function (element, index, array) {
+                //resultado += ;
+                arrayList.push("<span class=\"command\">"+element.name+"</span>     "+element.description);
+            });
+            arrayList.push("<br>");
+            return arrayList;
+        }
+    };
+
+    Help.prototype.addCommand = function (command) {
+        this.commands.push(command);
+        return this;
+    };
+
+    Help.prototype.addCommands = function (commands) {
+        commands = Array.prototype.slice.call(arguments); //Transformar o "arguments" num array para poder usar o forEach
+        commands.forEach(function (currentValue, index, array) {
+            this.addCommand(currentValue);
+        },
+        this); //Indicar que o comando 'Help' atual será o this dentro de cada chamada à função anterior
+    return this;
+    }
+
+    Help.defaultEn = (new Help()).addCommands(
+        new Command("whois","   Who is DBotas?"),
+        new Command("whoami","  Who are you?"),
+        new Command("banner", "  Display the header"),
+        new Command("clear","   Clear everything written before"),
+        new Command("history", " Display previous commands"),
+        new Command("videos","  View youtube videos"),
+        new Command("projects","View coding projects").addParameters(
+            new Parameter("-p", "Personal projects"),
+            new Parameter("-s","School projects")
+            ),
+        new Command("social","  Display social networks"),
+        new Command("secret","  Find my password"),
+        new Command("language", "Choose a different language for the terminal"),
+        new Command("setup", "   Setup different color/font terminal"),
+        new Command("date", "    Display date in different formats"),
+        new Command("game","    Play a game"),
+        new Command("tools","   Check these tools")
+        );
+//}());
 
 startTerminal = [
     '<span class="color2">Starting terminal...</span>'
@@ -27,22 +138,6 @@ ajuda = [
     '<span class="command">lingua</span>     Escolher a língua',
     '<span class="command">setup</span>      Mudança do formato/cores do terminal',
     '<span class="command">banner</span>     Ecrã inicial',
-    "<br>"
-];
-
-help = [
-    "<br>",
-    '<span class="command">whois</span>      Who is DBotas?',
-    '<span class="command">whoami</span>     Who are you?',
-    '<span class="command">videos</span>     View youtube videos',
-    '<span class="command">projects</span>   View coding projects',
-    '<span class="command">social</span>     Display social networks',
-    '<span class="command">secret</span>     Find my password',
-    '<span class="command">clear</span>      Clear everything written before',
-    '<span class="command">history</span>    Display previous commands',
-    '<span class="command">language</span>   Choose Language',
-    '<span class="command">setup</span>      Setup color/font terminal',
-    '<span class="command">banner</span>     Display the header',
     "<br>"
 ];
 
@@ -180,3 +275,20 @@ banner2 = [
 ];
 //<span id="year"></span>
 //'<script>const year = new Date().getFullYear();document.getElementById("year").innerHTML = year;</script>'
+
+banner3 = [
+    "<br>",
+'<span class="index">DBotas (DB) Not A Corporation. </span>',
+'    ',
+'██████╗░██████╗░░█████╗░████████╗░█████╗░░██████╗',
+'██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔════╝',
+'██║░░██║██████╦╝██║░░██║░░░██║░░░███████║╚█████╗░',
+'██║░░██║██╔══██╗██║░░██║░░░██║░░░██╔══██║░╚═══██╗',
+'██████╔╝██████╦╝╚█████╔╝░░░██║░░░██║░░██║██████╔╝',
+'╚═════╝░╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═════╝░',
+'                                           © <span id="yearb2">2022</span>',
+"<br>",
+'<span class="color3">Welcome to my interactive web terminal.</span>',
+  "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
+  "<br>"
+]
