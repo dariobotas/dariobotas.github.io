@@ -124,7 +124,7 @@ function comandos(cmd){
             //beginTerminal("begin", 100);
             break;
         case "help":
-            loopLinhas(help, "color2 margin", 80);
+            loopLinhas(Help.omissao.listCommands()/*help*/, "color2 margin", 80);
             break;
         case "history":
             addLinha("<br>", "", 0);
@@ -210,7 +210,7 @@ function randomIntFromInterval(min, max) { // min and max included
 function beginTerminal(br, tempo){
     setTimeout(()=> {
         if(br == "begin"){
-            loopLinhas(startTerminal(), "", 0);
+            loopLinhas(startTerminal, "", 0);
         } else {
             loopLinhas(reload, "", 0);
         }

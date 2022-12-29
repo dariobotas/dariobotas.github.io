@@ -1,4 +1,11 @@
 //"use strict";
+const youtube = "https://";
+const facebook = "https://www.facebook.com/dario.botas/";
+const linkedin = "www.linkedin.com/in/dbotas";
+const github = "https://github.com/dariobotas";
+const bitbucket = "https://bitbucket.org/dabotas/";
+const email = "mailto:darioabotas@gmail.com";
+const password = "dbotas";
 //var commands = (function (){
     help = [
     "<br>",
@@ -52,7 +59,7 @@
         parameters = Array.prototype.slice.call(arguments);
         parameters.forEach(function (currentValue, index, arrau){
             this.addParameter(currentValue);
-            },
+        },
         this);
         return this;
     }
@@ -65,10 +72,13 @@
             return "<span class=\"inherit\">No commands available. This is a useless terminal...";
         } else {
             var resultado = "";
+            var arrayList = ["<br>"];
             this.commands.forEach(function (element, index, array) {
-                resultado += "<span class=\"command\">"+element.name+"</span>     "+element.description;
+                //resultado += ;
+                arrayList.push("<span class=\"command\">"+element.name+"</span>     "+element.description);
             });
-            return resultado;
+            arrayList.push("<br>");
+            return arrayList;
         }
     };
 
@@ -80,33 +90,33 @@
     Help.prototype.addCommands = function (commands) {
         commands = Array.prototype.slice.call(arguments); //Transformar o "arguments" num array para poder usar o forEach
         commands.forEach(function (currentValue, index, array) {
-        this.addCommand(currentValue);
-    },
+            this.addCommand(currentValue);
+        },
         this); //Indicar que o comando 'Help' atual será o this dentro de cada chamada à função anterior
     return this;
     }
 
-    let startTerminal = () => '<span class="color2">Starting terminal...</span>';
-
     Help.omissao = (new Help()).addCommands(
-        new Command("Start Terminal",'<span class="color2">Starting terminal...</span>'),
-        (new Command("projects","Currently i've the following projects:")).addParameters(
+        new Command("whois","Who is DBotas?"),
+        new Command("whoami","Who are you?"),
+        /*new Command("banner", "Display the header"),
+        new Command("clear","Clear everything written before"),
+        new Command("history", "Display previous commands"),
+        new Command("videos","View youtube videos"),
+        new Command("projects","View coding projects").addParameters(
             new Parameter("-p", "Personal projects"),
             new Parameter("-s","School projects")
-            )
+            ),
+        new Command("social","Display social networks"),
+        new Command("secret","Find my password"),
+        new Command("language", "Choose a different language for the terminal"),
+        new Command("setup", "Setup different color/font terminal")*/
         );
 //}());
-const youtube = "https://";
-const facebook = "https://www.facebook.com/dario.botas/";
-const linkedin = "www.linkedin.com/in/dbotas";
-const github = "https://github.com/dariobotas";
-const bitbucket = "https://bitbucket.org/dabotas/";
-const email = "mailto:darioabotas@gmail.com";
-const password = "dbotas";
 
-/*startTerminal = [
+startTerminal = [
     '<span class="color2">Starting terminal...</span>'
-];*/
+];
 
 reload = [
     '<span class="color2">Restarting terminal...</span>'
