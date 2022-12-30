@@ -241,17 +241,6 @@ function displayFullYear(){
 
 function begin(){
     loopLinhas(banner.description(),"",80);
-    /*const rndInt = randomIntFromInterval(0, 3);
-    if (rndInt == 0){
-        loopLinhas(banner0, "", 80);
-    } else if (rndInt == 1){
-        loopLinhas(banner1, "", 80);
-    } else if (rndInt == 2){
-        loopLinhas(banner2, "", 80);
-        //displayFullYear();
-    } else {
-        loopLinhas(banner2, "", 80);
-    }*/
     textarea.focus();
 }
 
