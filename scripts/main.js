@@ -96,19 +96,19 @@ function enterKey(e){
 function comandos(cmd){
     switch (cmd.toLowerCase()){
         case "banner0":
-            loopLinhas(banner0, "", 80);
+            loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
             //displayFullYear();
             break;
         case "banner1":
-            loopLinhas(banner1, "", 80);
+            loopLinhas(Help.defaultEn.commands[2].parameters[1].description/* banner1 */, "", 80);
             //displayFullYear();
             break;
         case "banner2":
-            loopLinhas(banner2, "", 80);
+            loopLinhas(Help.defaultEn.commands[2].parameters[2].description/* banner2 */, "", 80);
             //displayFullYear();
             break;
         case "banner3":
-            loopLinhas(banner3, "", 80);
+            loopLinhas(Help.defaultEn.commands[2].parameters[3].description/* banner3 */, "", 80);
             //displayFullYear();
             break;
         case "clear":
