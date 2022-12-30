@@ -96,12 +96,7 @@ function enterKey(e){
 function comandos(cmd){
     switch (cmd.toLowerCase()){
         case "banner":
-            let randomBanner = function (){
-                const numberOfBanners = Help.defaultEn.commands[2].parameters;
-                let random = randomIntFromInterval(0,numberOfBanners.length-1);
-                return Help.defaultEn.commands[2].parameters[random].description;
-            }
-            loopLinhas(randomBanner(), "", 80);
+            loopLinhas(banner.description()/*randomBanner()*/, "", 80);
             break;
         case "banner0":
             loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
@@ -245,7 +240,8 @@ function displayFullYear(){
 }
 
 function begin(){
-    const rndInt = randomIntFromInterval(0, 3);
+    loopLinhas(banner.description(),"",80);
+    /*const rndInt = randomIntFromInterval(0, 3);
     if (rndInt == 0){
         loopLinhas(banner0, "", 80);
     } else if (rndInt == 1){
@@ -255,7 +251,7 @@ function begin(){
         //displayFullYear();
     } else {
         loopLinhas(banner2, "", 80);
-    }
+    }*/
     textarea.focus();
 }
 
