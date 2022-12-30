@@ -95,6 +95,14 @@ function enterKey(e){
 
 function comandos(cmd){
     switch (cmd.toLowerCase()){
+        case "banner":
+            let randomBanner = function (){
+                const numberOfBanners = Help.defaultEn.commands[2].parameters;
+                let random = randomIntFromInterval(0,numberOfBanners.length-1);
+                return Help.defaultEn.commands[2].parameters[random].description;
+            }
+            loopLinhas(randomBanner(), "", 80);
+            break;
         case "banner0":
             loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
             //displayFullYear();

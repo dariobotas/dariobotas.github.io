@@ -7,6 +7,8 @@ const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
 const year = new Date().getFullYear().toString()
+const startTerminal = ['<span class="color2">Starting terminal...</span>'];
+const reload = ['<span class="color2">Restarting terminal...</span>'];
 //var commands = (function (){
     help = [
     "<br>",
@@ -105,28 +107,28 @@ const year = new Date().getFullYear().toString()
         new Command("whois","   Who is DBotas?"),
         new Command("whoami","  Who are you?"),
         new Command("banner", "  Display a random header").addParameters(
-            new Parameter("-1", "Banner 1",
-            [
-                "<br>",
-                '<span class="index">DBotas (DB) Not A Corporation. </span>',
-                "<br>",                                                                                         
-                "8 888888888o.      8 888888888o       ,o888888o. 8888888 8888888888   .8.            d888888o.   ",
-                "8 8888    `^888.   8 8888    `88.  . 8888     `88.     8 8888        .888.         .`8888:' `88. ",
-                "8 8888        `88. 8 8888     `88 ,8 8888       `8b    8 8888       :88888.        8.`8888.   Y8 ",
-                "8 8888         `88 8 8888     ,88 88 8888        `8b   8 8888      . `88888.       `8.`8888.     ",
-                "8 8888          88 8 8888.   ,88' 88 8888         88   8 8888     .8. `88888.       `8.`8888.    ",
-                "8 8888          88 8 8888888888   88 8888         88   8 8888    .8`8. `88888.       `8.`8888.   ",
-                "8 8888         ,88 8 8888    `88. 88 8888        ,8P   8 8888   .8' `8. `88888.       `8.`8888.  ",
-                "8 8888        ,88' 8 8888      88 `8 8888       ,8P    8 8888  .8'   `8. `88888.  8b   `8.`8888. ",
-                "8 8888    ,o88P'   8 8888    ,88'  ` 8888     ,88'     8 8888 .888888888. `88888. `8b.  ;8.`8888 ",
-                "8 888888888P'      8 888888888P       `8888888P'       8 8888.8'       `8. `88888. `Y8888P ,88P' ",
-                "                                                                                          © "+year,
-                "<br>",
-                "<span class=\"color3\">Welcome to my interactive web terminal.</span>",
-                "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
-                "<br>"
-            ]),
-            new Parameter("-2", "Banner 2",
+                new Parameter("-1", "Banner 1",
+                [
+                    "<br>",
+                    '<span class="index">DBotas (DB) Not A Corporation. </span>',
+                    "<br>",                                                                                         
+                    "8 888888888o.      8 888888888o       ,o888888o. 8888888 8888888888   .8.            d888888o.   ",
+                    "8 8888    `^888.   8 8888    `88.  . 8888     `88.     8 8888        .888.         .`8888:' `88. ",
+                    "8 8888        `88. 8 8888     `88 ,8 8888       `8b    8 8888       :88888.        8.`8888.   Y8 ",
+                    "8 8888         `88 8 8888     ,88 88 8888        `8b   8 8888      . `88888.       `8.`8888.     ",
+                    "8 8888          88 8 8888.   ,88' 88 8888         88   8 8888     .8. `88888.       `8.`8888.    ",
+                    "8 8888          88 8 8888888888   88 8888         88   8 8888    .8`8. `88888.       `8.`8888.   ",
+                    "8 8888         ,88 8 8888    `88. 88 8888        ,8P   8 8888   .8' `8. `88888.       `8.`8888.  ",
+                    "8 8888        ,88' 8 8888      88 `8 8888       ,8P    8 8888  .8'   `8. `88888.  8b   `8.`8888. ",
+                    "8 8888    ,o88P'   8 8888    ,88'  ` 8888     ,88'     8 8888 .888888888. `88888. `8b.  ;8.`8888 ",
+                    "8 888888888P'      8 888888888P       `8888888P'       8 8888.8'       `8. `88888. `Y8888P ,88P' ",
+                    "                                                                                          © "+year,
+                    "<br>",
+                    "<span class=\"color3\">Welcome to my interactive web terminal.</span>",
+                    "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
+                    "<br>"
+                ]),
+                new Parameter("-2", "Banner 2",
             [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -194,14 +196,6 @@ const year = new Date().getFullYear().toString()
         new Command("tools","   Check these tools")
         );
 //}());
-
-startTerminal = [
-    '<span class="color2">Starting terminal...</span>'
-];
-
-reload = [
-    '<span class="color2">Restarting terminal...</span>'
-];
 
 ajuda = [
     "<br>",
