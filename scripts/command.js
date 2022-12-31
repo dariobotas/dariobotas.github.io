@@ -1,14 +1,4 @@
 //"use strict";
-const youtube = "https://";
-const facebook = "https://www.facebook.com/dario.botas/";
-const linkedin = "www.linkedin.com/in/dbotas";
-const github = "https://github.com/dariobotas";
-const bitbucket = "https://bitbucket.org/dabotas/";
-const email = "mailto:darioabotas@gmail.com";
-const password = "dbotas";
-const year = new Date().getFullYear().toString()
-const startTerminal = ['<span class="color2">Starting terminal...</span>'];
-const reload = ['<span class="color2">Restarting terminal...</span>'];
 
     function Parameter (name, about, description){
         this.name = name ? name.toString() : "";
@@ -80,7 +70,7 @@ const reload = ['<span class="color2">Restarting terminal...</span>'];
     }
 
     Help.defaultEn = (new Help()).addCommands(
-        whoi = new Command("whois","   Who is DBotas?"),
+        whois = new Command("whois","   Who is DBotas?"),
         whoami = new Command("whoami","  Who are you?"),
         banner = new Command("banner", "  Display a random header").addParameters(
                 new Parameter("-1", "Banner 1",
@@ -173,7 +163,7 @@ const reload = ['<span class="color2">Restarting terminal...</span>'];
         );
 
 /**
- * 
+ * Presents a random banner when type 'banner' in the terminal
  * @returns array with the banner
  */
 banner.description = function (){
@@ -181,3 +171,4 @@ banner.description = function (){
                 let random = randomIntFromInterval(0,numberOfBanners.length-1);
                 return banner.parameters[random].description;
             };
+console.log(banner.description());
