@@ -7,7 +7,7 @@ body{
     color: #c9c980;
     background: #101935;
     /*@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');*/
-    font-family: cursor, Menlo, 'monospace';
+    font-family: cursor, Menlo, monospace;
     /*font-family: 'Prompt', sans-serif;*/
     /* font-family: Ubuntu, "times new roman", times, roman, serif, monospace; */
     overflow-x: hidden;

@@ -123,6 +123,7 @@ function comandos(cmd){
                     //alert(listaDeComandos);
                     //alert(element[comd].description());
                     //loopLinhas(historyCommands, "color3", 80 * historyCommands.length + 50);
+                    alert(historyCommands);
                     element[comd].description();
                     //loopLinhas(linha, "color2 margin", 80);
                 } 
@@ -200,7 +201,8 @@ function comandos(cmd){
 
 function begin(){
     //console.log(banner.description);
-    loopLinhas(banner.description(),"",80);
+    banner.description();
+    //loopLinhas(banner.description(),"",80);
     textarea.focus();
 }
 

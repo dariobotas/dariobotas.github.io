@@ -171,7 +171,7 @@
                 ])
             ),
         clear = new Command("clear","   Clear everything written before"),
-        history = new Command("history", " Display previous commands"),
+        historyCMD = new Command("history", " Display previous commands"),
         videos = new Command("videos","  View youtube videos"),
         projects = new Command("projects","View coding projects").addParameters(
             new Parameter("-p", "Personal projects"),
@@ -200,13 +200,13 @@ banner.description = function () {
                 return loopLinhas(banner.parameters[random].description,"",80);
             };
 
-history.description = function () {
+historyCMD.description = function () {
     //return function () {
-        //addLinha("<br>","",0);
-        //addLinha(historyCommands, "color3", 0);
-        //addLinha("<br>","command", 0);
-        alert(historyCommands);
-        return loopLinhas(historyCommands, "color3", 80 /* historyCommands.length + 50*/);
+        addLinha("<br>","",0);
+        loopLinhas(historyCommands, "color3", 80);
+        addLinha("<br>","command", 80 * historyCommands.length + 50);
+        //alert(historyCommands);
+        //return loopLinhas(historyCommands, "color3", 80 /* historyCommands.length + 50*/);
 //};
     //var arrayList = ["<br>"];
     //historyCommands.forEach(function (element, index, array) {
