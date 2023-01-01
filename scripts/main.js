@@ -122,10 +122,8 @@ function comandos(cmd){
                     //alert(element[comd].description);
                     //alert(listaDeComandos);
                     //alert(element[comd].description());
-                    //loopLinhas(historyCommands, "color3", 80 * historyCommands.length + 50);
-                    alert(historyCommands);
+                    //alert(historyCommands);
                     element[comd].description();
-                    //loopLinhas(linha, "color2 margin", 80);
                 } 
             }
             //alert(element[0].name);

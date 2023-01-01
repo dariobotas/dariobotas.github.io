@@ -201,21 +201,7 @@ banner.description = function () {
             };
 
 historyCMD.description = function () {
-    //return function () {
-        addLinha("<br>","",0);
-        loopLinhas(historyCommands, "color3", 80);
-        addLinha("<br>","command", 80 * historyCommands.length + 50);
-        //alert(historyCommands);
-        //return loopLinhas(historyCommands, "color3", 80 /* historyCommands.length + 50*/);
-//};
-    //var arrayList = ["<br>"];
-    //historyCommands.forEach(function (element, index, array) {
-    //    arrayList.push(element);
-   // });
-    //arrayList.push("<br>");
-    //alert(arrayList);
-    //var loopLinhas1 = loopLinhas(arrayList, "color3", 80 * historyCommands.length + 50);
-    //alert(loopLinhas1);
-    //return loopLinhas1;
+    addLinha("<br>","",0);
+    loopLinhas(historyCommands, "color3", 80);
+    addLinha("<br>","command", 80 * historyCommands.length + 50);    
 };
-//alert(banner.description());
