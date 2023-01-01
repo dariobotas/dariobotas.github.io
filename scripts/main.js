@@ -64,8 +64,8 @@ function enterKey(e){
         }
     } else {
         if(e.keyCode == 13){
-            commands.push(typer.innerHTML);
-            git = commands.length;
+            historyCommands.push(typer.innerHTML);
+            git = historyCommands.length;
             addLinha("visitor@dbotas.github.io:~$ " + typer.innerHTML, "no-animation", 0);
             comandos(typer.innerHTML.toLowerCase());
             limpaElemento(typer);
@@ -74,27 +74,27 @@ function enterKey(e){
             textarea.value = "";
         }
         
-        if(e.keyCode == 38 && (git != 0 || git != commands.length)) {
+        if(e.keyCode == 38 && (git != 0 || git != historyCommands.length)) {
             git -= 1;
-            if(commands[git] === undefined) {
+            if(historyCommands[git] === undefined) {
                 //textarea.setAttribute("value", "");
                 textarea.value = "";
             } else {
                 //textarea.setAttribute("value", commands[git]);
-                textarea.value = commands[git];
+                textarea.value = historyCommands[git];
             }
             //typer.appendChild(textarea.value);
             typer.innerHTML = textarea.value;
         }
         
-        if (e.keyCode == 40 && git != commands.length){
+        if (e.keyCode == 40 && git != historyCommands.length){
             git += 1;
-            if(commands[git] === undefined) {
+            if(historyCommands[git] === undefined) {
                 //textarea.setAttribute("value", "");
                 textarea.value = "";
             } else {
                 //textarea.setAttribute("value", commands[git]);
-                textarea.value = commands[git];
+                textarea.value = historyCommands[git];
             }
             //typer.appendChild(textarea.value);
             //typer.append(textarea.value);
@@ -104,70 +104,98 @@ function enterKey(e){
 }
 
 function comandos(cmd){
-    switch (cmd.toLowerCase()){
-        case "banner":
-            loopLinhas(banner.description()/*randomBanner()*/, "", 80);
-            break;
-        case "banner0":
-            loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
-            //displayFullYear();
-            break;
-        case "banner1":
-            loopLinhas(Help.defaultEn.commands[2].parameters[1].description/* banner1 */, "", 80);
-            //displayFullYear();
-            break;
-        case "banner2":
-            loopLinhas(Help.defaultEn.commands[2].parameters[2].description/* banner2 */, "", 80);
-            //displayFullYear();
-            break;
-        case "banner3":
-            loopLinhas(Help.defaultEn.commands[2].parameters[3].description/* banner3 */, "", 80);
-            //displayFullYear();
-            break;
-        case "clear":
-            setTimeout(function() {
-                clearEverything();
-            }, 1);
-            break;
-        case "clear -b":
-            setTimeout(function(){
-                clearEverything();
-                begin();
-            }, 100);
-            //beginTerminal("begin", 100);
-            break;
-        case "help":
-            loopLinhas(Help.defaultEn.listCommands()/*help*/, "color2 margin", 80);
-            break;
-        case "history":
-            addLinha("<br>", "", 0);
-            loopLinhas(commands, "color3", 80);
-            addLinha("<br>", "command", 80 * commands.length + 50);
-            break;
-        case "languages":
-            loopLinhas(languages, "color2 margin", 80);
-            break;
-        case "projects":
-            loopLinhas(projects, "color2 margin", 80);
-            break;
-        case "reload":
-            commands = [];
-            beginTerminal(reload, 0);
-            break;
-        case "secret":
-            liner.classList.add("password");
-            pw = true;
-            break;
-        case "whois":
-            loopLinhas(whois, "color2 margin", 80);
-            break;
-        case "whoami":
-            loopLinhas(whoami, "color2 margin", 80);
-            break;
-        default:
-            addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
-            break;
+    //console.log(cmd.toLowerCase().trim());
+    //console.log(cmd.replace(/\s+/g, ''));
+    let command = cmd.replace(/\s+/g,'');
+    const todosComandos = Help.defaultEn;
+    const listaDeComandos = todosComandos.listCommands();
+    
+    //alert(todosComandos);
+    
+    for (const comds in todosComandos) {
+        //alert(todosComandos);
+        if (Object.hasOwnProperty.call(todosComandos, comds)) {
+            const element = todosComandos[comds];
+            //alert(element);
+            for (const comd in element){
+                if(command.toLowerCase() === element[comd].name){
+                    //alert(element[comd].description);
+                    //alert(listaDeComandos);
+                    //alert(element[comd].description());
+                    //loopLinhas(historyCommands, "color3", 80 * historyCommands.length + 50);
+                    element[comd].description();
+                    //loopLinhas(linha, "color2 margin", 80);
+                } 
+            }
+            //alert(element[0].name);
+        } //else {
+        //    addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+        //}
     }
+    // switch (cmd.toLowerCase()){
+    //     case "banner":
+    //         loopLinhas(banner.description()/*randomBanner()*/, "", 80);
+    //         break;
+    //     case "banner0":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "banner1":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[1].description/* banner1 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "banner2":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[2].description/* banner2 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "banner3":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[3].description/* banner3 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "clear":
+    //         setTimeout(function() {
+    //             clearEverything();
+    //         }, 1);
+    //         break;
+    //     case "clear -b":
+    //         setTimeout(function(){
+    //             clearEverything();
+    //             begin();
+    //         }, 100);
+    //         //beginTerminal("begin", 100);
+    //         break;
+    //     case "help":
+    //         loopLinhas(Help.defaultEn.listCommands()/*help*/, "color2 margin", 80);
+    //         break;
+    //     case "history":
+    //         addLinha("<br>", "", 0);
+    //         loopLinhas(historyCommands, "color3", 80);
+    //         addLinha("<br>", "command", 80 * historyCommands + 50);
+    //         break;
+    //     case "languages":
+    //         loopLinhas(languages, "color2 margin", 80);
+    //         break;
+    //     case "projects":
+    //         loopLinhas(projects, "color2 margin", 80);
+    //         break;
+    //     case "reload":
+    //         commands = [];
+    //         beginTerminal(reload, 0);
+    //         break;
+    //     case "secret":
+    //         liner.classList.add("password");
+    //         pw = true;
+    //         break;
+    //     case "whois":
+    //         loopLinhas(whois, "color2 margin", 80);
+    //         break;
+    //     case "whoami":
+    //         loopLinhas(whoami, "color2 margin", 80);
+    //         break;
+    //     default:
+    //         addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+    //         break;
+    // }
 }
 
 function begin(){

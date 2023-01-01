@@ -44,7 +44,6 @@ whois = [
     "podcast 'Decoded w/ Forrest Knight.' What most people don't know, and will only know",
     "because they're reading this right now, is that I also run a creative & media agency.",
     "We partner with clients to drive their business outcomes using modern marketing strategies.",
-  
     "<br>"
 ];
 

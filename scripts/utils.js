@@ -17,7 +17,7 @@ const reload = ['<span class="color2">Restarting terminal...</span>'];
 var git = 0;
 var pw = false;
 let pwd = false;
-var commands = [];
+var historyCommands = [];
 
 function $(elid){
     return document.getElementById(elid);

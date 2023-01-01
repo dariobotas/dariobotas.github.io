@@ -70,8 +70,32 @@
     }
 
     Help.defaultEn = (new Help()).addCommands(
-        whois = new Command("whois","   Who is DBotas?"),
-        whoami = new Command("whoami","  Who are you?"),
+        help = new Command("help","    A list of available commands"),
+        whois = new Command("whois","   Who is DBotas?",[
+            "<br>",
+            "Hey, I'm DBotas!👋",
+            "I'm a software developer (but currently working as a Tester) and content creator",
+            "that's responsible for a blog and makes YouTube videos about computer science & software engineering.",
+            "After graduating with a Bachelor's in Computer Science, I worked professionally",
+            "as a software engineer building enterprise web applications for Fortune 500 companies.",
+            "While doing all of that, I documentned my coding journey on YouTube - trying to enlighten",
+            "the next generation of developers and help them navigate the crazy world that is software", "development & computer science.",
+            "Before I knew it, that online presence took on a life of its own, to the point where I knew",
+            "I needed to make the jump from software engineering to full time content creator, and it's",
+            "the best decision I ever made.",
+            "Now, I make videos about creating cool shit like this terminal website, and hosting my",
+            "podcast 'Decoded w/ Forrest Knight.' What most people don't know, and will only know",
+            "because they're reading this right now, is that I also run a creative & media agency.",
+            "We partner with clients to drive their business outcomes using modern marketing strategies.",
+            "<br>"
+        ]),
+        whoami = new Command("whoami","  Who are you?",[
+            "<br>",
+            "I don't know about you, but i'm a new creature (in Christ):", 
+            'old things are passed away; behold, all things are become new.',
+            '2 Corinthians 5:17',
+            "<br>"
+        ]),
         banner = new Command("banner", "  Display a random header").addParameters(
                 new Parameter("-1", "Banner 1",
                 [
@@ -162,13 +186,36 @@
         tools = new Command("tools","   Check these tools")
         );
 
+help.description = function () {
+    return loopLinhas(Help.defaultEn.listCommands(), "color2 margin", 80);
+}
+
 /**
  * Presents a random banner when type 'banner' in the terminal
  * @returns array with the banner
  */
-banner.description = function (){
+banner.description = function () {
                 let numberOfBanners = banner.parameters;
                 let random = randomIntFromInterval(0,numberOfBanners.length-1);
-                return banner.parameters[random].description;
+                return loopLinhas(banner.parameters[random].description,"",80);
             };
-console.log(banner.description());
+
+history.description = function () {
+    //return function () {
+        //addLinha("<br>","",0);
+        //addLinha(historyCommands, "color3", 0);
+        //addLinha("<br>","command", 0);
+        alert(historyCommands);
+        return loopLinhas(historyCommands, "color3", 80 /* historyCommands.length + 50*/);
+//};
+    //var arrayList = ["<br>"];
+    //historyCommands.forEach(function (element, index, array) {
+    //    arrayList.push(element);
+   // });
+    //arrayList.push("<br>");
+    //alert(arrayList);
+    //var loopLinhas1 = loopLinhas(arrayList, "color3", 80 * historyCommands.length + 50);
+    //alert(loopLinhas1);
+    //return loopLinhas1;
+};
+//alert(banner.description());
