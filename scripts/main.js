@@ -106,31 +106,53 @@ function enterKey(e){
 function comandos(cmd){
     //console.log(cmd.toLowerCase().trim());
     //console.log(cmd.replace(/\s+/g, ''));
-    let command = cmd.replace(/\s+/g,'');
-    const todosComandos = Help.defaultEn;
-    const listaDeComandos = todosComandos.listCommands();
+    let comd = cmd.toLowerCase();
+    let command = comd.replace(/\s+/g,'');
+    const commandSplitted = command.split("-",2);
+    const mainCommand = commandSplitted[0];
+    const parameter = commandSplitted[1];
+    //Filtrar o comando com base no escrito
+    const todosComandos = Help.defaultEn.commands;
+    const comandosFiltrados = todosComandos.map(e => e.name).indexOf(mainCommand);
+    
+    if (comandosFiltrados !== -1){
+    //Filtrar o parâmetro com base no comando
+    const parametrosDoComando = todosComandos[comandosFiltrados].parameters;
+    const parametrosDoComandoFiltrado = parametrosDoComando.map(e => e.name).indexOf(parameter);
+    todosComandos[comandosFiltrados].description();
+    console.log(parametrosDoComandoFiltrado);
+    } else {
+        return addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+    }
+    
+    //const listaDeComandos = todosComandos.listCommands();
     
     //alert(todosComandos);
     
-    for (const comds in todosComandos) {
-        //alert(todosComandos);
-        if (Object.hasOwnProperty.call(todosComandos, comds)) {
-            const element = todosComandos[comds];
-            //alert(element);
-            for (const comd in element){
-                if(command.toLowerCase() === element[comd].name){
-                    //alert(element[comd].description);
-                    //alert(listaDeComandos);
-                    //alert(element[comd].description());
-                    //alert(historyCommands);
-                    element[comd].description();
-                } 
-            }
-            //alert(element[0].name);
-        } //else {
+    // for (const comds in todosComandos) {
+    //     //alert(todosComandos);
+    //     if (Object.hasOwnProperty.call(todosComandos, comds)) {
+    //         const element = todosComandos[comds];
+    //         //alert(element);
+    //         for (const comd in element){
+    //             if(command.toLowerCase() === element[comd].name){
+    //                 alert(command.toLowerCase() === element[comd].name);
+    //                 //alert(element[comd].description);
+    //                 //alert(listaDeComandos);
+    //                 //alert(element[comd].description());
+    //                 //alert(historyCommands);
+    //                 element[comd].description();
+    //             }else {
+    //                 alert(command.toLowerCase() === element[comd].name);
+    //                 addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+                    
+    //             }
+    //         }
+    //         //alert(element[0].name);
+    //     } //else {
         //    addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
         //}
-    }
+    //}
     // switch (cmd.toLowerCase()){
     //     case "banner":
     //         loopLinhas(banner.description()/*randomBanner()*/, "", 80);
@@ -209,7 +231,7 @@ function beginTerminal(br, tempo){
         if(br == "begin"){
             loopLinhas(startTerminal, "", 0);
         } else {
-            loopLinhas(reload, "", 0);
+            loopLinhas(reloadTerminal, "", 0);
         }
         setTimeout(()=>{
             clearEverything();

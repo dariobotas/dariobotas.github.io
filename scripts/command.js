@@ -100,7 +100,8 @@
             return loopLinhas(desc, "color2 margin", 80);
         }),
         banner = new Command("banner", "  Display a random header").addParameters(
-                new Parameter("-1", "Banner 1",
+            new Parameter("h","Parameters list for this command"),    
+            new Parameter("1", "Banner 1",
                 [
                     "<br>",
                     '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -121,7 +122,7 @@
                     "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                     "<br>"
                 ]),
-                new Parameter("-2", "Banner 2",
+                new Parameter("2", "Banner 2",
             [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -139,7 +140,7 @@
                 "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                 "<br>"
             ]),
-            new Parameter("-3", "Banner 3",
+            new Parameter("3", "Banner 3",
             [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -155,7 +156,7 @@
                   "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                   "<br>"
                 ]),
-            new Parameter("-4","Banner 4",
+            new Parameter("4","Banner 4",
             [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -174,7 +175,8 @@
                 ])
             ),
         clear = new Command("clear","   Clear everything written before").addParameter(
-            new Parameter("-b","Clear with banner at the beginning",()=>{
+            new Parameter("h","Parameters list for this command",()=>{return this.listParameters();}),
+            new Parameter("b","Clear with banner at the beginning",()=>{
                 setTimeout(function(){
                     clearEverything();
                     begin();
@@ -184,17 +186,20 @@
         historyCMD = new Command("history", " Display previous commands"),
         videos = new Command("videos","  View youtube videos"),
         projects = new Command("projects","View coding projects").addParameters(
-            new Parameter("-p", "Personal projects"),
-            new Parameter("-s","School projects")
+            new Parameter("h","Parameters list for this command"),
+            new Parameter("p", "Personal projects"),
+            new Parameter("s","School projects")
             ),
+        reload = new Command("reload","  Reload terminal",function (){historyCommands = []; beginTerminal("reloadTerminal",0);}),
         social = new Command("social","  Display social networks"),
         secret = new Command("secret","  Find my password"),
         language = new Command("language", "Choose a different language for the terminal"),
         setup = new Command("setup", "   Setup different color/font terminal"),
-        date = new Command("date", "    Display date in different formats").addParameters(
-            new Parameter("-n","What time is it?"),
-            new Parameter("-t", "Today's date"),
-            new Parameter("-y", "Yeasterday"),
+        date = new Command("date", "    Display date in different formats",()=>{return loopLinhas(["<br>",new Date().toString(),"<br>"],"color2 margin",80);}).addParameters(
+            new Parameter("h","Parameters list for this command"),
+            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>",new Date().getHours().toString(),":",new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
+            new Parameter("t", "Tomorrow's date"),
+            new Parameter("y", "Yeasterday"),
         ),
         game = new Command("game","    Play a game"),
         tools = new Command("tools","   Check these tools")

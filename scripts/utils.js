@@ -12,7 +12,7 @@ const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
 const year = new Date().getFullYear().toString()
 const startTerminal = ['<span class="color2">Starting terminal...</span>'];
-const reload = ['<span class="color2">Restarting terminal...</span>'];
+const reloadTerminal = ['<span class="color2">Restarting terminal...</span>'];
 
 var git = 0;
 var pw = false;
