@@ -71,7 +71,7 @@
 
     Help.defaultEn = (new Help()).addCommands(
         help = new Command("help","    A list of available commands"),
-        whois = new Command("whois","   Who is DBotas?",[
+        whois = new Command("whois","   Who is DBotas?", ()=>{ var desc=[
             "<br>",
             "Hey, I'm DBotas!👋",
             "I'm a software developer (but currently working as a Tester) and content creator",
@@ -87,15 +87,18 @@
             "podcast 'Decoded w/ Forrest Knight.' What most people don't know, and will only know",
             "because they're reading this right now, is that I also run a creative & media agency.",
             "We partner with clients to drive their business outcomes using modern marketing strategies.",
-            "<br>"
-        ]),
-        whoami = new Command("whoami","  Who are you?",[
+            "<br>"];
+            return loopLinhas(desc,"color2 margin",80);    
+        }),
+        whoami = new Command("whoami","  Who are you?",()=>{ var desc=[
             "<br>",
             "I don't know about you, but i'm a new creature (in Christ):", 
             'old things are passed away; behold, all things are become new.',
             '2 Corinthians 5:17',
             "<br>"
-        ]),
+        ];
+            return loopLinhas(desc, "color2 margin", 80);
+        }),
         banner = new Command("banner", "  Display a random header").addParameters(
                 new Parameter("-1", "Banner 1",
                 [
@@ -170,7 +173,14 @@
                 "<br>"
                 ])
             ),
-        clear = new Command("clear","   Clear everything written before"),
+        clear = new Command("clear","   Clear everything written before").addParameter(
+            new Parameter("-b","Clear with banner at the beginning",()=>{
+                setTimeout(function(){
+                    clearEverything();
+                    begin();
+                }, 100);
+            })
+        ),
         historyCMD = new Command("history", " Display previous commands"),
         videos = new Command("videos","  View youtube videos"),
         projects = new Command("projects","View coding projects").addParameters(
@@ -181,10 +191,20 @@
         secret = new Command("secret","  Find my password"),
         language = new Command("language", "Choose a different language for the terminal"),
         setup = new Command("setup", "   Setup different color/font terminal"),
-        date = new Command("date", "    Display date in different formats"),
+        date = new Command("date", "    Display date in different formats").addParameters(
+            new Parameter("-n","What time is it?"),
+            new Parameter("-t", "Today's date"),
+            new Parameter("-y", "Yeasterday"),
+        ),
         game = new Command("game","    Play a game"),
         tools = new Command("tools","   Check these tools")
         );
+
+clear.description = function () {
+    setTimeout(function() {
+        clearEverything();
+    }, 1);
+}
 
 help.description = function () {
     return loopLinhas(Help.defaultEn.listCommands(), "color2 margin", 80);
@@ -202,6 +222,6 @@ banner.description = function () {
 
 historyCMD.description = function () {
     addLinha("<br>","",0);
-    loopLinhas(historyCommands, "color3", 80);
+    loopLinhas(historyCommands, "color3 margin", 80);
     addLinha("<br>","command", 80 * historyCommands.length + 50);    
 };
