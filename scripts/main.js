@@ -1,18 +1,28 @@
-//"use strict";
-/**
- * Variables declared
- */
-var before = $("before");
-var cursor;
-var liner = $("liner");
-var typer = $("typer");
-var textarea = $("terminal_input");
-var terminal = $("terminal");
+"use strict";
+function typeIt(from, e){
+    e = e || window.event;
+    var typer = $("typer");
+    var typerWrite = from.value;
+    
 
-var git = 0;
-var pw = false;
-let pwd = false;
-var commands = [];
+    if (!pw){
+        //typer.setAttribute("value", nl2br(typerWrite));
+        typer.innerHTML = nl2br(typerWrite);
+        //typer.style.display=nl2br(typerWrite);
+        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));        
+    }
+}
+
+function moveIt(count, e){
+    e = e || window.event;
+    var keycode = e.keycode || e.which;
+    if(keycode == 37 && parseInt(cursor.style.left) >= (0 - ((count - 1) * 10))) {
+        cursor.style.left = parseInt(cursor.style.left) - 10 +"px";
+    }
+    else if (keycode == 39 && (parseInt(cursor.style.left) + 10) <= 0) {
+        cursor.style.left = parseInt(cursor.style.left) + 10 +"px";
+    }
+}
 
 function enterKey(e){
     //validar se o F5 foi premido para fazer reload
@@ -54,8 +64,8 @@ function enterKey(e){
         }
     } else {
         if(e.keyCode == 13){
-            commands.push(typer.innerHTML);
-            git = commands.length;
+            historyCommands.push(typer.innerHTML);
+            git = historyCommands.length;
             addLinha("visitor@dbotas.github.io:~$ " + typer.innerHTML, "no-animation", 0);
             comandos(typer.innerHTML.toLowerCase());
             limpaElemento(typer);
@@ -64,27 +74,27 @@ function enterKey(e){
             textarea.value = "";
         }
         
-        if(e.keyCode == 38 && (git != 0 || git != commands.length)) {
+        if(e.keyCode == 38 && (git != 0 || git != historyCommands.length)) {
             git -= 1;
-            if(commands[git] === undefined) {
+            if(historyCommands[git] === undefined) {
                 //textarea.setAttribute("value", "");
                 textarea.value = "";
             } else {
                 //textarea.setAttribute("value", commands[git]);
-                textarea.value = commands[git];
+                textarea.value = historyCommands[git];
             }
             //typer.appendChild(textarea.value);
             typer.innerHTML = textarea.value;
         }
         
-        if (e.keyCode == 40 && git != commands.length){
+        if (e.keyCode == 40 && git != historyCommands.length){
             git += 1;
-            if(commands[git] === undefined) {
+            if(historyCommands[git] === undefined) {
                 //textarea.setAttribute("value", "");
                 textarea.value = "";
             } else {
                 //textarea.setAttribute("value", commands[git]);
-                textarea.value = commands[git];
+                textarea.value = historyCommands[git];
             }
             //typer.appendChild(textarea.value);
             //typer.append(textarea.value);
@@ -94,118 +104,105 @@ function enterKey(e){
 }
 
 function comandos(cmd){
-    switch (cmd.toLowerCase()){
-        case "banner0":
-            loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
-            //displayFullYear();
-            break;
-        case "banner1":
-            loopLinhas(Help.defaultEn.commands[2].parameters[1].description/* banner1 */, "", 80);
-            //displayFullYear();
-            break;
-        case "banner2":
-            loopLinhas(Help.defaultEn.commands[2].parameters[2].description/* banner2 */, "", 80);
-            //displayFullYear();
-            break;
-        case "banner3":
-            loopLinhas(Help.defaultEn.commands[2].parameters[3].description/* banner3 */, "", 80);
-            //displayFullYear();
-            break;
-        case "clear":
-            setTimeout(function() {
-                clearEverything();
-            }, 1);
-            break;
-        case "clear -b":
-            setTimeout(function(){
-                clearEverything();
-                begin();
-            }, 100);
-            //beginTerminal("begin", 100);
-            break;
-        case "help":
-            loopLinhas(Help.defaultEn.listCommands()/*help*/, "color2 margin", 80);
-            break;
-        case "history":
-            addLinha("<br>", "", 0);
-            loopLinhas(commands, "color3", 80);
-            addLinha("<br>", "command", 80 * commands.length + 50);
-            break;
-        case "languages":
-            loopLinhas(languages, "color2 margin", 80);
-            break;
-        case "projects":
-            loopLinhas(projects, "color2 margin", 80);
-            break;
-        case "reload":
-            commands = [];
-            beginTerminal(reload, 0);
-            break;
-        case "secret":
-            liner.classList.add("password");
-            pw = true;
-            break;
-        case "whois":
-            loopLinhas(whois, "color2 margin", 80);
-            break;
-        case "whoami":
-            loopLinhas(whoami, "color2 margin", 80);
-            break;
-        default:
-            addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
-            break;
+    //console.log(cmd.toLowerCase().trim());
+    //console.log(cmd.replace(/\s+/g, ''));
+    let command = cmd.replace(/\s+/g,'');
+    const todosComandos = Help.defaultEn;
+    const listaDeComandos = todosComandos.listCommands();
+    
+    //alert(todosComandos);
+    
+    for (const comds in todosComandos) {
+        //alert(todosComandos);
+        if (Object.hasOwnProperty.call(todosComandos, comds)) {
+            const element = todosComandos[comds];
+            //alert(element);
+            for (const comd in element){
+                if(command.toLowerCase() === element[comd].name){
+                    //alert(element[comd].description);
+                    //alert(listaDeComandos);
+                    //alert(element[comd].description());
+                    //alert(historyCommands);
+                    element[comd].description();
+                } 
+            }
+            //alert(element[0].name);
+        } //else {
+        //    addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+        //}
     }
+    // switch (cmd.toLowerCase()){
+    //     case "banner":
+    //         loopLinhas(banner.description()/*randomBanner()*/, "", 80);
+    //         break;
+    //     case "banner0":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "banner1":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[1].description/* banner1 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "banner2":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[2].description/* banner2 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "banner3":
+    //         loopLinhas(Help.defaultEn.commands[2].parameters[3].description/* banner3 */, "", 80);
+    //         //displayFullYear();
+    //         break;
+    //     case "clear":
+    //         setTimeout(function() {
+    //             clearEverything();
+    //         }, 1);
+    //         break;
+    //     case "clear -b":
+    //         setTimeout(function(){
+    //             clearEverything();
+    //             begin();
+    //         }, 100);
+    //         //beginTerminal("begin", 100);
+    //         break;
+    //     case "help":
+    //         loopLinhas(Help.defaultEn.listCommands()/*help*/, "color2 margin", 80);
+    //         break;
+    //     case "history":
+    //         addLinha("<br>", "", 0);
+    //         loopLinhas(historyCommands, "color3", 80);
+    //         addLinha("<br>", "command", 80 * historyCommands + 50);
+    //         break;
+    //     case "languages":
+    //         loopLinhas(languages, "color2 margin", 80);
+    //         break;
+    //     case "projects":
+    //         loopLinhas(projects, "color2 margin", 80);
+    //         break;
+    //     case "reload":
+    //         commands = [];
+    //         beginTerminal(reload, 0);
+    //         break;
+    //     case "secret":
+    //         liner.classList.add("password");
+    //         pw = true;
+    //         break;
+    //     case "whois":
+    //         loopLinhas(whois, "color2 margin", 80);
+    //         break;
+    //     case "whoami":
+    //         loopLinhas(whoami, "color2 margin", 80);
+    //         break;
+    //     default:
+    //         addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+    //         break;
+    // }
 }
 
-function newTab(link){
-    setTimeout(function(){
-        window.open(link, "_blank");
-    }, 500);
+function begin(){
+    //console.log(banner.description);
+    banner.description();
+    //loopLinhas(banner.description(),"",80);
+    textarea.focus();
 }
-
-function addLinha(texto, estilo, tempo){
-    var t = "";
-
-    for(let i=0; i<texto.length; i++) {
-        if (texto.charAt(i) == " " && texto.charAt(i + 1) == " "){
-            t += "&nbsp;&nbsp;";
-            i++;
-        }else {
-            t += texto.charAt(i);
-        }
-    }
-
-    setTimeout(function(){
-        var next = document.createElement("p");
-
-        //next.appendChild(t);
-        next.innerHTML = t;
-        next.setAttribute("class",estilo);
-        //next.className = estilo
-
-        before.parentNode.insertBefore(next, before);
-
-        window.scrollTo(0, document.body.offsetHeight);
-    }, tempo);
-}
-
-
-function loopLinhas(nome, estilo, tempo){
-    nome.forEach(function(item, index) {
-            addLinha(item, estilo, index * tempo);
-        }
-    );
-}
-
-function limpaElemento(elementoHTML) {
-    while (elementoHTML.firstChild != undefined) {
-        elementoHTML.removeChild(elementoHTML.firstChild);
-    }
-}
-
-function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
 
 function beginTerminal(br, tempo){
     setTimeout(()=> {
@@ -219,73 +216,6 @@ function beginTerminal(br, tempo){
             begin(); 
         },2500);
     }, tempo);
-}
-
-function clearEverything (){
-    //terminal.innerHTML = '<a id="before"></a>';
-    limpaElemento(terminal);
-    a = document.createElement("a");
-    a.id = "before";
-    terminal.appendChild(a);
-    before = $("before");
-}
-
-function displayFullYear(){
-    const year = new Date().getFullYear();
-    let spanYear = document.getElementsByClassName("yearb2");
-    spanYear.appendChild(document.createTextNode(year));
-}
-
-function begin(){
-    const rndInt = randomIntFromInterval(0, 3);
-    if (rndInt == 0){
-        loopLinhas(banner0, "", 80);
-    } else if (rndInt == 1){
-        loopLinhas(banner1, "", 80);
-    } else if (rndInt == 2){
-        loopLinhas(banner2, "", 80);
-        //displayFullYear();
-    } else {
-        loopLinhas(banner2, "", 80);
-    }
-    textarea.focus();
-}
-
-function $(elid){
-    return document.getElementById(elid);
-}
-
-function nl2br(text) {
-    return text.replace(/\n/g, '');
-}
-
-function typeIt(from, e){
-    e = e || window.event;
-    var typer = $("typer");
-    var typerWrite = from.value;
-    
-
-    if (!pw){
-        //typer.setAttribute("value", nl2br(typerWrite));
-        typer.innerHTML = nl2br(typerWrite);
-        //typer.style.display=nl2br(typerWrite);
-        //typer.appendChild(document.createTextNode(typerWrite.replace(/\n/g, '')));        
-    }
-}
-
-function moveIt(count, e){
-    e = e || window.event;
-    var keycode = e.keycode || e.which;
-    if(keycode == 37 && parseInt(cursor.style.left) >= (0 - ((count - 1) * 10))) {
-        cursor.style.left = parseInt(cursor.style.left) - 10 +"px";
-    }
-    else if (keycode == 39 && (parseInt(cursor.style.left) + 10) <= 0) {
-        cursor.style.left = parseInt(cursor.style.left) + 10 +"px";
-    }
-}
-
-function alert(text) {
-    console.log(text);
 }
 
 window.onload = (function () {
