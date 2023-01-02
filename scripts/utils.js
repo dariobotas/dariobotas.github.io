@@ -12,7 +12,7 @@ const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
 const year = new Date().getFullYear().toString()
 const startTerminal = ['<span class="color2">Starting terminal...</span>'];
-const reload = ['<span class="color2">Restarting terminal...</span>'];
+const reloadTerminal = ['<span class="color2">Restarting terminal...</span>'];
 
 var git = 0;
 var pw = false;
@@ -54,10 +54,8 @@ function addLinha(texto, estilo, tempo){
     setTimeout(function(){
         var next = document.createElement("p");
 
-        //next.appendChild(t);
         next.innerHTML = t;
         next.setAttribute("class",estilo);
-        //next.className = estilo
 
         before.parentNode.insertBefore(next, before);
 
@@ -84,7 +82,6 @@ function randomIntFromInterval(min, max) { // min and max included
 }
 
 function clearEverything (){
-    //terminal.innerHTML = '<a id="before"></a>';
     limpaElemento(terminal);
     let a = document.createElement("a");
     a.id = "before";
