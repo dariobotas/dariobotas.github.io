@@ -10,7 +10,7 @@ const github = "https://github.com/dariobotas";
 const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
-const year = new Date().getFullYear().toString()
+const year = new Date().getFullYear().toString();
 const startTerminal = ['<span class="color2">Starting terminal...</span>'];
 const reloadTerminal = ['<span class="color2">Restarting terminal...</span>'];
 
