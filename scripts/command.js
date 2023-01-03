@@ -91,9 +91,8 @@
             return loopLinhas(desc, "color2 margin", 80);
         }),
         banner = new Command("banner", "  Display a random header").addParameters(
-            new Parameter("h","Parameters list for this command"),    
-            new Parameter("1", "Banner 1",
-                [
+            new Parameter("h","Parameters list for this command",()=>{return loopLinhas(["Please choose a Banner to display. From 1 to 4."],"color2 margin",80);}),    
+            new Parameter("1", "Banner 1",()=>{ var desc=[
                     "<br>",
                     '<span class="index">DBotas (DB) Not A Corporation. </span>',
                     "<br>",                                                                                         
@@ -112,7 +111,9 @@
                     "<span class=\"color3\">Welcome to my interactive web terminal.</span>",
                     "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                     "<br>"
-                ]),
+                ];
+                return loopLinhas(desc,"",80);
+            }),
                 new Parameter("2", "Banner 2",
             [
                 "<br>",
@@ -165,7 +166,7 @@
                 "<br>"
                 ])
             ),
-        clear = new Command("clear","   Clear everything written before").addParameter(
+        clear = new Command("clear","   Clear everything written before").addParameters(
             new Parameter("h","Parameters list for this command",()=>{return this.listParameters();}),
             new Parameter("b","Clear with banner at the beginning",()=>{
                 setTimeout(function(){
@@ -188,7 +189,7 @@
         setup = new Command("setup", "   Setup different color/font terminal"),
         date = new Command("date", "    Display date in different formats",()=>{return loopLinhas(["<br>",new Date().toString(),"<br>"],"color2 margin",80);}).addParameters(
             new Parameter("h","Parameters list for this command"),
-            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>",new Date().getHours().toString(),":",new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
+            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>",new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
             new Parameter("t", "Tomorrow's date"),
             new Parameter("y", "Yeasterday"),
         ),
