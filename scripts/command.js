@@ -18,7 +18,7 @@
         } else {
             var arrayList = ["<br>"];
             this.parameters.forEach(function (element, index, array) {
-                arrayList.push("<span class=\"command\">"+element.name+"</span>     "+element.about);
+                arrayList.push("<span class=\"command\"> -"+element.name+"</span>     "+element.about);
             });
             arrayList.push("<br>");
             return arrayList;
@@ -189,9 +189,9 @@
         setup = new Command("setup", "   Setup different color/font terminal"),
         date = new Command("date", "    Display date in different formats",()=>{return loopLinhas(["<br>",new Date().toString(),"<br>"],"color2 margin",80);}).addParameters(
             new Parameter("h","Parameters list for this command"),
-            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>",new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
-            new Parameter("t", "Tomorrow's date"),
-            new Parameter("y", "Yeasterday"),
+            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>","Is "+new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
+            new Parameter("t", "Tomorrow's date",()=>{return loopLinhas([],"color2 margin",80);}),
+            new Parameter("y", "Yeasterday",()=>{return loopLinhas([],"color2 margin",80);}),
         ),
         game = new Command("game","    Play a game"),
         tools = new Command("tools","   Check these tools")
