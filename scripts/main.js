@@ -1,24 +1,4 @@
-"use strict";
-function typeIt(from, e) {
-  e = e || window.event;
-  var typer = $("typer");
-  var typerWrite = from.value;
-
-  if (!pw) {
-    typer.innerHTML = nl2br(typerWrite);
-  }
-}
-
-function moveIt(count, e) {
-  e = e || window.event;
-  var keycode = e.keycode || e.which;
-  if (keycode == 37 && parseInt(cursor.style.left) >= 0 - (count - 1) * 10) {
-    cursor.style.left = parseInt(cursor.style.left) - 10 + "px";
-  } else if (keycode == 39 && parseInt(cursor.style.left) + 10 <= 0) {
-    cursor.style.left = parseInt(cursor.style.left) + 10 + "px";
-  }
-}
-
+//"use strict";
 function enterKey(e) {
   //validar se o F5 foi premido para fazer reload
   if (e.keyCode == 181) {
@@ -96,7 +76,7 @@ function comandos(cmd) {
   let command = comd.replace(/\s+/g, "");
   const commandSplitted = command.split("-", 2);
   const mainCommand = commandSplitted[0];
-  const parameter = commandSplitted[1];
+  
   //Filtrar o comando com base no escrito
   const todosComandos = Help.defaultEn.commands;
   const comandosFiltrados = todosComandos
@@ -105,11 +85,22 @@ function comandos(cmd) {
 
   if (comandosFiltrados !== -1) {
     //Filtrar o parâmetro com base no comando
+    const parameter = commandSplitted[1];
     const parametrosDoComando = todosComandos[comandosFiltrados].parameters;
     const parametrosDoComandoFiltrado = parametrosDoComando
       .map((e) => e.name)
       .indexOf(parameter);
-    return todosComandos[comandosFiltrados].description();
+    if (parametrosDoComandoFiltrado !== -1){
+      return parametrosDoComando[parametrosDoComandoFiltrado].description();
+    } else if (parameter === undefined){
+      return todosComandos[comandosFiltrados].description();
+    } else {
+      return addLinha(
+        '<span class="inherit">Wrong parameter. For a list of parameters, type <span class="command">\''+todosComandos[comandosFiltrados].name+' -h\'</span>.</span>',
+        "error",
+        100
+      );
+    }
     console.log(parametrosDoComandoFiltrado);
   } else {
     return addLinha(

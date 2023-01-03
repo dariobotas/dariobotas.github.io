@@ -77,16 +77,7 @@
             "I'm a software developer (but currently working as a Tester) and content creator",
             "that's responsible for a blog and makes YouTube videos about computer science & software engineering.",
             "After graduating with a Bachelor's in Computer Science, I worked professionally",
-            "as a software engineer building enterprise web applications for Fortune 500 companies.",
-            "While doing all of that, I documentned my coding journey on YouTube - trying to enlighten",
-            "the next generation of developers and help them navigate the crazy world that is software", "development & computer science.",
-            "Before I knew it, that online presence took on a life of its own, to the point where I knew",
-            "I needed to make the jump from software engineering to full time content creator, and it's",
-            "the best decision I ever made.",
-            "Now, I make videos about creating cool shit like this terminal website, and hosting my",
-            "podcast 'Decoded w/ Forrest Knight.' What most people don't know, and will only know",
-            "because they're reading this right now, is that I also run a creative & media agency.",
-            "We partner with clients to drive their business outcomes using modern marketing strategies.",
+            "",
             "<br>"];
             return loopLinhas(desc,"color2 margin",80);    
         }),
@@ -100,9 +91,8 @@
             return loopLinhas(desc, "color2 margin", 80);
         }),
         banner = new Command("banner", "  Display a random header").addParameters(
-            new Parameter("h","Parameters list for this command"),    
-            new Parameter("1", "Banner 1",
-                [
+            new Parameter("h","Parameters list for this command",()=>{return loopLinhas(["Please choose a Banner to display. From 1 to 4."],"color2 margin",80);}),    
+            new Parameter("1", "Banner 1",()=>{ var desc=[
                     "<br>",
                     '<span class="index">DBotas (DB) Not A Corporation. </span>',
                     "<br>",                                                                                         
@@ -121,7 +111,9 @@
                     "<span class=\"color3\">Welcome to my interactive web terminal.</span>",
                     "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                     "<br>"
-                ]),
+                ];
+                return loopLinhas(desc,"",80);
+            }),
                 new Parameter("2", "Banner 2",
             [
                 "<br>",
@@ -174,7 +166,7 @@
                 "<br>"
                 ])
             ),
-        clear = new Command("clear","   Clear everything written before").addParameter(
+        clear = new Command("clear","   Clear everything written before").addParameters(
             new Parameter("h","Parameters list for this command",()=>{return this.listParameters();}),
             new Parameter("b","Clear with banner at the beginning",()=>{
                 setTimeout(function(){
@@ -197,7 +189,7 @@
         setup = new Command("setup", "   Setup different color/font terminal"),
         date = new Command("date", "    Display date in different formats",()=>{return loopLinhas(["<br>",new Date().toString(),"<br>"],"color2 margin",80);}).addParameters(
             new Parameter("h","Parameters list for this command"),
-            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>",new Date().getHours().toString(),":",new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
+            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>",new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
             new Parameter("t", "Tomorrow's date"),
             new Parameter("y", "Yeasterday"),
         ),

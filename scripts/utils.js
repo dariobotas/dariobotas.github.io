@@ -10,7 +10,7 @@ const github = "https://github.com/dariobotas";
 const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
-const year = new Date().getFullYear().toString()
+const year = new Date().getFullYear().toString();
 const startTerminal = ['<span class="color2">Starting terminal...</span>'];
 const reloadTerminal = ['<span class="color2">Restarting terminal...</span>'];
 
@@ -102,3 +102,23 @@ function alert(text) {
 function nl2br(text) {
     return text.replace(/\n/g, '');
 }
+
+function typeIt(from, e) {
+    e = e || window.event;
+    var typer = $("typer");
+    var typerWrite = from.value;
+  
+    if (!pw) {
+      typer.innerHTML = nl2br(typerWrite);
+    }
+  }
+  
+  function moveIt(count, e) {
+    e = e || window.event;
+    var keycode = e.keycode || e.which;
+    if (keycode == 37 && parseInt(cursor.style.left) >= 0 - (count - 1) * 10) {
+      cursor.style.left = parseInt(cursor.style.left) - 10 + "px";
+    } else if (keycode == 39 && parseInt(cursor.style.left) + 10 <= 0) {
+      cursor.style.left = parseInt(cursor.style.left) + 10 + "px";
+    }
+  }
