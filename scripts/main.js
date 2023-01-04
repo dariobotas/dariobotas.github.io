@@ -70,11 +70,12 @@ function enterKey(e) {
 }
 
 function comandos(cmd) {
-  //console.log(cmd.toLowerCase().trim());
-  //console.log(cmd.replace(/\s+/g, ''));
   let comd = cmd.toLowerCase();
   let command = comd.replace(/\s+/g, "");
-  const commandSplitted = command.split("-", 2);
+  let argumentsCommand = command.split("%",3);
+  
+  const commandAndParameter = argumentsCommand[0];
+  const commandSplitted = commandAndParameter.split("--", 2);
   const mainCommand = commandSplitted[0];
   
   //Filtrar o comando com base no escrito
@@ -90,18 +91,18 @@ function comandos(cmd) {
     const parametrosDoComandoFiltrado = parametrosDoComando
       .map((e) => e.name)
       .indexOf(parameter);
+      
     if (parametrosDoComandoFiltrado !== -1){
-      return parametrosDoComando[parametrosDoComandoFiltrado].description();
+      return parametrosDoComando[parametrosDoComandoFiltrado].description(argumentsCommand);
     } else if (parameter === undefined){
-      return todosComandos[comandosFiltrados].description();
+      return todosComandos[comandosFiltrados].description(argumentsCommand);
     } else {
       return addLinha(
-        '<span class="inherit">Wrong parameter. For a list of parameters, type <span class="command">\''+todosComandos[comandosFiltrados].name+' -h\'</span>.</span>',
+        '<span class="inherit">Wrong parameter. For a list of parameters, type <span class="command">\''+todosComandos[comandosFiltrados].name+' --h\'</span>.</span>',
         "error",
         100
       );
     }
-    console.log(parametrosDoComandoFiltrado);
   } else {
     return addLinha(
       '<span class="inherit">Command not found. For a list of commands, type <span class="command">\'help\'</span>.</span>',
@@ -109,76 +110,6 @@ function comandos(cmd) {
       100
     );
   }
-
-  // switch (cmd.toLowerCase()){
-  //     case "banner":
-  //         loopLinhas(banner.description()/*randomBanner()*/, "", 80);
-  //         break;
-  //     case "banner0":
-  //         loopLinhas(Help.defaultEn.commands[2].parameters[0].description/* banner0 */, "", 80);
-  //         //displayFullYear();
-  //         break;
-  //     case "banner1":
-  //         loopLinhas(Help.defaultEn.commands[2].parameters[1].description/* banner1 */, "", 80);
-  //         //displayFullYear();
-  //         break;
-  //     case "banner2":
-  //         loopLinhas(Help.defaultEn.commands[2].parameters[2].description/* banner2 */, "", 80);
-  //         //displayFullYear();
-  //         break;
-  //     case "banner3":
-  //         loopLinhas(Help.defaultEn.commands[2].parameters[3].description/* banner3 */, "", 80);
-  //         //displayFullYear();
-  //         break;
-  //     case "clear":
-  //         setTimeout(function() {
-  //             clearEverything();
-  //         }, 1);
-  //         break;
-  //     case "clear -b":
-  //         setTimeout(function(){
-  //             clearEverything();
-  //             begin();
-  //         }, 100);
-  //         //beginTerminal("begin", 100);
-  //         break;
-  //     case "help":
-  //         loopLinhas(Help.defaultEn.listCommands()/*help*/, "color2 margin", 80);
-  //         break;
-  //     case "history":
-  //         addLinha("<br>", "", 0);
-  //         loopLinhas(historyCommands, "color3", 80);
-  //         addLinha("<br>", "command", 80 * historyCommands + 50);
-  //         break;
-  //     case "languages":
-  //         loopLinhas(languages, "color2 margin", 80);
-  //         break;
-  //     case "projects":
-  //         loopLinhas(projects, "color2 margin", 80);
-  //         break;
-  //     case "reload":
-  //         commands = [];
-  //         beginTerminal(reload, 0);
-  //         break;
-  //     case "secret":
-  //         liner.classList.add("password");
-  //         pw = true;
-  //         break;
-  //     case "whois":
-  //         loopLinhas(whois, "color2 margin", 80);
-  //         break;
-  //     case "whoami":
-  //         loopLinhas(whoami, "color2 margin", 80);
-  //         break;
-  //     default:
-  //         addLinha("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
-  //         break;
-  // }
-}
-
-function begin() {
-  banner.description();
-  textarea.focus();
 }
 
 function beginTerminal(br, tempo) {
@@ -190,7 +121,8 @@ function beginTerminal(br, tempo) {
     }
     setTimeout(() => {
       clearEverything();
-      begin();
+      banner.description();
+      textarea.focus();
     }, 2500);
   }, tempo);
 }

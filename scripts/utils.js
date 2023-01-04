@@ -30,6 +30,10 @@ var typer = $("typer");
 var textarea = $("terminal_input");
 var terminal = $("terminal");
 
+function differenceDatesInDays(date1, date2) {
+    return (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
+}
+
 /**
  * Usefull functions
  */
