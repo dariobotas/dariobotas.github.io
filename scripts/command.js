@@ -254,11 +254,13 @@
             new Parameter("y", "Yesterday's date",(arrayArguments)=>{var yesterday = new Date(); yesterday; yesterday.setDate(yesterday.getDate() - 1); return loopLinhas(["<br>","Yesterday was "+yesterday.toDateString(),"<br>"],"color2 margin",80);}),
             new Parameter("c", "I was born at... Give me you're age and day&month and i'll tell you when you were born.",(arrayArguments)=>{ return loopLinhas([],"color2 margin",80);}),
             new Parameter("o", "Tell me you're birth date and i'll tell you how old are you.",(arrayArguments)=>{return loopLinhas(["<br>","Yesterday was "+yesterday.toDateString(),"<br>"],"color2 margin",80);}),
-            new Parameter("d", "Calculate dates differences in days. Use the \"YYYY-MM-DD\" format for the dates. \ <p><span class=\"command\">        </span><span class=\"color3\">Example: date --d %2020-02-01 % 2020-01-01</span></p>",(arrayArguments)=>{
+            new Parameter("d", "Calculate dates differences in days. Use the \"YYYY-MM-DD\" or \"YYYY/MM/DD\" formats for the dates. \ <p><span class=\"command\">        </span><span class=\"color3\">Example: date --d %2020-02-01 % 2020-01-01</span></p>",(arrayArguments)=>{
                 const dateLatest = new Date(arrayArguments[1]);
                 const dateNewest = new Date(arrayArguments[2]);
+                const date1 = Date.parse(dateNewest);
+                const date2 = Date.parse(dateLatest);
                 
-                if (arrayArguments.length === 3){
+                if (arrayArguments.length === 3 && !isNaN(date1) && !isNaN(date2)){
                     return loopLinhas(["<br>","The total number of days between dates is "+differenceDatesInDays(dateNewest,dateLatest).toString()+" days.","<br>"],"color2 margin",80);
                 } else{
                     return loopLinhas(["Invalid arguments. Please type arguments as %YYYY-MM-DD for the arguments."],"color2 margin",80);
