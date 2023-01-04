@@ -114,8 +114,7 @@
                 ];
                 return loopLinhas(desc,"",80);
             }),
-                new Parameter("2", "Banner 2",
-            [
+                new Parameter("2", "Banner 2",()=>{var desc = [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
                 "<br>",
@@ -131,9 +130,10 @@
                 '<span class="color3">Welcome to my interactive web terminal.</span>',
                 "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                 "<br>"
-            ]),
-            new Parameter("3", "Banner 3",
-            [
+                ];
+                return loopLinhas(desc, "", 80);
+            }),
+            new Parameter("3", "Banner 3", ()=>{ var desc = [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
                 '________ __________        __                 ',
@@ -147,8 +147,10 @@
                 '<span class="color3">Welcome to my interactive web terminal.</span>',
                   "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                   "<br>"
-                ]),
-            new Parameter("4","Banner 4",
+                ];
+                return loopLinhas(desc,"",80);                
+            }),
+            new Parameter("4","Banner 4", ()=>{ var desc = 
             [
                 "<br>",
                 '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -164,7 +166,9 @@
                 '<span class="color3">Welcome to my interactive web terminal.</span>',
                 "<span class=\"color3\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color3\">.</span>",
                 "<br>"
-                ])
+                ];
+                return loopLinhas(desc, "", 80);
+            })
             ),
         clear = new Command("clear","   Clear everything written before").addParameters(
             new Parameter("h","Parameters list for this command",()=>{return this.listParameters();}),
@@ -189,9 +193,9 @@
         setup = new Command("setup", "   Setup different color/font terminal"),
         date = new Command("date", "    Display date in different formats",()=>{return loopLinhas(["<br>",new Date().toString(),"<br>"],"color2 margin",80);}).addParameters(
             new Parameter("h","Parameters list for this command"),
-            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>","Is "+new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
-            new Parameter("t", "Tomorrow's date",()=>{return loopLinhas(["<br>",new Date().setDate(new Date.getDate() + 1),"<br>"],"color2 margin",80);}),
-            new Parameter("y", "Yeasterday's date",()=>{return loopLinhas(["<br>",new Date().setDate(new Date.getDate() - 1),"<br>"],"color2 margin",80);}),
+            new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>","Now is "+new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
+            new Parameter("t", "Tomorrow's date",()=>{var tomorrow = new Date(); tomorrow; tomorrow.setDate(tomorrow.getDate() + 1); return loopLinhas(["<br>","Tomorrow will be "+tomorrow.toDateString(),"<br>"],"color2 margin",80);}),
+            new Parameter("y", "Yesterday's date",()=>{var yesterday = new Date(); yesterday; yesterday.setDate(yesterday.getDate() - 1); return loopLinhas(["<br>","Yesterday was "+yesterday.toDateString(),"<br>"],"color2 margin",80);}),
         ),
         game = new Command("game","    Play a game"),
         tools = new Command("tools","   Check these tools")
@@ -214,7 +218,7 @@ help.description = function () {
 banner.description = function () {
                 let numberOfBanners = banner.parameters;
                 let random = randomIntFromInterval(0,numberOfBanners.length-1);
-                return loopLinhas(banner.parameters[random].description,"",80);
+                return banner.parameters[random].description();
             };
 
 historyCMD.description = function () {

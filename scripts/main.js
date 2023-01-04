@@ -108,11 +108,6 @@ function comandos(cmd) {
   }
 }
 
-function begin() {
-  banner.description();
-  textarea.focus();
-}
-
 function beginTerminal(br, tempo) {
   setTimeout(() => {
     if (br == "begin") {
@@ -122,7 +117,8 @@ function beginTerminal(br, tempo) {
     }
     setTimeout(() => {
       clearEverything();
-      begin();
+      banner.description();
+      textarea.focus();
     }, 2500);
   }, tempo);
 }
