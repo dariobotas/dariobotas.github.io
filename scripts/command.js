@@ -91,7 +91,7 @@
             return loopLinhas(desc, "color2 margin", 80);
         }),
         banner = new Command("banner", "  Display a random header").addParameters(
-            new Parameter("h","Parameters list for this command",()=>{return loopLinhas(["Please choose a Banner to display. From 1 to 4."],"color2 margin",80);}),    
+            new Parameter("h","Parameters list for this command",()=>{var bannerList = banner.listParameters(); bannerList[1]="Parameters list for the banner command:"; return loopLinhas(bannerList,"color2 margin",80);}),//()=>{return loopLinhas(["Please choose a Banner to display. From 1 to 4."],"color2 margin",80);}),    
             new Parameter("1", "Banner 1",()=>{ var desc=[
                     "<br>",
                     '<span class="index">DBotas (DB) Not A Corporation. </span>',
@@ -192,7 +192,7 @@
         language = new Command("language", "Choose a different language for the terminal"),
         setup = new Command("setup", "   Setup different color/font terminal"),
         date = new Command("date", "    Display date in different formats",()=>{return loopLinhas(["<br>",new Date().toString(),"<br>"],"color2 margin",80);}).addParameters(
-            new Parameter("h","Parameters list for this command"),
+            new Parameter("h","Parameters list for this command",()=>{var helpList = date.listParameters(); helpList[1]="Parameters list for the banner command: <br>"; return loopLinhas(helpList,"color2 margin",80);}),
             new Parameter("n","What time is it?",()=>{return loopLinhas(["<br>","Now is "+new Date().getHours().toString()+":"+new Date().getMinutes(),"<br>"],"color2 margin", 80);}),
             new Parameter("t", "Tomorrow's date",()=>{var tomorrow = new Date(); tomorrow; tomorrow.setDate(tomorrow.getDate() + 1); return loopLinhas(["<br>","Tomorrow will be "+tomorrow.toDateString(),"<br>"],"color2 margin",80);}),
             new Parameter("y", "Yesterday's date",()=>{var yesterday = new Date(); yesterday; yesterday.setDate(yesterday.getDate() - 1); return loopLinhas(["<br>","Yesterday was "+yesterday.toDateString(),"<br>"],"color2 margin",80);}),
@@ -217,7 +217,7 @@ help.description = function () {
  */
 banner.description = function () {
                 let numberOfBanners = banner.parameters;
-                let random = randomIntFromInterval(0,numberOfBanners.length-1);
+                let random = randomIntFromInterval(1,numberOfBanners.length-1);
                 return banner.parameters[random].description();
             };
 
