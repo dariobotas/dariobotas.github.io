@@ -72,7 +72,10 @@ function enterKey(e) {
 function comandos(cmd) {
   let comd = cmd.toLowerCase();
   let command = comd.replace(/\s+/g, "");
-  const commandSplitted = command.split("-", 2);
+  let argumentsCommand = command.split("%",3);
+  
+  const commandAndParameter = argumentsCommand[0];
+  const commandSplitted = commandAndParameter.split("--", 2);
   const mainCommand = commandSplitted[0];
   
   //Filtrar o comando com base no escrito
@@ -88,13 +91,14 @@ function comandos(cmd) {
     const parametrosDoComandoFiltrado = parametrosDoComando
       .map((e) => e.name)
       .indexOf(parameter);
+      
     if (parametrosDoComandoFiltrado !== -1){
-      return parametrosDoComando[parametrosDoComandoFiltrado].description();
+      return parametrosDoComando[parametrosDoComandoFiltrado].description(argumentsCommand);
     } else if (parameter === undefined){
-      return todosComandos[comandosFiltrados].description();
+      return todosComandos[comandosFiltrados].description(argumentsCommand);
     } else {
       return addLinha(
-        '<span class="inherit">Wrong parameter. For a list of parameters, type <span class="command">\''+todosComandos[comandosFiltrados].name+' -h\'</span>.</span>',
+        '<span class="inherit">Wrong parameter. For a list of parameters, type <span class="command">\''+todosComandos[comandosFiltrados].name+' --h\'</span>.</span>',
         "error",
         100
       );
