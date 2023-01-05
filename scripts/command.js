@@ -253,8 +253,25 @@
             new Parameter("t", "Tomorrow's date",(arrayArguments)=>{var tomorrow = new Date(); tomorrow; tomorrow.setDate(tomorrow.getDate() + 1); return loopLinhas(["<br>","Tomorrow will be "+tomorrow.toDateString(),"<br>"],"color2 margin",80);}),
             new Parameter("y", "Yesterday's date",(arrayArguments)=>{var yesterday = new Date(); yesterday; yesterday.setDate(yesterday.getDate() - 1); return loopLinhas(["<br>","Yesterday was "+yesterday.toDateString(),"<br>"],"color2 margin",80);}),
             new Parameter("c", "I was born at... Give me you're age and day&month and i'll tell you when you were born.",(arrayArguments)=>{ return loopLinhas([],"color2 margin",80);}),
-            new Parameter("o", "Tell me you're birth date and i'll tell you how old are you.",(arrayArguments)=>{return loopLinhas(["<br>","Yesterday was "+yesterday.toDateString(),"<br>"],"color2 margin",80);}),
-            new Parameter("d", "Calculate dates differences in days. Use the \"YYYY-MM-DD\" or \"YYYY/MM/DD\" formats for the dates. \ <p><span class=\"command\">        </span><span class=\"color3\">Example: date --d %2020-02-01 % 2020-01-01</span></p>",(arrayArguments)=>{
+            new Parameter("o", "Tell me you're birth date and i'll tell you how old are you.<p><span class=\"command\">        </span><span class=\"color3\">Example: date --o %1965-02-15</span></p>",(arrayArguments)=>{
+                const dateBirth = new Date(arrayArguments[1]);
+                const dateBirthValidation = Date.parse(dateBirth);
+                if (arrayArguments.length === 2 && !isNaN(dateBirthValidation)){
+                    const date = birthday => {
+                        var ageDifMs = Date.now() - birthday.getTime();
+                        var ageDate = new Date(ageDifMs);
+                        return Math.abs(ageDate.getUTCFullYear() - 1970);
+                        //var birthday = +new Date(dateString);
+                        //return ~~((Date.now() - birthday) / (31557600000));
+                    }
+                    console.log(date(dateBirth));
+                    return loopLinhas(["<br>","You're "+date(dateBirth)+" years old.","<br>"],"color2 margin",80);
+                } else {
+                    return loopLinhas(["Invalid arguments. Please type arguments as %YYYY-MM-DD for the arguments."],"color2 margin",80);
+                }
+            }),
+                
+            new Parameter("d", "Calculate dates differences in days. Use the \"YYYY-MM-DD\" or \"YYYY/MM/DD\" formats for the dates. \ <p><span class=\"command\">        </span><span class=\"color3\">Example: date --d %2020-02-01 %2020-01-01</span></p>",(arrayArguments)=>{
                 const dateLatest = new Date(arrayArguments[1]);
                 const dateNewest = new Date(arrayArguments[2]);
                 const date1 = Date.parse(dateNewest);
