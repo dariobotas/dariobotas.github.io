@@ -462,7 +462,7 @@ Help.defaultEn = new Help().addCommands(
     }),
     new Parameter(
       "c",
-      "I was born at... Give me you're age and day&month and i'll tell you when you were born.",
+      "Calendar for the year and month.",
       (arrayArguments) => {
         return loopLinhas([], "color2 margin", 80);
       }
@@ -473,39 +473,40 @@ Help.defaultEn = new Help().addCommands(
       (arrayArguments) => {
         const dateBirth = new Date(arrayArguments[1]);
         const dateBirthValidation = Date.parse(dateBirth);
+        const age = getAge(dateBirth.getFullYear(),dateBirth.getMonth(),dateBirth.getDay());//howOld(dateBirth);
 
         if (arrayArguments.length === 2 && !isNaN(dateBirthValidation)) {
-          console.log(howOld(dateBirth));
-          if (howOld(dateBirth) <= -1) {
+          //console.log(age);
+          if (age < -1) {
             return loopLinhas(
               [
                 "<br>",
                 "You're planning a baby " +
-                  Math.abs(howOld(dateBirth)) +
+                  Math.abs(age) +
                   " years from now? Maybe?",
                 "<br>",
               ],
               "color2 margin",
               80
             );
-          } else if (howOld(dateBirth) > -1 || howOld(dateBirth) < 0) {
+          } else if (age >= -1 || age < 0) {
             return loopLinhas(
               ["<br>", "You're having a baby soon? Congratulations!", "<br>"],
               "color2 margin",
               80
             );
-          } else if (howOld(dateBirth) === 0) {
+          } else if (age === 0) {
             return loopLinhas(
               ["<br>", "Congratulations for your baby!", "<br>"],
               "color2 margin",
               80
             );
-          } else if (howOld(dateBirth) === 1) {
+          } else if (age === 1) {
             return loopLinhas(
               [
                 "<br>",
                 "Congratulations for the " +
-                  howOld(dateBirth) +
+                  age +
                   "º year of your baby!",
                 "<br>",
               ],
@@ -514,7 +515,7 @@ Help.defaultEn = new Help().addCommands(
             );
           } else {
             return loopLinhas(
-              ["<br>", "You're " + howOld(dateBirth) + " years old.", "<br>"],
+              ["<br>", "You're " + age + " years old.", "<br>"],
               "color2 margin",
               80
             );
