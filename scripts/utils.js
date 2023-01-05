@@ -34,6 +34,14 @@ function differenceDatesInDays(date1, date2) {
     return (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
 }
 
+const howOld = birthday => {
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs);
+    return ageDate.getUTCFullYear() - 1970;
+    //var birthday = +new Date(dateString);
+    //return ~~((Date.now() - birthday) / (31557600000));
+}
+
 /**
  * Usefull functions
  */
