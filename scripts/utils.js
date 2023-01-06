@@ -119,39 +119,111 @@ function createCalendar(elem, year, month) {
 
     let mon = month - 1; // months in JS are 0..11, not 1..12
     let dateYearMonth = new Date(year, mon);
+    const dayWeekMonday = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+    const dayWeekSunday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+    let calendarioMensal = [];
 
-    let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+    function criarElementoLinhaTabela(tipo, props){
+      var tr = document.createElement('tr');
+      for(var i=0; i<props.length; i++){
+        var celula = document.createElement(tipo);
+        var texto = document.createTextNode(props[i]);
+        celula.appendChild(texto);
+        tr.appendChild(celula);
+      }
+      return tr;
+    }
 
-    // spaces for the first row
+    function criarElementoCabecalho(props){
+      var thead = document.createElement('thead');
+      var th = criarElementoLinhaTabela('th', props);
+
+      thead.appendChild(th);
+
+      return thead;
+    }
+
+    function criarElementoTabela(textoCaption){
+      var table = document.createElement('table');
+
+      if(textoCaption){
+        var caption = document.createElement('caption');
+        var texto = document.createTextNode(textoCaption);
+        caption.appendChild(texto);
+        table.appendChild(caption);
+      }
+      return table;
+    }
+
+    /**
+     * 
+     * @param {daysofMonth} daysOfMonth Dias do mês
+     * @returns {Array} a linha da tabela dentro dum array.
+     */
+    function criarCorpoCalendario(daysOfMonth){
+      var tbody = document.createElement('tbody');
+      var semanaDias = daysOfMonth;
+
+      for(var semana in semanaDias){
+        var tr = criarElementoLinhaTabela('td', semana);
+        tbody.appendChild(tr);
+      }
+      return tbody;
+    }
+        
+    function criarCalendario (name, startDayWeek, daysOfMonth) {
+      var calendar = criarElementoTabela(name);
+      
+      var calendarThead = criarElementoCabecalho(startDayWeek);
+      calendar.appendChild(calendarThead);
+
+      var calendarTbody = criarCorpoCalendario(daysOfMonth);
+      calendar.appendChild(calendarTbody);
+
+      return calendar;
+    }
+    
+    
+    switch(elem){
+      case "s":
+        return criarCalendario("Sunday start calendar", dayWeekSunday)
+      case "m":
+        return criarCalendario("Monday start calendar", dayWeekMonday);
+      default:
+        return ["Invalid arguments.Please type arguments as %YYYY-MM %m for the arguments.","%m as start week at Monday.", "%s as start week at Sunday."]
+    }
+
+    function arrayOfDaysStartsSunday(yearMonth, month){
+      var dateYearMonth = yearMonth;
+      var arrayDays = [];
+
+          // spaces for the first row
     // from Monday till the first day of the month
     // * * * 1  2  3  4
-    for (let i = 0; i < getDay(dateYearMonth); i++) {
-      table += '<td></td>';
-    }
-
-    // <td> with actual dates
-    while (dateYearMonth.getMonth() == mon) {
-      table += '<td>' + dateYearMonth.getDate() + '</td>';
-
-      if (getDay(d) % 7 == 6) { // sunday, last day of week - newline
-        table += '</tr><tr>';
+      for (let i = 0; i < getDay(dateYearMonth); i++) {
+        arrayDays.push('');
       }
 
-      dateYearMonth.setDate(dateYearMonth.getDate() + 1);
+        // <td> with actual dates
+      while (dateYearMonth.getMonth() == month) {
+          arrayDays.push(dateYearMonth.getDate());
+    
+          if (getDay(dateYearMonth) % 7 == 6) { // sunday, last day of week - newline
+            return arrayDays;
+          }
+    
+          dateYearMonth.setDate(dateYearMonth.getDate() + 1);
+        }
+    
+        // add spaces after last days of month for the last row
+        // 29 30 31 * * * *
+        if (getDay(dateYearMonth) != 0) {
+          for (let i = getDay(dateYearMonth); i < 7; i++) {
+            arrayDays.push('');
+          }
+        }
+
     }
-
-    // add spaces after last days of month for the last row
-    // 29 30 31 * * * *
-    if (getDay(dateYearMonth) != 0) {
-      for (let i = getDay(dateYearMonth); i < 7; i++) {
-        table += '<td></td>';
-      }
-    }
-
-    // close the table
-    table += '</tr></table></div>';
-
-    elem.innerHTML = table;
   }
 
   function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
