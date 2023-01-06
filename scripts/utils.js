@@ -118,32 +118,32 @@ function displayFullYear(){
 function createCalendar(elem, year, month) {
 
     let mon = month - 1; // months in JS are 0..11, not 1..12
-    let d = new Date(year, mon);
+    let dateYearMonth = new Date(year, mon);
 
-    let table = '<div style="text-align: center">'+year+'<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+    let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
 
     // spaces for the first row
     // from Monday till the first day of the month
     // * * * 1  2  3  4
-    for (let i = 0; i < getDay(d); i++) {
+    for (let i = 0; i < getDay(dateYearMonth); i++) {
       table += '<td></td>';
     }
 
     // <td> with actual dates
-    while (d.getMonth() == mon) {
-      table += '<td>' + d.getDate() + '</td>';
+    while (dateYearMonth.getMonth() == mon) {
+      table += '<td>' + dateYearMonth.getDate() + '</td>';
 
       if (getDay(d) % 7 == 6) { // sunday, last day of week - newline
         table += '</tr><tr>';
       }
 
-      d.setDate(d.getDate() + 1);
+      dateYearMonth.setDate(dateYearMonth.getDate() + 1);
     }
 
     // add spaces after last days of month for the last row
     // 29 30 31 * * * *
-    if (getDay(d) != 0) {
-      for (let i = getDay(d); i < 7; i++) {
+    if (getDay(dateYearMonth) != 0) {
+      for (let i = getDay(dateYearMonth); i < 7; i++) {
         table += '<td></td>';
       }
     }
