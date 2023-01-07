@@ -115,6 +115,15 @@ function displayFullYear(){
     spanYear.appendChild(document.createTextNode(year));
 }
 
+
+function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
+  let day = date.getDay();
+  if (day == 0) day = 7; // make Sunday (0) the last day
+  return day - 1;
+}
+
+//createCalendar(calendar, 2012, 9);
+
 function createCalendar(elem, year, month) {
 
     let mon = month - 1; // months in JS are 0..11, not 1..12
@@ -176,6 +185,7 @@ function createCalendar(elem, year, month) {
       
       var calendarThead = criarElementoCabecalho(startDayWeek);
       calendar.appendChild(calendarThead);
+      calendarioMensal.push(calendar);
 
       var calendarTbody = criarCorpoCalendario(daysOfMonth);
       calendar.appendChild(calendarTbody);
@@ -225,14 +235,6 @@ function createCalendar(elem, year, month) {
 
     }
   }
-
-  function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
-    let day = date.getDay();
-    if (day == 0) day = 7; // make Sunday (0) the last day
-    return day - 1;
-  }
-
-  //createCalendar(calendar, 2012, 9);
 
 function alert(text) {
     console.log(text);
