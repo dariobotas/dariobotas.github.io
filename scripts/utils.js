@@ -122,119 +122,115 @@ function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
   return day - 1;
 }
 
-//createCalendar(calendar, 2012, 9);
+function createArrayCalendar(year, month, week){
+  let mon = month - 1;
+  let date = new Date(year, mon);
+  const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const dayWeekSunday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  const dayWeekMonday = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+  var arrayCalendar = [];
+  var weekDays = [];
+  let weekDayText = "";
 
-function createCalendar(elem, year, month) {
-
-    let mon = month - 1; // months in JS are 0..11, not 1..12
-    let dateYearMonth = new Date(year, mon);
-    const dayWeekMonday = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-    const dayWeekSunday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-    let calendarioMensal = [];
-
-    function criarElementoLinhaTabela(tipo, props){
-      var tr = document.createElement('tr');
-      for(var i=0; i<props.length; i++){
-        var celula = document.createElement(tipo);
-        var texto = document.createTextNode(props[i]);
-        celula.appendChild(texto);
-        tr.appendChild(celula);
-      }
-      return tr;
-    }
-
-    function criarElementoCabecalho(props){
-      var thead = document.createElement('thead');
-      var th = criarElementoLinhaTabela('th', props);
-
-      thead.appendChild(th);
-
-      return thead;
-    }
-
-    function criarElementoTabela(textoCaption){
-      var table = document.createElement('table');
-
-      if(textoCaption){
-        var caption = document.createElement('caption');
-        var texto = document.createTextNode(textoCaption);
-        caption.appendChild(texto);
-        table.appendChild(caption);
-      }
-      return table;
-    }
-
-    /**
-     * 
-     * @param {daysofMonth} daysOfMonth Dias do mês
-     * @returns {Array} a linha da tabela dentro dum array.
-     */
-    function criarCorpoCalendario(daysOfMonth){
-      var tbody = document.createElement('tbody');
-      var semanaDias = daysOfMonth;
-
-      for(var semana in semanaDias){
-        var tr = criarElementoLinhaTabela('td', semana);
-        tbody.appendChild(tr);
-      }
-      return tbody;
-    }
-        
-    function criarCalendario (name, startDayWeek, daysOfMonth) {
-      var calendar = criarElementoTabela(name);
-      
-      var calendarThead = criarElementoCabecalho(startDayWeek);
-      calendar.appendChild(calendarThead);
-      calendarioMensal.push(calendar);
-
-      var calendarTbody = criarCorpoCalendario(daysOfMonth);
-      calendar.appendChild(calendarTbody);
-
-      return calendar;
-    }
+  function createArrayTextCalendarSunday(daysOfTheWeek){
+    arrayCalendar.push("<br>"+"<p><span class=\"color3\">"+months[mon]+" "+year+"</span></p>");
     
-    
-    switch(elem){
-      case "s":
-        return criarCalendario("Sunday start calendar", dayWeekSunday)
-      case "m":
-        return criarCalendario("Monday start calendar", dayWeekMonday);
-      default:
-        return ["Invalid arguments.Please type arguments as %YYYY-MM %m for the arguments.","%m as start week at Monday.", "%s as start week at Sunday."]
+    for(let dayWeek in daysOfTheWeek){
+      weekDayText += daysOfTheWeek[dayWeek]+ " ";
     }
 
-    function arrayOfDaysStartsSunday(yearMonth, month){
-      var dateYearMonth = yearMonth;
-      var arrayDays = [];
+    arrayCalendar.push(weekDayText)
 
-          // spaces for the first row
-    // from Monday till the first day of the month
-    // * * * 1  2  3  4
-      for (let i = 0; i < getDay(dateYearMonth); i++) {
-        arrayDays.push('');
-      }
-
-        // <td> with actual dates
-      while (dateYearMonth.getMonth() == month) {
-          arrayDays.push(dateYearMonth.getDate());
-    
-          if (getDay(dateYearMonth) % 7 == 6) { // sunday, last day of week - newline
-            return arrayDays;
-          }
-    
-          dateYearMonth.setDate(dateYearMonth.getDate() + 1);
-        }
-    
-        // add spaces after last days of month for the last row
-        // 29 30 31 * * * *
-        if (getDay(dateYearMonth) != 0) {
-          for (let i = getDay(dateYearMonth); i < 7; i++) {
-            arrayDays.push('');
+    for(let i = 0; i < date.getDay(); i++){
+        weekDays.push(" ");
+    }
+  
+    while(date.getMonth() == mon){
+      weekDays.push(date.getDate());
+  
+      if(date.getDay() == 6){
+        weekDayText = "";
+        for(let dayWeek in weekDays){
+          if(weekDays[dayWeek] <= 9){
+            weekDayText += weekDays[dayWeek] + "  ";
+          } else {
+            weekDayText += weekDays[dayWeek] + " ";
           }
         }
-
+        arrayCalendar.push(weekDayText);
+        weekDays = [];
+      }
+      date.setDate(date.getDate() + 1);
     }
+  
+      if(date.getDay() != 0){
+          for(let i=date.getDay(); i < 7; i++){
+              weekDays.push("");
+          }
+          weekDayText = "";
+          for(let dayWeek in weekDays){
+            weekDayText += weekDays[dayWeek] + " ";
+          }
+          arrayCalendar.push(weekDayText);
+          arrayCalendar.push("<br>");
+      }
+     return arrayCalendar;  
   }
+
+  function createArrayTextCalendarMonday(daysOfTheWeek){
+    arrayCalendar.push("<br>"+"<p><span class=\"color3\">"+months[mon]+" "+year+"</span></p>");
+
+    for(let dayWeek in daysOfTheWeek){
+      weekDayText += daysOfTheWeek[dayWeek]+ " ";
+    }
+
+    arrayCalendar.push(weekDayText)
+
+    for(let i = 0; i < getDay(date); i++){
+        weekDays.push(" ");
+    }
+  
+    while(date.getMonth() == mon){
+      weekDays.push(date.getDate());
+  
+      if(getDay(date) % 7 == 6){
+        weekDayText = "";
+        for(let dayWeek in weekDays){
+          if(weekDays[dayWeek] <= 9){
+            weekDayText += weekDays[dayWeek] + "  ";
+          } else {
+            weekDayText += weekDays[dayWeek] + " ";
+          }
+        }
+        arrayCalendar.push(weekDayText);
+        weekDays = [];
+      }
+      date.setDate(date.getDate() + 1);
+    }
+  
+      if(getDay(date) != 0){
+          for(let i=getDay(date); i < 7; i++){
+              weekDays.push("");
+          }
+          weekDayText = "";
+          for(let dayWeek in weekDays){
+            weekDayText += weekDays[dayWeek] + " ";
+          }
+          arrayCalendar.push(weekDayText);
+          arrayCalendar.push("<br>");
+      }
+     return arrayCalendar;  
+  }
+
+  switch(week){
+      case "s":
+        return createArrayTextCalendarSunday(dayWeekSunday);
+      case "m":
+        return createArrayTextCalendarMonday(dayWeekMonday);
+      default:
+        return ["Invalid arguments. Please type arguments as %YYYY-MM %m for the arguments.","%m as start week at Monday.", "%s as start week at Sunday."]
+    }
+}
 
 function alert(text) {
     console.log(text);
