@@ -462,9 +462,43 @@ Help.defaultEn = new Help().addCommands(
     }),
     new Parameter(
       "c",
-      "Calendar for the year and month.",
+      "Calendar for the year and month. %Year-Month %s for start week at sunday or %m for start week at monday.<p><span class=\"command\">        </span><span class=\"color3\">Example: date --c %2023-01 %s</span></p>",
       (arrayArguments) => {
-        return loopLinhas([], "color2 margin", 80);
+        const calendarDate = arrayArguments[1];
+        const weekDays = arrayArguments[2];
+                
+        if (arrayArguments.length === 3) {
+          const calendarSplitted = calendarDate.split("-",2);
+          const year = calendarSplitted[0];
+          const month = calendarSplitted[1];
+
+          if(!isNaN(year) && !isNaN(month)){
+          
+            //const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            const calendar = createArrayCalendar(year, month, weekDays);
+          
+            //calendar.unshift("<br>"+"<p><span classe=\"color2\">"+months[month-1]+" "+year+"</span></p>");
+            //calendar.push("<br>");
+
+            return loopLinhas(calendar, "color2 margin", 80);
+          } else {
+            loopLinhas(
+              [
+                "Invalid arguments. Please type arguments as %YYYY-MM %s or %%YYYY-MM %m for the arguments.",
+              ],
+              "color2 margin",
+              80
+            );
+          }
+        } else {
+          loopLinhas(
+            [
+              "Invalid arguments. Please type arguments as %YYYY-MM %s or %%YYYY-MM %m for the arguments.",
+            ],
+            "color2 margin",
+            80
+          );
+        }
       }
     ),
     new Parameter(
