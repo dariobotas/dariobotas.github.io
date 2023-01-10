@@ -523,7 +523,7 @@ Help.defaultEn = new Help().addCommands(
               "color2 margin",
               80
             );
-          } else if (age >= -1 || age < 0) {
+          } else if (age >= -1 && age < 0) {
             return loopLinhas(
               ["<br>", "You're having a baby soon? Congratulations!", "<br>"],
               "color2 margin",

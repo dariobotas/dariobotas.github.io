@@ -44,10 +44,10 @@ const howOld = (age, monthBirth, dayBirth) => {
 }
 
 const getAge = (year, month, day) => {
-    const birth = new Date(year, month - 1, day)
-    const now = new Date()
-    const diff = new Date(now.valueOf() - birth.valueOf())
-    return (diff.getFullYear() - 1970)
+    const birth = new Date(year, month - 1, day);
+    const now = new Date();
+    const diff = new Date(now.valueOf() - birth.valueOf());
+    return (diff.getFullYear() - 1970);
 }
 
 /**
