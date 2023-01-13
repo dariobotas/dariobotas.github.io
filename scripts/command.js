@@ -507,7 +507,7 @@ Help.defaultEn = new Help().addCommands(
       (arrayArguments) => {
         const dateBirth = new Date(arrayArguments[1]);
         const dateBirthValidation = Date.parse(dateBirth);
-        const age = getAge(dateBirth.getFullYear(),dateBirth.getMonth(),dateBirth.getDay());//howOld(dateBirth);
+        const age = /*getAge(dateBirth.getFullYear(),dateBirth.getMonth(),dateBirth.getDate());*/ howOld(dateBirth);
 
         if (arrayArguments.length === 2 && !isNaN(dateBirthValidation)) {
           //console.log(age);
