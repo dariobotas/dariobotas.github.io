@@ -472,7 +472,7 @@ Help.defaultEn = new Help().addCommands(
           const year = calendarSplitted[0];
           const month = calendarSplitted[1];
 
-          if(!isNaN(year) && !isNaN(month)){
+          if(!isNaN(year) && !isNaN(month) && (Number.parseInt(month) > 0 && Number.parseInt(month) < 13)){
           
             //const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
             const calendar = createArrayCalendar(year, month, weekDays);
