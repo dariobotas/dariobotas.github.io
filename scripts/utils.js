@@ -222,6 +222,20 @@ function createArrayCalendar(year, month, week){
      return arrayCalendar;  
   }
 
+  function createArrayTextCalendar(daysOfTheWeek, startWeek){
+    arrayCalendar.push("<br>"+"<p><span class=\"color3\">"+months[mon]+" "+year+"</span></p>");
+
+    let startDay;
+    if(startWeek === "s"){
+      startDay = date.getDay();
+    } else if (startWeek === "m"){
+      startDay = getDay(date);
+    }
+
+
+
+  }
+
   switch(week){
       case "s":
         return createArrayTextCalendarSunday(dayWeekSunday);
