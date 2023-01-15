@@ -472,14 +472,8 @@ Help.defaultEn = new Help().addCommands(
           const year = calendarSplitted[0];
           const month = calendarSplitted[1];
 
-          if(!isNaN(year) && !isNaN(month) && (Number.parseInt(month) > 0 && Number.parseInt(month) < 13)){
-          
-            //const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+          if(!isNaN(year) && !isNaN(month) && (Number.parseInt(month) > 0 && Number.parseInt(month) < 13) && (weekDays === "m" || weekDays === "s")){
             const calendar = createArrayCalendar(year, month, weekDays);
-          
-            //calendar.unshift("<br>"+"<p><span classe=\"color2\">"+months[month-1]+" "+year+"</span></p>");
-            //calendar.push("<br>");
-
             return loopLinhas(calendar, "color2 margin", 80);
           } else {
             loopLinhas(
