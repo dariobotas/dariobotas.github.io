@@ -146,7 +146,7 @@ function createArrayCalendar(year, month, weekDay){
     while(date.getMonth() == mon){
       weekDays.push(date.getDate());
   
-      if((week === 'm' ? getDay(date) : date.getDay()) == 6){
+      if((week === 'm' ? (getDay(date) % 7) : date.getDay()) == 6){
         weekDayText = "";
         for(let dayWeek in weekDays){
           if(weekDays[dayWeek] <= 9){
