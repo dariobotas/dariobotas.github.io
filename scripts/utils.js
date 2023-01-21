@@ -139,14 +139,14 @@ function createArrayCalendar(year, month, weekDay){
 
     arrayCalendar.push(weekDayText)
 
-    for(let i = 0; i < (week === 'm' ? getDay(date) : date.getDay()); i++){
+    for(let i = 0; i < (weekDay === 'm' ? getDay(date) : date.getDay()); i++){
         weekDays.push(" ");
     }
   
     while(date.getMonth() == mon){
       weekDays.push(date.getDate());
   
-      if((week === 'm' ? (getDay(date) % 7) : date.getDay()) == 6){
+      if((weekDay === 'm' ? (getDay(date) % 7) : date.getDay()) == 6){
         weekDayText = "";
         for(let dayWeek in weekDays){
           if(weekDays[dayWeek] <= 9){
@@ -161,8 +161,8 @@ function createArrayCalendar(year, month, weekDay){
       date.setDate(date.getDate() + 1);
     }
   
-      if((week === 'm' ? getDay(date) : date.getDay()) != 0){
-          for(let i=(week === 'm' ? getDay(date) : date.getDay()); i < 7; i++){
+      if((weekDay === 'm' ? getDay(date) : date.getDay()) != 0){
+          for(let i=(weekDay === 'm' ? getDay(date) : date.getDay()); i < 7; i++){
               weekDays.push("");
           }
           weekDayText = "";
