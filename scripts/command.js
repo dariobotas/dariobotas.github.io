@@ -184,7 +184,7 @@ Help.defaultEn = new Help().addCommands(
         "Parameters list for the banner command:" +
         '<br> <span class="command">banner</span> A random banner ';
       return loopLinhas(bannerList, "color2 margin", 80);
-    }), //()=>{return loopLinhas(["Please choose a Banner to display. From 1 to 4."],"color2 margin",80);}),
+    }), 
     new Parameter("1", "Banner 1", (arrayArguments) => {
       if (arrayArguments === undefined || arrayArguments.length === 1) {
         var desc = [
@@ -501,10 +501,9 @@ Help.defaultEn = new Help().addCommands(
       (arrayArguments) => {
         const dateBirth = new Date(arrayArguments[1]);
         const dateBirthValidation = Date.parse(dateBirth);
-        const age = /*getAge(dateBirth.getFullYear(),dateBirth.getMonth(),dateBirth.getDate());*/ howOld(dateBirth);
+        const age = howOld(dateBirth);
 
         if (arrayArguments.length === 2 && !isNaN(dateBirthValidation)) {
-          //console.log(age);
           if (age < -1) {
             return loopLinhas(
               [
@@ -594,5 +593,28 @@ Help.defaultEn = new Help().addCommands(
     )
   )),
   (game = new Command("game", "    Play a game")),
-  (tools = new Command("tools", "   Check these tools"))
+  (tools = new Command("tools", "   Check these tools")),
+  (exit = new Command("exit","    To exit terminal",()=>{
+    return loopLinhas(Help.defaultEn.listCommands(), "color2 margin", 80);
+}).addParameter(
+  new Parameter("h", "", (arrayArguments) => {
+    if (arrayArguments.length > 1) {
+      return loopLinhas(
+        [
+          "Invalid arguments! Please type the command without arguments or try --h parameter.",
+        ],
+        "color2 margin",
+        80
+      );
+    } else {
+      return loopLinhas(
+        [
+          "Just type <span class=\"command\">'exit'</span> and get out of terminal!",
+        ],
+        "color2 maring",
+        80
+      );
+    }
+  })
+))
 );
