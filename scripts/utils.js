@@ -133,8 +133,8 @@ function createArrayCalendar(year, month, weekDay){
 
     arrayCalendar.push("<br>"+"<p><span class=\"color3\">"+months[mon]+" "+year+"</span></p>");
     
-    for(let dayWeek in daysOfTheWeek){
-      weekDayText += daysOfTheWeek[dayWeek]+ " ";
+    for(let dayWeek in week){
+      weekDayText += week[dayWeek]+ " ";
     }
 
     arrayCalendar.push(weekDayText)
