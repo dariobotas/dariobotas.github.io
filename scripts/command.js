@@ -108,10 +108,15 @@ Help.defaultEn = new Help().addCommands(
     var desc = [
       "<br>",
       "Hey, I'm DBotas!👋",
-      "I'm a software developer (but currently working as a Tester) and content creator",
-      "that's responsible for a blog and makes YouTube videos about computer science & software engineering.",
-      "After graduating with a Bachelor's in Computer Science, I worked professionally",
-      "",
+      "I'm a software tester (and a software and automation creator) and a beginner in content creator",
+      "that's responsible for a blog and a dad.",
+      "After graduating with a Bachelor's in Computer Science, I worked professionally (and continues to)",
+      "in Deloitte Portugal as a Consultant.",
+      "My favourite hobbies are reading, revisit and recreate what i learned in the university and remake",
+      "some projects that i did there.",
+      "I like to automate tasks that i'm currently do in order to get more of my time to do other stuff.",
+      "I'm trying to use this web terminal as my portfolio and show what i do in my free time.",
+      "Hope you enjoy it!!",
       "<br>",
     ];
     return loopLinhas(desc, "color2 margin", 80);
