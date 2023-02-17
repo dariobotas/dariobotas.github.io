@@ -211,6 +211,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -241,6 +242,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -271,6 +273,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -302,6 +305,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
