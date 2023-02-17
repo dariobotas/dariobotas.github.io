@@ -114,7 +114,7 @@ Help.defaultEn = new Help().addCommands(
       "in Deloitte Portugal as a Consultant.",
       "My favourite hobbies are reading, revisit and recreate what i learned in the university and remake",
       "some projects that i did there.",
-      "I like to automate tasks that i'm currently do in order to get more of my time to do other stuff.",
+      "I like to automate tasks that i'm currently doing in order to get more of my time to do other stuff.",
       "I'm trying to use this web terminal as my portfolio and show what i do in my free time.",
       "Hope you enjoy it!!",
       "<br>",
