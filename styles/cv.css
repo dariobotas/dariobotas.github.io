@@ -2,22 +2,23 @@
 html {
     box-sizing: border-box
 }
- 
+
 *,
 *:before,
 *:after {
     box-sizing: inherit
 }
- 
+
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
- 
+
 body {
     margin: 0
 }
+
 .light-grey,
 .hover-light-grey:hover,
 .light-gray,
@@ -32,4 +33,32 @@ body {
 .hover-dark-gray:hover {
     color: #fff !important;
     background-color: #616161 !important
+}
+
+.text-light-grey,
+.hover-text-light-grey:hover,
+.text-light-gray,
+.hover-text-light-gray:hover {
+    color: #f1f1f1 !important
+}
+
+.text-dark-grey,
+.hover-text-dark-grey:hover,
+.text-dark-gray,
+.hover-text-dark-gray:hover {
+    color: #3a3a3a !important
+}
+
+-light-grey,
+.hover-border-light-grey:hover,
+.border-light-gray,
+.hover-border-light-gray:hover {
+    border-color: #f1f1f1 !important
+}
+
+.border-dark-grey,
+.hover-border-dark-grey:hover,
+.border-dark-gray,
+.hover-border-dark-gray:hover {
+    border-color: #616161 !important
 }
