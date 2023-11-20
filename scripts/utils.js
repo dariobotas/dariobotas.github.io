@@ -122,33 +122,31 @@ function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
   return day - 1;
 }
 
-function createArrayCalendar(year, month, week){
+function createArrayCalendar(year, month, weekDay){
   let mon = month - 1;
   let date = new Date(year, mon);
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const dayWeekSunday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-  const dayWeekMonday = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+  const week = weekDay === "m" ? ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"] : ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
   var arrayCalendar = [];
   var weekDays = [];
   let weekDayText = "";
 
-  function createArrayTextCalendarSunday(daysOfTheWeek){
     arrayCalendar.push("<br>"+"<p><span class=\"color3\">"+months[mon]+" "+year+"</span></p>");
     
-    for(let dayWeek in daysOfTheWeek){
-      weekDayText += daysOfTheWeek[dayWeek]+ " ";
+    for(let dayWeek in week){
+      weekDayText += week[dayWeek]+ " ";
     }
 
     arrayCalendar.push(weekDayText)
 
-    for(let i = 0; i < date.getDay(); i++){
+    for(let i = 0; i < (weekDay === 'm' ? getDay(date) : date.getDay()); i++){
         weekDays.push(" ");
     }
   
     while(date.getMonth() == mon){
       weekDays.push(date.getDate());
   
-      if(date.getDay() == 6){
+      if((weekDay === 'm' ? (getDay(date) % 7) : date.getDay()) == 6){
         weekDayText = "";
         for(let dayWeek in weekDays){
           if(weekDays[dayWeek] <= 9){
@@ -163,8 +161,8 @@ function createArrayCalendar(year, month, week){
       date.setDate(date.getDate() + 1);
     }
   
-      if(date.getDay() != 0){
-          for(let i=date.getDay(); i < 7; i++){
+      if((weekDay === 'm' ? getDay(date) : date.getDay()) != 0){
+          for(let i=(weekDay === 'm' ? getDay(date) : date.getDay()); i < 7; i++){
               weekDays.push("");
           }
           weekDayText = "";
@@ -175,61 +173,6 @@ function createArrayCalendar(year, month, week){
           arrayCalendar.push("<br>");
       }
      return arrayCalendar;  
-  }
-
-  function createArrayTextCalendarMonday(daysOfTheWeek){
-    arrayCalendar.push("<br>"+"<p><span class=\"color3\">"+months[mon]+" "+year+"</span></p>");
-
-    for(let dayWeek in daysOfTheWeek){
-      weekDayText += daysOfTheWeek[dayWeek]+ " ";
-    }
-
-    arrayCalendar.push(weekDayText)
-
-    for(let i = 0; i < getDay(date); i++){
-        weekDays.push(" ");
-    }
-  
-    while(date.getMonth() == mon){
-      weekDays.push(date.getDate());
-  
-      if(getDay(date) % 7 == 6){
-        weekDayText = "";
-        for(let dayWeek in weekDays){
-          if(weekDays[dayWeek] <= 9){
-            weekDayText += weekDays[dayWeek] + "  ";
-          } else {
-            weekDayText += weekDays[dayWeek] + " ";
-          }
-        }
-        arrayCalendar.push(weekDayText);
-        weekDays = [];
-      }
-      date.setDate(date.getDate() + 1);
-    }
-  
-      if(getDay(date) != 0){
-          for(let i=getDay(date); i < 7; i++){
-              weekDays.push("");
-          }
-          weekDayText = "";
-          for(let dayWeek in weekDays){
-            weekDayText += weekDays[dayWeek] + " ";
-          }
-          arrayCalendar.push(weekDayText);
-          arrayCalendar.push("<br>");
-      }
-     return arrayCalendar;  
-  }
-
-  switch(week){
-      case "s":
-        return createArrayTextCalendarSunday(dayWeekSunday);
-      case "m":
-        return createArrayTextCalendarMonday(dayWeekMonday);
-      default:
-        return ["Invalid arguments. Please type arguments as %YYYY-MM %m for the arguments.","%m as start week at Monday.", "%s as start week at Sunday."]
-    }
 }
 
 function alert(text) {
