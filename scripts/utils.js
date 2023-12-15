@@ -10,6 +10,7 @@ const github = "https://github.com/dariobotas";
 const bitbucket = "https://bitbucket.org/dabotas/";
 const email = "mailto:darioabotas@gmail.com";
 const password = "dbotas";
+const cv1 = "cv_style1.html"
 const year = new Date().getFullYear().toString();
 const startTerminal = ['<span class="color2">Starting terminal...</span>'];
 const reloadTerminal = ['<span class="color2">Restarting terminal...</span>'];
@@ -59,11 +60,17 @@ function newTab(link){
     }, 500);
 }
 
+function sameTab(link){
+    setTimeout(function(){
+        window.open(link, "_self");
+    }, 500);
+}
+
 function addLinha(texto, estilo, tempo){
     var t = "";
 
     for(let i=0; i<texto.length; i++) {
-        if (texto.charAt(i) == " " && texto.charAt(i + 1) == " "){
+        if (texto.charAt(i) === " " && texto.charAt(i + 1) === " "){
             t += "&nbsp;&nbsp;";
             i++;
         }else {

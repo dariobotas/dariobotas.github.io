@@ -130,7 +130,7 @@ a {
     text-decoration: inherit;
 }
 a:hover {
-    background: d3d4da;
+    background: #d3d4da;
     color: #211830;
 }
 a:focus {
@@ -269,7 +269,7 @@ a {
     text-decoration: inherit;
 }
 a:hover {
-    background: d3d4da;
+    background: #d3d4da;
     color: #211830;
 }
 a:focus {
@@ -409,7 +409,7 @@ a:focus {
         text-decoration: inherit;
     }
     a:hover {
-        background: d3d4da;
+        background: #d3d4da;
         color: #211830;
     }
     a:focus {
@@ -550,7 +550,7 @@ a:focus {
         text-decoration: inherit;
     }
     a:hover {
-        background: d3d4da;
+        background: #d3d4da;
         color: #211830;
     }
     a:focus {
@@ -691,7 +691,7 @@ a:focus {
         text-decoration: inherit;
     }
     a:hover {
-        background: d3d4da;
+        background: #d3d4da;
         color: #211830;
     }
     a:focus {

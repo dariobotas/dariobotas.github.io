@@ -595,7 +595,8 @@ Help.defaultEn = new Help().addCommands(
   (game = new Command("game", "    Play a game")),
   (tools = new Command("tools", "   Check these tools")),
   (exit = new Command("exit","    To exit terminal",()=>{
-    return loopLinhas(Help.defaultEn.listCommands(), "color2 margin", 80);
+    addLinha("Exiting terminal...<br>", "color2", 80);
+    sameTab(cv1);
 }).addParameter(
   new Parameter("h", "", (arrayArguments) => {
     if (arrayArguments.length > 1) {
