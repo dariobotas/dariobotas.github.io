@@ -104,7 +104,7 @@ img {
 }
 .card .info__terminal a {
     position: absolute;
-    top: 3.5rem;
+    top: 4rem;
     right: 1.5rem;
     font-size: 1.5rem;
     color: var(--white-color);
@@ -138,7 +138,7 @@ img {
 }
 .info .info__terminal a {
     position: absolute;
-    top: 3.5rem;
+    top: 4rem;
     right: 1.5rem;
     font-size: 1.5rem;
     color: var(--first-color);
@@ -212,13 +212,26 @@ img {
     color: var(--white-color);
     font-size: 1rem;
 }
-/*======================= CARD INFO ANIMATION =======================*/
-.info:hover {
-    clip-path: circle(75%);
+
+@media screen and (max-width: 1366px){
+    /*======================= CARD INFO ANIMATION =======================*/
+    .info.open {
+        clip-path: circle(75%);
+    }
+    .info.open .info__border, .info.open .info__data, .info.open .info__social {
+        transform: translateX(0);
+    }
 }
-.info:hover .info__icon {
-    opacity: 0;
-}
-.info:hover .info__border, .info:hover .info__data, .info:hover .info__social {
-    transform: translateX(0);
+
+@media screen and (min-width: 1367px){
+    /*======================= CARD INFO ANIMATION =======================*/
+    .info:hover {
+        clip-path: circle(75%);
+    }
+    .info:hover .info__icon {
+        opacity: 0;
+    }
+    .info:hover .info__border, .info:hover .info__data, .info:hover .info__social {
+        transform: translateX(0);
+    }
 }

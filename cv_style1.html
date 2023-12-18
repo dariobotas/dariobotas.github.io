@@ -14,6 +14,7 @@
           media="screen"
           href="/styles/cv1.css"
   />
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
   <body>
     <div class="container">
@@ -35,7 +36,7 @@
         </div>
 
         <!-- Card Info -->
-        <div class="info">
+        <div id="main_info" class="info" onclick="info_click()">
           <div class="info__icon">
             <i class="ri-information-line"></i>
           </div>
@@ -65,9 +66,10 @@
               </span>
             </a>
 
-            <a href="https://www.facebook.com/dario.botas/" target="_blank" class="info__social-link">
+            <a href="#" target="_blank" class="info__social-link">
               <span class="info__social-icon">
-                <i class="ri-facebook-circle-line"></i>
+                <!-- <i class="ri-facebook-circle-line"></i> -->
+                <iconify-icon icon="tabler:file-cv"></iconify-icon>
               </span>
             </a>
 
@@ -80,5 +82,16 @@
         </div>
       </div>
     </div>
+    <script>
+      function info_click() {
+        let width = screen.width;
+        let info = document.getElementById("main_info")//ByClassName("info");
+        if (info.className === "info" && width < 1367) {
+          info.className += " open";
+        } else {
+          info.className = "info";
+        }
+      }
+    </script>
   </body>
 </html>
