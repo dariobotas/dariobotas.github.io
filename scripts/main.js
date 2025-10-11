@@ -1,7 +1,7 @@
 //"use strict";
 function enterKey(e) {
   //validar se o F5 foi premido para fazer reload
-  if (e.keyCode == 181) {
+  if (e.keyCode === 181) {
     document.location.reload(true);
   }
 
@@ -19,14 +19,14 @@ function enterKey(e) {
     }
 
     //Validar se a senha é correta e se foi clicado enter
-    if (pwd && e.keyCode == 13) {
+    if (pwd && e.keyCode === 13) {
       loopLinhas(secret, "color2 margin", 120);
       typer.innerHTML = "";
       textarea.value = "";
       pwd = false;
       pw = false;
       liner.classList.remove("password");
-    } else if (e.keyCode == 13) {
+    } else if (e.keyCode === 13) {
       addLinha("Wrong password", "error", 0);
       limpaElemento(typer);
       textarea.value = "";
@@ -34,7 +34,7 @@ function enterKey(e) {
       liner.classList.remove("password");
     }
   } else {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       historyCommands.push(typer.innerHTML);
       git = historyCommands.length;
       addLinha(
@@ -47,7 +47,7 @@ function enterKey(e) {
       textarea.value = "";
     }
 
-    if (e.keyCode == 38 && (git != 0 || git != historyCommands.length)) {
+    if (e.keyCode === 38 && (git !== 0 || git !== historyCommands.length)) {
       git -= 1;
       if (historyCommands[git] === undefined) {
         textarea.value = "";
@@ -57,7 +57,7 @@ function enterKey(e) {
       typer.innerHTML = textarea.value;
     }
 
-    if (e.keyCode == 40 && git != historyCommands.length) {
+    if (e.keyCode === 40 && git !== historyCommands.length) {
       git += 1;
       if (historyCommands[git] === undefined) {
         textarea.value = "";

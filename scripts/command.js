@@ -13,10 +13,10 @@ function Command(name, about, description, parameters) {
 }
 
 Command.prototype.listParameters = function () {
-  if (this.parameters.lenght === 0) {
+  if (this.parameters.length === 0) {
     return '<span class="inherit">No commands available. This is a useless terminal...';
   } else {
-    var arrayList = ["<br>"];
+    let arrayList = ["<br>"];
     this.parameters.forEach(function (element, index, array) {
       arrayList.push(
         '<p><span class="command"> --' +
@@ -48,10 +48,10 @@ function Help() {
 }
 
 Help.prototype.listCommands = function () {
-  if (this.commands.lenght === 0) {
+  if (this.commands.length === 0) {
     return '<span class="inherit">No commands available. This is a useless terminal...';
   } else {
-    var arrayList = ["<br>"];
+    let arrayList = ["<br>"];
     this.commands.forEach(function (element, index, array) {
       arrayList.push(
         '<span class="command">' + element.name + "</span>     " + element.about
@@ -105,7 +105,7 @@ Help.defaultEn = new Help().addCommands(
     })
   )),
   (whois = new Command("whois", "   Who is DBotas?", () => {
-    var desc = [
+    const desc = [
       "<br>",
       "Hey, I'm DBotas!👋",
       "I'm a software tester (and a software and automation creator) and a beginner in content creator",
@@ -142,7 +142,7 @@ Help.defaultEn = new Help().addCommands(
     })
   )),
   (whoami = new Command("whoami", "  Who are you?", () => {
-    var desc = [
+    const desc = [
       "<br>",
       "I don't know about you, but i'm a new creature (in Christ):",
       "old things are passed away; behold, all things are become new.",
@@ -184,7 +184,7 @@ Help.defaultEn = new Help().addCommands(
         return banner.parameters[random].description();
     }).addParameters(
     new Parameter("h", "Parameters list for this command", (arrayArguments) => {
-      var bannerList = banner.listParameters();
+      const bannerList = banner.listParameters();
       bannerList[1] =
         "Parameters list for the banner command:" +
         '<br> <span class="command">banner</span> A random banner ';
@@ -192,7 +192,7 @@ Help.defaultEn = new Help().addCommands(
     }), 
     new Parameter("1", "Banner 1", (arrayArguments) => {
       if (arrayArguments === undefined || arrayArguments.length === 1) {
-        var desc = [
+        const desc = [
           "<br>",
           '<span class="index">DBotas (DB) Not A Corporation. </span>',
           "<br>",
@@ -207,7 +207,7 @@ Help.defaultEn = new Help().addCommands(
           "8 8888    ,o88P'   8 8888    ,88'  ` 8888     ,88'     8 8888 .888888888. `88888. `8b.  ;8.`8888 ",
           "8 888888888P'      8 888888888P       `8888888P'       8 8888.8'       `8. `88888. `Y8888P ,88P' ",
           "                                                                                          © " +
-            year,
+          year,
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
@@ -227,7 +227,7 @@ Help.defaultEn = new Help().addCommands(
     }),
     new Parameter("2", "Banner 2", (arrayArguments) => {
       if (arrayArguments === undefined || arrayArguments.length === 1) {
-        var desc = [
+        const desc = [
           "<br>",
           '<span class="index">DBotas (DB) Not A Corporation. </span>',
           "<br>",
@@ -258,7 +258,7 @@ Help.defaultEn = new Help().addCommands(
     }),
     new Parameter("3", "Banner 3", (arrayArguments) => {
       if (arrayArguments === undefined || arrayArguments.length === 1) {
-        var desc = [
+        const desc = [
           "<br>",
           '<span class="index">DBotas (DB) Not A Corporation. </span>',
           "________ __________        __                 ",
@@ -268,8 +268,8 @@ Help.defaultEn = new Help().addCommands(
           "/_______  /______  /\\____/|__| (____  /____  >",
           "        \\/       \\/                 \\/     \\/ ",
           '                                        © <span id="yearb2">' +
-            year +
-            "</span>",
+          year +
+          "</span>",
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
@@ -289,7 +289,7 @@ Help.defaultEn = new Help().addCommands(
     }),
     new Parameter("4", "Banner 4", (arrayArguments) => {
       if (arrayArguments === undefined || arrayArguments.length === 1) {
-        var desc = [
+        const desc = [
           "<br>",
           '<span class="index">DBotas (DB) Not A Corporation. </span>',
           "    ",
@@ -300,8 +300,8 @@ Help.defaultEn = new Help().addCommands(
           "██████╔╝██████╦╝╚█████╔╝░░░██║░░░██║░░██║██████╔╝",
           "╚═════╝░╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═════╝░",
           '                                           © <span id="yearb2">' +
-            year +
-            "</span>",
+          year +
+          "</span>",
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
@@ -431,7 +431,7 @@ Help.defaultEn = new Help().addCommands(
     }
   ).addParameters(
     new Parameter("h", "Parameters list for this command", (arrayArguments) => {
-      var helpList = date.listParameters();
+      let helpList = date.listParameters();
       helpList[1] = "Parameters list for the banner command: <br>";
       return loopLinhas(helpList, "color2 margin", 80);
     }),
@@ -450,7 +450,7 @@ Help.defaultEn = new Help().addCommands(
       );
     }),
     new Parameter("t", "Tomorrow's date", (arrayArguments) => {
-      var tomorrow = new Date();
+      const tomorrow = new Date();
       tomorrow;
       tomorrow.setDate(tomorrow.getDate() + 1);
       return loopLinhas(
@@ -460,7 +460,7 @@ Help.defaultEn = new Help().addCommands(
       );
     }),
     new Parameter("y", "Yesterday's date", (arrayArguments) => {
-      var yesterday = new Date();
+      const yesterday = new Date();
       yesterday;
       yesterday.setDate(yesterday.getDate() - 1);
       return loopLinhas(
@@ -604,7 +604,8 @@ Help.defaultEn = new Help().addCommands(
   (game = new Command("game", "    Play a game")),
   (tools = new Command("tools", "   Check these tools")),
   (exit = new Command("exit","    To exit terminal",()=>{
-    return loopLinhas(Help.defaultEn.listCommands(), "color2 margin", 80);
+    addLinha("Exiting terminal...<br>", "color2", 80);
+    sameTab(cv1);
 }).addParameter(
   new Parameter("h", "", (arrayArguments) => {
     if (arrayArguments.length > 1) {
