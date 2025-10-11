@@ -108,10 +108,15 @@ Help.defaultEn = new Help().addCommands(
     const desc = [
       "<br>",
       "Hey, I'm DBotas!👋",
-      "I'm a software developer (but currently working as a Tester) and content creator",
-      "that's responsible for a blog and makes YouTube videos about computer science & software engineering.",
-      "After graduating with a Bachelor's in Computer Science, I worked professionally",
-      "",
+      "I'm a software tester (and a software and automation creator) and a beginner in content creator",
+      "that's responsible for a blog and a dad.",
+      "After graduating with a Bachelor's in Computer Science, I worked professionally (and continues to)",
+      "in Deloitte Portugal as a Consultant.",
+      "My favourite hobbies are reading, revisit and recreate what i learned in the university and remake",
+      "some projects that i did there.",
+      "I like to automate tasks that i'm currently doing in order to get more of my time to do other stuff.",
+      "I'm trying to use this web terminal as my portfolio and show what i do in my free time.",
+      "Hope you enjoy it!!",
       "<br>",
     ];
     return loopLinhas(desc, "color2 margin", 80);
@@ -206,6 +211,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -236,6 +242,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -266,6 +273,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -297,6 +305,7 @@ Help.defaultEn = new Help().addCommands(
           "<br>",
           '<span class="color3">Welcome to my interactive web terminal.</span>',
           '<span class="color3">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color3">.</span>',
+          '<span class="color3">For a list of available options, type</span> <span class="command">\'command --h\'</span><span class="color3">.</span>',
           "<br>",
         ];
         return loopLinhas(desc, "", 80);
@@ -472,7 +481,7 @@ Help.defaultEn = new Help().addCommands(
           const year = calendarSplitted[0];
           const month = calendarSplitted[1];
 
-          if(!isNaN(year) && !isNaN(month) && (Number.parseInt(month) > 0 && Number.parseInt(month) < 13)){
+          if(!isNaN(year) && !isNaN(month) && (Number.parseInt(month) > 0 && Number.parseInt(month) < 13) && (weekDays === "m" || weekDays === "s")){
             const calendar = createArrayCalendar(year, month, weekDays);
             return loopLinhas(calendar, "color2 margin", 80);
           } else {
